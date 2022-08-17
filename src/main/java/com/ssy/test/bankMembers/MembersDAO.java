@@ -1,4 +1,4 @@
-package com.iu.ssy.bankMembers;
+package com.ssy.test.bankMembers;
 
 import java.util.ArrayList;
 import java.util.List;

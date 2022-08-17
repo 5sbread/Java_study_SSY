@@ -1,4 +1,4 @@
-package com.iu.ssy.bankMembers;
+package com.ssy.test.bankMembers;
 
 public class BankMembersDTO {
 

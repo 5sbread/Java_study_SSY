@@ -8,15 +8,11 @@
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	Main Page 
-</h1>
+<h1> Main Page </h1>
+
+	<button type="button" onclick="location.href='./member/login.ssy'">로그인</button>
 
 <P>  The time on the server is ${serverTime}. </P>
-
-	<a href="./BankMembers/join.sy">회원가입</a>
-
-
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-package com.iu.ssy;
+package com.ssy.test;
 
 import java.text.DateFormat;
 import java.util.Date;

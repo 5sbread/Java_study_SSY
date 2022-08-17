@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.iu.ssy">
+	<logger name="com.ssy.test">
 		<level value="info" />
 	</logger>
 	
