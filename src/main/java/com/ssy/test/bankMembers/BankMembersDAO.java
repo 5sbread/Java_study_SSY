@@ -11,7 +11,7 @@ public class BankMembersDAO{
 	
 	@Autowired
 	private SqlSession sqlSession;
-	private final String NAMESPACE = "com.ssy.test.bankMembers.BankMembersDAO.";
+	private final String NAMESPACE = "com.ssy.test.bankMembers.BankMembersDAO";
 	
 	//로그인
 	public BankMembersDTO getLogin(BankMembersDTO bankMembersDTO) throws Exception{

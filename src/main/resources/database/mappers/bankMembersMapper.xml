@@ -5,7 +5,7 @@
 		    
 <mapper namespace="com.ssy.test.bankMembers.BankMembersDAO">
 
-	<select id="getLogin" resultType="com.ssy.test.bankMembers.BankMembersDAO">
+	<select id="getLogin" resultType="BankMembersDAO">
 		SELECT USERNAME, NAME FROM BANKMEMBERS WHERE USERNAME=#{userName} AND PASSWORD=#{passWord}
 	</select>
 	
