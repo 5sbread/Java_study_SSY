@@ -23,15 +23,15 @@ public class MemberController {
 	@Autowired
 	private BankMembersService bankMembersService;
 	
-	@RequestMapping(value="login.ssy", method = RequestMethod.POST)
+	@RequestMapping(value="login.ssy", method = RequestMethod.GET)
 	public String login() throws Exception{
-		System.out.println("로그인 접속 GET");
+		System.out.println("로그인 접속");
 		return "member/login";
 	}
 	
 	
 	public String login(BankMembersDTO bankMembersDTO) throws Exception{
-		System.out.println("로그인 접속 POST");
+		System.out.println("로그인 접속");
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("member/login");
