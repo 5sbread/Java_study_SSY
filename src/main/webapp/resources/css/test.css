@@ -3,3 +3,15 @@
 h1 {
     color: lightskyblue;
 }
+
+/* [ id 선택자 ] */
+/* #아이디명 */
+#t1 {
+    color:lemonchiffon;
+}
+
+/*class 선택자*/
+/*.클래스명*/
+.c1 {
+    color: greenyellow;
+}

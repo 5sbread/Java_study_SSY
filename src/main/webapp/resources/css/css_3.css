@@ -1,0 +1,30 @@
+.c1 {
+    background-color: blanchedalmond;
+    /*가로 width*/
+    width: 500px;
+    /*세로 height*/
+    height: 300px;
+
+    margin-top: 200px;
+    /*위에서 부터 200px 띄우기*/
+    margin-left: 100px;
+
+    /*border 3가지 필요*/
+    /*선의 종류*/
+    /*선의 두께*/
+    /*선의 색깔*/
+    border-top-style: solid ;
+    border-top-width: 10px;
+    border-top-color: coral;
+
+    /*short hand*/
+    border-right: solid plum 5px;
+}
+
+.c2 {
+    width: 300px;
+    height: 300px;
+    border: dashed red 5px;
+    margin-right: 100px;
+    /*왼쪽 기준*/
+}

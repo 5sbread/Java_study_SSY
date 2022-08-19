@@ -1,0 +1,22 @@
+.c1 {
+    display: inline;
+}
+
+.c2 {
+    font-size: 32px;
+}
+
+.c3 {
+    font-size: 200%
+    /* 부모의 nn% */
+}
+
+.c4 {
+    font-size: 2em;
+    /* %와 동일, 부모의 nn배, 소수점 가능*/
+}
+
+.c5 {
+    font-size: 1.5rem;
+    /* 현재 컴퓨터의 root(16px)의 nn배 */
+}
