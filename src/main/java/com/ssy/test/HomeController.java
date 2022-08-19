@@ -33,7 +33,8 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "index";
+		//메인화면으로 사용할 파일을 리턴하기 (css도 있는 것 = index / 처음엔 home.jsp 사용했었음)
 	}
 	
 }
