@@ -8,6 +8,6 @@
 	<typeAliases>
 		<typeAlias type="com.ssy.test.bankMembers.BankMembersDTO" alias="BankMembersDTO"/>
 		<typeAlias type="java.lang.String" alias="String"/>
-		<typeAlias type="com.ssy.home.BankBook.BankBookDTO" alias="BankBookDTO"/>
+		<typeAlias type="com.ssy.test.BankBook.BankBookDTO" alias="BankBookDTO"/>
 	</typeAliases>
 </configuration>				  
