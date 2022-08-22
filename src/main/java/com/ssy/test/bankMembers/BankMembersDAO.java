@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ssy.test.bankBook.BankBookDTO;
+
 @Repository
 public class BankMembersDAO{
 	
@@ -28,4 +30,55 @@ public class BankMembersDAO{
 	public List<BankMembersDTO> getSearchByID(String search) throws Exception{
 		return null;
 	}
+	
+	public BankMembersDTO getMyPage(BankMembersDTO bankMembersDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getMyPage", bankMembersDTO);
+	}
 }	
+
+////Test -> Run as JUit Test
+//public class BankBookMembersDAOTest extends MyAbstractTest{
+//	
+//	private BankMembersDAO bankMembersDAO;
+//	BankMembersDTO
+//}
+
+
+//TEST 파일
+//	private BankAccountDAO bankAccountACP;
+//public void geTlistTest()th ex{
+//	bankMembersDTO bankMembersDTO = new d--to;
+//	bankdm.se
+//}
+
+
+// bankAccount 파일에 옮겨적기
+//public class BankAccount{
+//		private SqlSession sqlSession;
+//		private final String NAMESPACE="com.ssy.test.bankAccount.BankAccountDAO.";
+//		
+//		public List<BankAccountDTO> getListByUserName(BankaaaaaDTO bankAccountDTO){
+//			return sqlSession.selectlist(ff)
+//}
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -27,5 +27,9 @@ public class BankMembersService {
 	public List<BankMembersDTO> getSearchByID(String search) throws Exception{
 		return null;
 	}
+	
+	public BankMembersDTO getMyPage(BankMembersDTO bankMembersDTO)throws Exception{
+		return bankMembersDAO.getMyPage(bankMembersDTO);
+	}
 
 }

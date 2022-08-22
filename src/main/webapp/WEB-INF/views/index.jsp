@@ -29,31 +29,28 @@
 					data-bs-slide-to="2" aria-label="Slide 3"></button>
 			</div>
 			<div class="carousel-inner">
-				<div class="carousel-item active" data-bs-interval="1000">
+				<div class="carousel-item active" data-bs-interval="3000">
 					<img src="./resources/images/1.jpg" class="d-block w-100"
 						alt="ìì´ë1">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>First slide label</h5>
-						<p>Some representative placeholder content for the first
-							slide.</p>
+						<h5>꾸미</h5>
+						<p>😺😸😻😽</p>
 					</div>
 				</div>
-				<div class="carousel-item" data-bs-interval="1000">
-					<img src="./resources/images/2.jpg" class="d-block w-100"
+				<div class="carousel-item" data-bs-interval="3000">
+					<img src="./resources/images/7.jpg" class="d-block w-100"
 						alt="ìì´ë2">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>Second slide label</h5>
-						<p>Some representative placeholder content for the second
-							slide.</p>
+						<h5>또미</h5>
+						<p>😺😸😻😽</p>
 					</div>
 				</div>
-				<div class="carousel-item" data-bs-interval="1000">
-					<img src="./resources/images/3.jpg" class="d-block w-100"
+				<div class="carousel-item" data-bs-interval="3000">
+					<img src="./resources/images/5.jpg" class="d-block w-100"
 						alt="ìì´ë3">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>Third slide label</h5>
-						<p>Some representative placeholder content for the third
-							slide.</p>
+						<h5>꿈치</h5>
+						<p>😺😸😻😽</p>
 					</div>
 				</div>
 			</div>

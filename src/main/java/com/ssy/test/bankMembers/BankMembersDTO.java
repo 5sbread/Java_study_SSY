@@ -1,5 +1,9 @@
 package com.ssy.test.bankMembers;
 
+import java.util.List;
+
+import com.ssy.test.bankAccount.BankAccountDTO;
+
 public class BankMembersDTO {
 
 	private String userName;
@@ -7,6 +11,7 @@ public class BankMembersDTO {
 	private String name;
 	private String Email;
 	private String Phone;
+	private List<BankAccountDTO> bankAccountDTOs;
 	
 	
 	public String getUserName() {
@@ -39,6 +44,12 @@ public class BankMembersDTO {
 	public void setPhone(String phone) {
 		Phone = phone;
 	}
+	
+	//bankAccountDTO에 넣기
+//	private BankBookDto bankBookDTO;
+	
+	
+	
 	
 	
 }

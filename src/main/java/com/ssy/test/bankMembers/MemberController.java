@@ -22,6 +22,20 @@ public class MemberController {
 
 	@Autowired
 	private BankMembersService bankMembersService;
+
+	@RequestMapping(value="myPage.ssy", method = RequestMethod.GET)
+	public ModelAndView myPage(HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		BankMembersDTO bankMembersDTO = (BankMembersDTO)session.getAttribute("member");
+		bankMembersDTO = bankMembersService.getMyPage(bankMembersDTO);
+		
+			//ModelAndView일때는 object | 
+		mv.addObject("dto", bankMembersDTO);
+		mv.setViewName("member/myPage");
+		return mv;
+	}
+	
+	
 	
 	@RequestMapping(value="login.ssy", method = RequestMethod.POST)
 	public String login() throws Exception{
@@ -38,6 +52,8 @@ public class MemberController {
 		mv.addObject("login", bankMembersDTO);
 		return "member/login";
 	}
+	
+	
 	
 //	
 //	@RequestMapping(value="join.ssy", method = RequestMethod.GET)

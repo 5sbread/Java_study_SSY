@@ -13,8 +13,26 @@
 		INSERT INTO BANKMEMBERS VALUES (#{userName}, #{password}, #{name}, #{email}, #{phone})
 	</insert>
 	
-	<select id="getSearchByID" parameterType="String" resultType="BankMemberDTO">
+	<select id="getSearchByID" parameterType="String" resultType="BankMembersDTO">
 		SELECT * FROM BANKMEMBERS WHERE USERNAME LIKE '%'||#{search}||'%' ORDER BY USERNAME ASC
 	</select>	
+	
+	<select id="getMyPage" parameterType="BankMembersDTO" resultMap="getMyPageResult">
+		SELECT USERNAME, NAME, EMAIL, PHONE,ACCOUNTNUM, BOOKNAME, ACCOUNTRATE
+		FROM BANKMEMBERS BM
+			 INNER JOIN
+			 BANKACCOUNT BA
+			 USING (USERNAME)
+			 
+			 INNER JOIN
+			 BANKBOOK BB
+			 USING (BOOKUM)
+		WHERE USERNAME=#{userName}
+	</select>	
+	
+	<resultMap type="BankMembersDTO" id="getMyPage"></resultMap>
+	
+	
+	
 </mapper>
 	
