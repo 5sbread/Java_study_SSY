@@ -1,33 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-		<!DOCTYPE mapper
-		    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-		    
-		    
-<mapper namespace="com.ssy.test.bankBook.BankBookDAO">
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ssy.test.bankbook.BankBookDAO">
 	<insert id="setBankBook" parameterType="BankBookDTO">
-		INSERT INTO BANKBOOK VALUES (#{bookNum}, #{bookName), #{bookRate}, 1)
+		INSERT INTO BANKBOOK VALUES (#{bookNum}, #{bookName}, #{bookRate}, 1)
 	</insert>
-
-	<update id="setUpdate" parameterType="BankBookDTO" >
-		UPDATE BANKBOOK SET BOOKNAME=#{bookName}, BOOKRATE=#{bookRate} where BOOKNUM=#{bookNum}
+	
+	<update id="setUpdate" parameterType="BankBookDTO">
+		UPDATE BANKBOOK SET BOOKNAME= #{bookName}, BOOKRATE=#{bookRate} WHERE BOOKNUM = #{bookNum}
 	</update>
 	
-	<insert id="setBankBook" parameterType="BankBookDTO">
-		insert into BANKBOOK(BOOKNUM, BOOKNAME, BOOKRATE, BOOKSALE) values (#{bookNum},#{bookName},#{bookRate},1)
-	</insert>
-	
-	<select id="getList" parameterType="BankBookDTO" resultType="BankBookDTO" >
-		select * from BANKBOOK ORDER BY BOOKNUM DESC
+	<update id="setChangeSale" parameterType="BankBookDTO">
+		UPDATE BANKBOOK SET BOOKSALE = #{bookSale} WHERE BOOKNUM = #{bookNum}
+	</update>
+
+	<select id="getList" resultType="BankBookDTO">
+		SELECT * FROM BANKBOOK ORDER BY BOOKNUM DESC
 	</select>
 	
-	<select id="getDetail" parameterType="BankBookDTO" resultType="BankBookDTO" >
-		select * from BANKBOOK where BOOKNUM =#{bookNum}
+	<select id="getDetail" parameterType="BankBookDTO" resultType="BankBookDTO">
+		SELECT * FROM BANKBOOK WHERE BOOKNUM = #{bookNum}
 	</select>
 	
 	<delete id="setDelete" parameterType="BankBookDTO">
-		DELETE BANKBOOK WHERE BOOKNUM=#{bookNum}
+		DELETE BANKBOOK WHERE BOOKNUM = #{bookNum}
 	</delete>
 
-
-</mapper>
+</mapper>   

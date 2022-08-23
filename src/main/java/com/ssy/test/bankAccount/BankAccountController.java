@@ -27,7 +27,7 @@ public class BankAccountController {
 		bankAccountDTO.setUserName(bankMembersDTO.getUserName());
 		
 		//DTO : userName, bookNum
-		int result = this.bankAccountDAO.add(bankAccountDTO);
+		int result = this.bankAccountDAO.setAddAccount(bankAccountDTO);
 		
 		return "redirect:../bankbook/list.iu";
 	}

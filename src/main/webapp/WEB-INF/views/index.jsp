@@ -29,15 +29,15 @@
 					data-bs-slide-to="2" aria-label="Slide 3"></button>
 			</div>
 			<div class="carousel-inner">
-				<div class="carousel-item active" data-bs-interval="3000">
-					<img src="./resources/images/1.jpg" class="d-block w-100"
+				<div class="carousel-item active" data-bs-interval="2000">
+					<img src="./resources/images/4.jpg" class="d-block w-100"
 						alt="ìì´ë1">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>꾸미</h5>
 						<p>😺😸😻😽</p>
 					</div>
 				</div>
-				<div class="carousel-item" data-bs-interval="3000">
+				<div class="carousel-item" data-bs-interval="2000">
 					<img src="./resources/images/7.jpg" class="d-block w-100"
 						alt="ìì´ë2">
 					<div class="carousel-caption d-none d-md-block">
@@ -45,7 +45,7 @@
 						<p>😺😸😻😽</p>
 					</div>
 				</div>
-				<div class="carousel-item" data-bs-interval="3000">
+				<div class="carousel-item" data-bs-interval="2000">
 					<img src="./resources/images/5.jpg" class="d-block w-100"
 						alt="ìì´ë3">
 					<div class="carousel-caption d-none d-md-block">

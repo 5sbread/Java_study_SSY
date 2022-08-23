@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 public class BankBookDAO implements BookDAO{
 
 	private SqlSession sqlSession;
-	private final String NAMESPACE = "com.ssy.test.BankBook.BankBookDAO.";
+	private final String NAMESPACE = "com.ssy.test.bankBook.BankBookDAO.";
 	
 	@Override
 	public int setUpdate(BankBookDTO bankBookDTO) throws Exception {
