@@ -42,4 +42,8 @@ public class QnaDAO implements BoardDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NAMESPACE+"setDelte",boardDTO);
 	}
+	
+	public int setReply(QnaDTO qnaDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setAdd", qnaDTO);
+	}
 }

@@ -33,14 +33,14 @@
 				<c:forEach items="${list}" var="dto">
 					<tr>
 						<td><a href="./detail.ssy?noticeNum=${dto.noticeNum}">${dto.noticeName}</a></td>
-						<td>&{dto.notice0000}</td>
+						<td>&{dto.noticeTitle}</td>
 					</tr>
 				</c:forEach>		
 			</tbody>	
 		</table>
 		</div>
 	</section>
-	<a href = "./add.ssy" class="btn btn-primary">상품 추가</a>
+	<a href = "./add.ssy" class="btn btn-primary">공지 추가</a>
 	</div>
 	</section>
 	<c:import url="../template/footer.jsp"></c:import>
