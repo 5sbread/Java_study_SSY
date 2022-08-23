@@ -9,6 +9,9 @@
 		<typeAlias type="com.ssy.test.bankMembers.BankMembersDTO" alias="BankMembersDTO"/>
 		<typeAlias type="com.ssy.test.bankBook.BankBookDTO" alias="BankBookDTO"/>
 		<typeAlias type="com.ssy.test.bankAccount.BankAccountDTO" alias="BankAccountDTO"/>
+		<typeAlias type="com.ssy.test.board.impl.BoardDTO" alias="BoardDTO"/>
+		<typeAlias type="com.ssy.test.board.notice.NoticeDTO" alias="NoticeDTO"/>
+		<typeAlias type="com.ssy.test.board.qna.QnaDTO" alias="QnaDTO"/>
 		<typeAlias type="java.lang.String" alias="String"/>
 		<typeAlias type="java.util.List" alias="List"/>
 		
