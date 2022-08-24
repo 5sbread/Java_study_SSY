@@ -3,6 +3,7 @@ package com.ssy.test.board.notice;
 import static org.junit.Assert.assertEquals;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +16,13 @@ public class NoticeDAOTest extends MyAbstractTest{
 	private NoticeDAO noticeDAO;
 
 	@Test
-	public void getListTest()throws Exception{
-		 List<BoardDTO> ar = noticeDAO.getList();
+	public void getListTest(Map<String, Long> map)throws Exception{
+		 List<BoardDTO> ar = noticeDAO.getList(map);
 		 assertEquals(0, ar.size());
 	}
 		
 	
-	@Test
+//	@Test
 	public void setAddTest () throws Exception{
 		
 		for(int i=0; i<100; i++) {
@@ -38,6 +39,12 @@ public class NoticeDAOTest extends MyAbstractTest{
 			}
 		}
 		System.out.println("Finish");
+	}
+	
+	@Test
+	public void getCount () throws Exception{
+		long count = noticeDAO.getCount();
+		assertEquals(100L, count);
 	}
 
 }

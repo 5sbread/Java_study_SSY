@@ -1,6 +1,8 @@
 package com.ssy.test.board.notice;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,16 +18,24 @@ public class NoticeService implements BoardService{
 
 	@Override
 	public List<BoardDTO> getList(Long page) throws Exception {
-		// TODO Auto-generated method stub
 		System.out.println("Service Page : "+page);
 		
-		Long startRow=0L;
-		Long lastRow=page*10;
+		Long perPage = 15L; //한 페이지에 출력할 목록의 갯수
+		// 페이지에 15개씩 출력 기준
+		// page      startRow      lastRow
+		//  1            1            15
+		//  2           16            30
+		
+		Long startRow=(page-1)*perPage+1;
+		Long lastRow=page*perPage;
 		
 		System.out.println("StartRow : "+startRow);
 		System.out.println("LastRow : "+lastRow);
+		Map<String, Long> map= new HashMap<String, Long>();
+		map.put("startRow", startRow);
+		map.put("lastRow", lastRow);
 		
-		return noticeDAO.getList();		
+		return noticeDAO.getList(map);		
 	}
 
 	@Override

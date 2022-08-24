@@ -38,6 +38,8 @@ public class NoticeController {
 		mv.addObject("list", ar);
 		mv.setViewName("notice/list");
 		//mv.setViewName("board/list"); <- 이렇게 경로 전부 바꾸기 notice/qna
+		//header.jsp에서 공지사항 경로 바꾸기
+		
 		return mv;
 	}
 	

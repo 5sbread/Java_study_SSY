@@ -1,6 +1,8 @@
 package com.ssy.test.board.qna;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +18,9 @@ public class QnaService implements BoardService{
 
 	@Override
 	public List<BoardDTO> getList(Long page) throws Exception {
-		System.out.println("Service Page : "+page);
-		return qnaDAO.getList();
+		//System.out.println("Service Page : "+page);
+		Map<String, Long> map= new HashMap<String, Long>();
+		return qnaDAO.getList(map);
 	}
 
 	@Override

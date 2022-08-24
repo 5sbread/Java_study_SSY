@@ -19,27 +19,31 @@
 	<br><br>
 	<h1 class="align-center">Notice List</h1>
 	<br>
-	<section class="container-fluid col-lg-6">
+							   <!-- con-lg-6 : 사이즈 조절 -->
+	<section class="container-fluid con-lg-6">
 		<div class = "row">
-		<table class="table">
-			<thead class="table-dark">
-				<tr>
-					<th scope = "col">번호</th>
-					<th scope = "col">제목</th>
-					<th scope = "col">작성자</th>
-					<th scope = "col">작성날짜</th>
-					<th scope = "col">조회수</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${list}" var="dto">
+			<table class="table">
+				<thead class="table-dark">
 					<tr>
-						<td><a href="./detail.ssy?noticeNum=${dto.noticeNum}">${dto.noticeName}</a></td>
-						<td>&{dto.noticeTitle}</td>
+						<th scope = "col">번호</th>
+						<th scope = "col">제목</th>
+						<th scope = "col">작성자</th>
+						<th scope = "col">작성날짜</th>
+						<th scope = "col">조회수</th>
 					</tr>
-				</c:forEach>		
-			</tbody>	
-		</table>
+				</thead>
+				<tbody>
+					<c:forEach items="${list}" var="dto">
+						<tr>
+							<td><a href="./detail.ssy?num=${dto.num}">${dto.num}</a></td>
+							<td><a href="./detail.ssy?num=${dto.num}">${dto.title}</a></td>
+							<td><a href="./detail.ssy?num=${dto.num}">${dto.writer}</a></td>
+							<td><a href="./detail.ssy?num=${dto.num}">${dto.regDate}</a></td>
+							<td><a href="./detail.ssy?num=${dto.num}">${dto.hit}</a></td>
+						</tr>
+					</c:forEach>		
+				</tbody>	
+			</table>
 		</div>
 	</section>
 	<a href = "./add.ssy" class="btn btn-primary">공지 추가</a>
