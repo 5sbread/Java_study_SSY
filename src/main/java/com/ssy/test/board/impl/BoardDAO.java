@@ -3,10 +3,12 @@ package com.ssy.test.board.impl;
 import java.util.List;
 import java.util.Map;
 
+import com.ssy.test.util.Pager;
+
 public interface BoardDAO {
 	
 	//글목록
-	public List<BoardDTO> getList(Map<String, Long> map)throws Exception;
+	public List<BoardDTO> getList(Pager pager)throws Exception;
 	
 	public Long getCount() throws Exception;
 	

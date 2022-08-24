@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ssy.test.board.impl.BoardDTO;
+import com.ssy.test.util.Pager;
 
 @Controller
 @RequestMapping(value="/notice/*")
@@ -28,14 +29,16 @@ public class NoticeController {
 	
 	//글 목록
 	@RequestMapping(value="list.ssy", method=RequestMethod.GET)
-	public ModelAndView getList(@RequestParam(defaultValue = "1") Long page) throws Exception{
+	public ModelAndView getList(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		System.out.println("page : "+page);
+		System.out.println(pager);
+		//System.out.println("page : "+page);
 		
-		List<BoardDTO> ar = noticeService.getList(page);
+		List<BoardDTO> ar = noticeService.getList(pager);
 		
 		mv.addObject("list", ar);
+		mv.addObject("pager",pager);
 		mv.setViewName("notice/list");
 		//mv.setViewName("board/list"); <- 이렇게 경로 전부 바꾸기 notice/qna
 		//header.jsp에서 공지사항 경로 바꾸기

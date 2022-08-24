@@ -35,13 +35,18 @@
 				<tbody>
 					<c:forEach items="${list}" var="dto">
 						<tr>
-							<td><a href="./detail.ssy?num=${dto.num}">${dto.num}</a></td>
+							<td>${dto.num}</td>
 							<td><a href="./detail.ssy?num=${dto.num}">${dto.title}</a></td>
-							<td><a href="./detail.ssy?num=${dto.num}">${dto.writer}</a></td>
-							<td><a href="./detail.ssy?num=${dto.num}">${dto.regDate}</a></td>
-							<td><a href="./detail.ssy?num=${dto.num}">${dto.hit}</a></td>
+							<td>${dto.writer}</td>
+							<td>${dto.regDate}</td>
+							<td>${dto.hit}</td>
 						</tr>
-					</c:forEach>		
+					</c:forEach>
+					
+					<c:forEach begin="1" end="5" vat="i">
+						<li class="page-item"><a class="page-link" href="./list.ssy?page=${i}">${i}</a></li>
+					</c:forEach>
+							
 				</tbody>	
 			</table>
 		</div>

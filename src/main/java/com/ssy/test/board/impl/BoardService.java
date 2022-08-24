@@ -3,9 +3,11 @@ package com.ssy.test.board.impl;
 import java.util.List;
 import java.util.Map;
 
+import com.ssy.test.util.Pager;
+
 public interface BoardService {
 
-	public List<BoardDTO> getList(Long page)throws Exception;
+	public List<BoardDTO> getList(Pager pager)throws Exception;
 	
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception;
 	

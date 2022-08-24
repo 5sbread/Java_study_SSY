@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ssy.test.board.impl.BoardDAO;
 import com.ssy.test.board.impl.BoardDTO;
+import com.ssy.test.util.Pager;
 
 @Repository
 public class NoticeDAO implements BoardDAO {
@@ -18,9 +19,9 @@ public class NoticeDAO implements BoardDAO {
 	private final String NAMESPACE="com.ssy.test.board.notice.NoticeDAO.";
 
 	@Override
-	public List<BoardDTO> getList(Map<String, Long> map) throws Exception {
+	public List<BoardDTO> getList(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(NAMESPACE+"getList");
+		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
 	
 	@Override

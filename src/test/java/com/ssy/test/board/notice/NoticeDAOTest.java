@@ -16,9 +16,15 @@ public class NoticeDAOTest extends MyAbstractTest{
 	private NoticeDAO noticeDAO;
 
 	@Test
+	public void getCounTest()throws Exception{
+		long count = noticeDAO.getCount();
+		assertEquals(100L, count);
+	}
+	
+	@Test
 	public void getListTest(Map<String, Long> map)throws Exception{
-		 List<BoardDTO> ar = noticeDAO.getList(map);
-		 assertEquals(0, ar.size());
+//		 List<BoardDTO> ar = noticeDAO.getList(map);
+//		 assertEquals(0, ar.size());
 	}
 		
 	
@@ -41,10 +47,5 @@ public class NoticeDAOTest extends MyAbstractTest{
 		System.out.println("Finish");
 	}
 	
-	@Test
-	public void getCount () throws Exception{
-		long count = noticeDAO.getCount();
-		assertEquals(100L, count);
-	}
 
 }
