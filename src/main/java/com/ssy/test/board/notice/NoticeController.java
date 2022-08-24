@@ -39,7 +39,7 @@ public class NoticeController {
 		
 		mv.addObject("list", ar);
 		mv.addObject("pager",pager);
-		mv.setViewName("notice/list");
+		mv.setViewName("board/list");
 		//mv.setViewName("board/list"); <- 이렇게 경로 전부 바꾸기 notice/qna
 		//header.jsp에서 공지사항 경로 바꾸기
 		
@@ -51,13 +51,13 @@ public class NoticeController {
 	public String getDetail(BoardDTO boardDTO, Model model) throws Exception{
 		boardDTO = noticeService.getDetail(boardDTO);
 		model.addAttribute("boardDTO", boardDTO);
-		return "notice/detail";	
+		return "board/detail";	
 	}
 	
 	//글 작성
 	@RequestMapping(value = "add.ssy", method = RequestMethod.GET)
 	public String setAdd () throws Exception{
-		return "notice/add";
+		return "board/add";
 	}
 	
 	@RequestMapping(value = "add.ssy", method = RequestMethod.POST)
@@ -74,7 +74,7 @@ public class NoticeController {
 		boardDTO = noticeService.getDetail(boardDTO);
 		
 		mv.addObject("boardDTO", boardDTO);
-		mv.setViewName("notice/update");
+		mv.setViewName("board/update");
 		return mv;
 	}
 	
