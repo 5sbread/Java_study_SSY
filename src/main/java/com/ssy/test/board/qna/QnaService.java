@@ -29,13 +29,14 @@ public class QnaService implements BoardService {
 
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
-		return qnaDAO.setUpDate(boardDTO);
+		return qnaDAO.setUpdate(boardDTO);
 	}
 
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		return qnaDAO.setDelete(boardDTO);
 	}
+	
 	
 	public int setReply(QnaDTO qnaDTO) throws Exception{
 		return qnaDAO.setReply(qnaDTO);
