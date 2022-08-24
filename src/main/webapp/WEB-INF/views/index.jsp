@@ -38,10 +38,10 @@
 					</div>
 				</div>
 				<div class="carousel-item" data-bs-interval="2000">
-					<img src="./resources/images/7.jpg" class="d-block w-100"
+					<img src="./resources/images/3.png" class="d-block w-100"
 						alt="ìì´ë2">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>또미</h5>
+						<h5>꾸미</h5>
 						<p>😺😸😻😽</p>
 					</div>
 				</div>
