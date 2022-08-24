@@ -6,7 +6,7 @@
 <mapper namespace="com.ssy.test.board.notice.NoticeDAO">
 
 	<select id="getList" resultType="NoticeDTO">
-		SELECT NUM, TITLE, WRITER, REGDATE, HIT FROM NOTICE ORDER BY NUM DESC
+		(SELECT * FROM (SELECT ROWNUM R, N.* FROM (SELECT * FROM NOTICE ORDER BY NUM DESC) N) WHERE R BETWEEN 1 and 10;
 	</select>
 	
 	<select id="getDetail" parameterType="BoardDTO" resultType="NoticeDTO">
@@ -15,7 +15,7 @@
 	
 	<insert id="setAdd" parameterType="BoardDTO">
 		INSERT INTO NOTICE (NUM, TITLE, WRITER, CONTENTS, REGDATE, HIT)
-		VALUES(BOARD_SEQ.NEXTVAL, #{title}, #{contents}, #{writer}, SYSDATE,0)
+		VALUES(BOARD_SEQ.NEXTVAL, #{title}, #{writer},#{contents}, SYSDATE,0)
 	</insert>
 	
 	<update id="setUpdate" parameterType="BoardDTO">

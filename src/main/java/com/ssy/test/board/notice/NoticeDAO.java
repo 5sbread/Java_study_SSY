@@ -14,7 +14,7 @@ public class NoticeDAO implements BoardDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
-	private final String NAMESPACE="com.iu.home.board.notice.NoticeDAO.";
+	private final String NAMESPACE="com.ssy.test.board.notice.NoticeDAO.";
 
 	@Override
 	public List<BoardDTO> getList() throws Exception {

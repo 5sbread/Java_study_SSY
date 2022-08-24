@@ -15,9 +15,17 @@ public class NoticeService implements BoardService{
 	private NoticeDAO noticeDAO;
 
 	@Override
-	public List<BoardDTO> getLsit() throws Exception {
+	public List<BoardDTO> getList(Long page) throws Exception {
 		// TODO Auto-generated method stub
-		return noticeDAO.getList();
+		System.out.println("Service Page : "+page);
+		
+		Long startRow=0L;
+		Long lastRow=page*10;
+		
+		System.out.println("StartRow : "+startRow);
+		System.out.println("LastRow : "+lastRow);
+		
+		return noticeDAO.getList();		
 	}
 
 	@Override

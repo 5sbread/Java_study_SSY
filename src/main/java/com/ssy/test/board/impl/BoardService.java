@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface BoardService {
 
-	public List<BoardDTO> getLsit()throws Exception;
+	public List<BoardDTO> getList(Long page)throws Exception;
 	
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception;
 	

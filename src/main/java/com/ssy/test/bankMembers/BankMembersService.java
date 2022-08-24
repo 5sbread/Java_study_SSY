@@ -24,10 +24,11 @@ public class BankMembersService {
 	}
 	
 	//아이디 검색
-	public List<BankMembersDTO> getSearchByID(String search) throws Exception{
-		return null;
+	public List<BankMembersDTO> getSearchByID(String userName) throws Exception{
+		return bankMembersDAO.getSearchByID(userName);
 	}
 	
+	//마이페이지
 	public BankMembersDTO getMyPage(BankMembersDTO bankMembersDTO)throws Exception{
 		return bankMembersDAO.getMyPage(bankMembersDTO);
 	}

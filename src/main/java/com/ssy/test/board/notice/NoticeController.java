@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ssy.test.board.impl.BoardDTO;
@@ -19,20 +20,24 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
-	//모든 멤버 메서드에 --
+	//모든 멤버 메서드에 공통 Data를 model에 담기
 	@ModelAttribute("board")
 	public String getBoard() {
 		return "Notice";
 	}
 	
-	//글목록
+	//글 목록
 	@RequestMapping(value="list.ssy", method=RequestMethod.GET)
-	public ModelAndView getList() throws Exception{
+	public ModelAndView getList(@RequestParam(defaultValue = "1") Long page) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<BoardDTO> ar = noticeService.getLsit();
+		
+		System.out.println("page : "+page);
+		
+		List<BoardDTO> ar = noticeService.getList(page);
 		
 		mv.addObject("list", ar);
 		mv.setViewName("notice/list");
+		//mv.setViewName("board/list"); <- 이렇게 경로 전부 바꾸기 notice/qna
 		return mv;
 	}
 	
@@ -79,11 +84,6 @@ public class NoticeController {
 		int result = noticeService.setDelete(boardDTO);
 		return "redirect:./list.ssy";
 	}
-	
-	
-	
-	
-	
 	
 
 }

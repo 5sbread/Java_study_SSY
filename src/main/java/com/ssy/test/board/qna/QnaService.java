@@ -3,17 +3,20 @@ package com.ssy.test.board.qna;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ssy.test.board.impl.BoardDTO;
 import com.ssy.test.board.impl.BoardService;
 
-public class QnaService implements BoardService {
+@Service
+public class QnaService implements BoardService{
 
 	@Autowired
 	private QnaDAO qnaDAO;
-	
+
 	@Override
-	public List<BoardDTO> getLsit() throws Exception {
+	public List<BoardDTO> getList(Long page) throws Exception {
+		System.out.println("Service Page : "+page);
 		return qnaDAO.getList();
 	}
 
@@ -37,11 +40,8 @@ public class QnaService implements BoardService {
 		return qnaDAO.setDelete(boardDTO);
 	}
 	
-	
-	public int setReply(QnaDTO qnaDTO) throws Exception{
+	public int setReply(QnaDTO qnaDTO)throws Exception{
 		return qnaDAO.setReply(qnaDTO);
 	}
-	
-	
 
 }

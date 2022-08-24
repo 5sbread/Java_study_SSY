@@ -14,6 +14,8 @@
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
+	<form action="./list.ssy" method="post">
+	
 	<br><br>
 	<h1 class="align-center">Notice List</h1>
 	<br>

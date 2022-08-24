@@ -7,8 +7,6 @@
 
 	<context:property-placeholder location="classpath:database/config/database.properties"/>
 
-
-<!-- DB 연결 -->
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
 		<property name="username" value="${oracle.userName}"></property>
 		<property name="password" value="${oracle.password}"></property>
@@ -21,10 +19,10 @@
 		<property name="configLocation" value="classpath:database/config/mybatisConfig.xml"></property>
 		<property name="mapperLocations" value="classpath:database/mappers/*Mapper.xml"></property>
 	</bean>
-	
-	<!-- 매개변수가 있어서 오류남 -->
+
 	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"></constructor-arg>
 	</bean>
-	
+
+
 </beans>
