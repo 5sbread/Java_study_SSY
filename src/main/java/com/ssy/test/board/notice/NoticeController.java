@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,6 +18,12 @@ public class NoticeController {
 	
 	@Autowired
 	private NoticeService noticeService;
+	
+	//모든 멤버 메서드에 --
+	@ModelAttribute("board")
+	public String getBoard() {
+		return "Notice";
+	}
 	
 	//글목록
 	@RequestMapping(value="list.ssy", method=RequestMethod.GET)
