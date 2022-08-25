@@ -34,6 +34,8 @@ public class NoticeController {
 		
 		System.out.println(pager);
 		//System.out.println("page : "+page);
+		System.out.println(pager.getSelect());
+		System.out.println(pager.getSearch());
 		
 		List<BoardDTO> ar = noticeService.getList(pager);
 		
@@ -45,13 +47,16 @@ public class NoticeController {
 		return mv;
 	}
 	
+	
 	//글 상세
 	@RequestMapping(value="detail.ssy", method=RequestMethod.GET)
 	public String getDetail(BoardDTO boardDTO, Model model) throws Exception{
 		boardDTO = noticeService.getDetail(boardDTO);
+		
 		model.addAttribute("boardDTO", boardDTO);
 		return "board/detail";	
 	}
+	
 	
 	//글 작성
 	@RequestMapping(value = "add.ssy", method = RequestMethod.GET)
@@ -59,16 +64,18 @@ public class NoticeController {
 		return "board/add";
 	}
 	
+	
 	@RequestMapping(value = "add.ssy", method = RequestMethod.POST)
 	public ModelAndView setAdd(BoardDTO boardDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = noticeService.setAdd(boardDTO);
-		mv.setViewName("redirectL./list.ssy");
+		mv.setViewName("redirect:./list.ssy");
 		return mv;
 	}
 	
+	
 	//글 수정
-	@RequestMapping(value = "update.ssy", method = RequestMethod.GET)
+	@RequestMapping(value = "update.ssy")
 	public ModelAndView setUpdate(BoardDTO boardDTO, ModelAndView mv) throws Exception{
 		boardDTO = noticeService.getDetail(boardDTO);
 		
@@ -77,15 +84,16 @@ public class NoticeController {
 		return mv;
 	}
 	
+	
 	@RequestMapping(value = "update.ssy", method = RequestMethod.POST)
 	public String setUpdate(BoardDTO boardDTO)throws Exception{
 		int result = noticeService.setUpdate(boardDTO);
 		
-		return "redirect:./etail.ssy?num="+boardDTO.getNum();
+		return "redirect:./detail.ssy?num="+boardDTO.getNum();
 	}
 	
+	
 	//글 삭제
-	@RequestMapping(value = "delete.ssy")
 	public String setDelete(BoardDTO boardDTO) throws Exception{
 		int result = noticeService.setDelete(boardDTO);
 		return "redirect:./list.ssy";

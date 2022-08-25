@@ -13,23 +13,23 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-<h1 class="align-center">${board } Reply Page</h1>
+<h1 class="align-center">${board} Update Page</h1>
 <section class="container-fluid col-lg-4">
 	
 	<div class="row">
-		<form action="./reply.ssy" method="post">
-			<input type="hidden" name="num" value="${boardDTO.num}">
+		<form action="./add.ssy" method="post">
+			<input type="hidden" name="num" value="${boardDTO.num}" >
 			<div class="mb-3">
 			  <label for="title" class="form-label">Title</label>
-			  <input type="text" name="title" class="form-control" id="title" placeholder="제목 입력">
+			  <input type="text" name="title" value="${boardDTO.title}" class="form-control" id="title" placeholder="제목 입력">
 			</div>
 			<div class="mb-3">
 			  <label for="writer" class="form-label">Writer</label>
-			  <input type="text" name="writer" class="form-control" id="Writer" placeholder="작성자 입력">
+			  <input type="text" name="writer" value="${boardDTO.writer}" disabled="disabled" class="form-control" id="Writer" placeholder="작성자 입력">
 			</div>
 			<div class="mb-3">
 			  <label for="contents" class="form-label">Contents</label>
-			  <textarea class="form-control" name="contents" id="contents" rows="3"></textarea>
+			  <textarea class="form-control" name="contents" id="contents" rows="3">${boardDTO.contents}</textarea>
 			</div>
 			
 			<div class="mb-3">

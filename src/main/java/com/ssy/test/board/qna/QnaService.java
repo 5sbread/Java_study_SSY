@@ -18,11 +18,22 @@ public class QnaService implements BoardService{
 	@Autowired
 	private QnaDAO qnaDAO;
 
-	@Override
-	public List<BoardDTO> getList(Pager pager) throws Exception {
-		//System.out.println("Service Page : "+page);
-		//Map<String, Long> map= new HashMap<String, Long>();
+	public int setReply(QnaDTO qnaDTO)throws Exception{
+		BoardDTO boardDTO = qnaDAO.getDetail(qnaDTO);
+		QnaDTO parent = (QnaDTO)boardDTO;
 		
+		qnaDTO.setRef(parent.getRef());
+		qnaDTO.setStep(parent.getStep()+1);
+		qnaDTO.setDepth(parent.getDepth()+1);
+		
+		qnaDAO.setStepUpdate(parent);
+		int result = qnaDAO.setReplyAdd(qnaDTO);
+		
+		return result;
+	}
+
+	@Override
+	public List<BoardDTO> getList(Pager pager) throws Exception {		
 		Long totalCount = qnaDAO.getCount(pager);
 		pager.getNum(totalCount);
 		pager.getRowNum();
@@ -36,9 +47,9 @@ public class QnaService implements BoardService{
 
 	@Override
 	public int setAdd(BoardDTO boardDTO) throws Exception {
-		System.out.println(boardDTO.getNum());
+		System.out.println("Insert 전 : "+boardDTO.getNum());
 		int result = qnaDAO.setAdd(boardDTO);
-		System.out.println(boardDTO.getNum());
+		System.out.println("Insert 후 : "+boardDTO.getNum());
 		return result;
 	}
 
@@ -52,8 +63,5 @@ public class QnaService implements BoardService{
 		return qnaDAO.setDelete(boardDTO);
 	}
 	
-	public int setReply(QnaDTO qnaDTO)throws Exception{
-		return qnaDAO.setReply(qnaDTO);
-	}
 
 }

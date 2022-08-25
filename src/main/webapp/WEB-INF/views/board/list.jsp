@@ -20,24 +20,23 @@
 	<div class="row mb-3">
 	
 <!-- ============== 공지 검색 파트 =============================================================== -->	
-	<div>
-	<form action="./list.ssy" method="get" class="row row-cols-lg-auto g-3 align-items-center">
+	<form action="./list.ssy" class="row row-cols-lg-auto g-3 align-items-center">
 	
 	  <div class="col-12">
 	  	<!-- label : input 태그의 이름 | for : input의 id와 동일한 값 -->
 	    <label class="visually-hidden" for="select">Select</label>
 	    <select name="select" class="form-select" id="select">
 	      <option selected>골라잡기</option>
-	      <option value="select1">Contents</option>
-	      <option value="select2">Title</option>
-	      <option value="select3">Writer</option>
+	      <option value="contents">Contents</option>
+	      <option value="title">Title</option>
+	      <option value="writer">Writer</option>
 	    </select>
 	  </div>
 	  
 	 <div class="col-12">
 	    <label class="visually-hidden" for="search">검색어를 입력하세요.</label>
 	    <div class="input-group">
-	      <input type="text" name="search" value="" class="form-control" id="search" placeholder="검색어를 입력하세요.">
+	      <input type="text" name="search" class="form-control" id="search">
 	    </div>
 	  </div>
 	
@@ -48,43 +47,46 @@
 </div>
 	
 <!-- ============== 공지 내용 출력 =============================================================== -->		
-
-		<table class="table align-center">
-			<thead class="table-dark">
-				<tr>
-					<th scope = "col">번호</th>
-					<th scope = "col">제목</th>
-					<th scope = "col">작성자</th>
-					<th scope = "col">작성날짜</th>
-					<th> 조회수</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${list}" var="dto">
-					<tr>
-						<td>${dto.num}</td>
-						<td>
-						<c:catch>
-							<c:forEach begin="1" end="${dto.depth}">&ensp</c:forEach>
-						</c:catch>
-						<a href="./detail.ssy?num=${dto.num}">${dto.title}</a></td>
-						<td>${dto.writer}</td>
-						<td>${dto.regDate}</td>
-						<td>${dto.hit}</td>
-					</tr>
-				</c:forEach>
-			</tbody>	
-		</table>
+<div class="row">
+	<thead class="table-dark">
+		<tr>
+			<th scope = "col">번호</th>
+			<th scope = "col">제목</th>
+			<th scope = "col">작성자</th>
+			<th scope = "col">작성날짜</th>
+			<th scope = "col"> 조회수</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<c:forEach items="${list}" var="dto">
+			<tr>
+				<td>${dto.num}</td>
+				<td>
+				<c:catch>
+				<c:forEach begin="1" end="${dto.depth}">&ensp</c:forEach>
+				</c:catch>
+				<a href="./detail.ssy?num=${dto.num}">${dto.title}</a></td>
+				<td>${dto.writer}</td>
+				<td>${dto.regDate}</td>
+				<td>${dto.hit}</td>
+			</tr>
+		</c:forEach>
+	</tbody>	
+</table>
+	<div class="mb-3">
+		<a href="./add.ssy" class="btn btn-primary">글 쓰기</a>
 	</div>
-</section>
-
 <!-- ============== 페이지 이동 숫자버튼 =============================================================== -->						
 	<nav aria-label="Page navigagion example">
 		<ul class = "pagination">
 		
 			<c:if test="${pager.pre}">
 	    		<li class="page-item">
-	    		<a class="page-link" href="./list.ssy?page=${pager.startNum-1}&select=${pager.select}&search=${pager.search}">👈🏻</a></li>
+	    			<a class="page-link" href="./list.ssy?page=${pager.startNum-1}&select=${pager.select}&search=${pager.search}" aria-label="👈🏻">
+	    			<span aria-hidden="true">&laquo;</span>
+	  				</a>
+	  			</li>	
 	  		</c:if>
 	  
 	  		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
@@ -103,7 +105,10 @@
 				
 			방법 2. 삼항연산자를 이용	--%>
 			<li class="page-item ${pager.next?'':'disabled'}">
-	    	<a class="page-link" href="./list.ssy?page=${pager.lastNum+1}&select=${pager.select}&search=${pager.search}">👉🏻</a></li>
+	    	<a class="page-link" href="./list.ssy?page=${pager.lastNum+1}&select=${pager.select}&search=${pager.search}" aria-label="👉🏻">
+	    		<span aria-hidden="true">&raquo;</span>
+	    	</a>
+	    	</li>
 			</ul>
 		</nav>
 						

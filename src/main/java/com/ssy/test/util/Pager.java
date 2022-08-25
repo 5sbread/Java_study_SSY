@@ -37,7 +37,7 @@ public class Pager {
 	
 	//1. mapper에서 사용할 값 계산
 	public void getRowNum() throws Exception{
-		this.startRow = (this.getPage()-1)*getPerPage()+1;
+		this.startRow = (this.getPage()-1)*this.getPerPage()+1;
 		this.lastRow = this.getPerPage()*this.getPerPage();
 	}
 	
@@ -72,7 +72,7 @@ public class Pager {
 	
 	//6. curBlock이 마지막block (totalBlock)과 같을 때
 		if(curBlock==totalBlock) {
-			this.page = totalPage;
+			this.lastNum = totalPage;
 		}
 		
 	//7. 이전, 다음 블럭의 유무
@@ -98,9 +98,6 @@ public class Pager {
 	}
 
 	public Long getPerBlock() {
-		if(this.perBlock==null) {
-			this.perBlock=5L;
-		}
 		return perBlock;
 	}
 
@@ -112,7 +109,6 @@ public class Pager {
 		if(this.page==null || this.page<1) {
 			this.page=1L;
 		}
-		
 		return page;
 	}
 	public void setPage(Long page) {

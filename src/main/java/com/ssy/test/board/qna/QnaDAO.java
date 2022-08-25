@@ -20,6 +20,11 @@ public class QnaDAO implements BoardDAO{
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.ssy.test.board.qna.QnaDAO.";
 	
+	@Override
+	public Long getCount(Pager pager) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE+"getCount", pager);
+	}
 	
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
@@ -36,38 +41,29 @@ public class QnaDAO implements BoardDAO{
 	@Override
 	public int setAdd(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne(NAMESPACE+"setAdd", boardDTO);
+		return sqlSession.insert(NAMESPACE+"setAdd", boardDTO);
 	}
 
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne(NAMESPACE+"setUpdate", boardDTO);
+		return sqlSession.update(NAMESPACE+"setUpdate", boardDTO);
 	}
 
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne(NAMESPACE+"setDelte",boardDTO);
-	}
-	
-	public int setReply(QnaDTO qnaDTO) throws Exception{
-		return sqlSession.insert(NAMESPACE+"setAdd", qnaDTO);
+		return sqlSession.delete(NAMESPACE+"setDelte",boardDTO);
 	}
 
-	@Override
-	public Long getCount(Pager pager) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	public int setReplyAdd(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne(NAMESPACE+"setReplyAdd", boardDTO);
+		return sqlSession.insert(NAMESPACE+"setReplyAdd", boardDTO);
 	}
 	
 	public int setStepUpdate(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne(NAMESPACE+"setStepUpdate", boardDTO);
+		return sqlSession.update(NAMESPACE+"setStepUpdate", boardDTO);
 	}	
 }

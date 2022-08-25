@@ -24,7 +24,7 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
-	@ModelAttribute("qna")
+	@ModelAttribute("board")
 	public String getBoard() {
 		return "Qna";
 	}
@@ -36,10 +36,10 @@ public class QnaController {
 		List<BoardDTO> ar = qnaService.getList(pager);
 		
 		mv.addObject("list", ar);
-		mv.addObject("board", pager);
 		mv.setViewName("board/list");
 		return mv; 
 	}
+	
 	
 	//글상세
 	@RequestMapping(value="detail.ssy",method = RequestMethod.GET)
@@ -49,11 +49,13 @@ public class QnaController {
 		return "board/detail";
 	}
 	
+	
 	//글작성
 	@RequestMapping(value = "add.ssy", method = RequestMethod.GET)
 	public String setAdd()throws Exception{
 		return "board/add";
 	}
+	
 	
 	@RequestMapping(value = "add.ssy", method = RequestMethod.POST)
 	public ModelAndView setAdd(BoardDTO boardDTO)throws Exception{
@@ -61,8 +63,8 @@ public class QnaController {
 		int result = qnaService.setAdd(boardDTO);
 		mv.setViewName("redirect:./list.ssy");
 		return mv;
-		
 	}
+	
 	
 	//글수정
 	@RequestMapping(value = "update.ssy")
@@ -74,6 +76,7 @@ public class QnaController {
 		mv.setViewName("board/update");
 		return mv;
 	}
+	
 	
 	@RequestMapping(value = "update.ssy", method = RequestMethod.POST)
 	public String setUpdate(BoardDTO boardDTO)throws Exception{
@@ -89,15 +92,18 @@ public class QnaController {
 		return "redirect:./list.ssy";
 	}
 	
+	
 	@PostMapping("reply.ssy")
-	public void setReply() throws Exception{
-		
+	public String setReply(QnaDTO qnaDTO) throws Exception{
+		int result = qnaService.setReply(qnaDTO);
+		return "redirect:./list.ssy";
 	}
+	
 	
 	//답변
 	@GetMapping("reply.ssy")
-	public ModelAndView setReply(BoardDTO boardDTO)throws Exception{
-		ModelAndView mv = new ModelAndView();
+	public ModelAndView setReply(BoardDTO boardDTO, ModelAndView mv)throws Exception{
+		
 		mv.addObject("boardDTO", boardDTO);
 		mv.setViewName("board/reply");
 		return mv;
