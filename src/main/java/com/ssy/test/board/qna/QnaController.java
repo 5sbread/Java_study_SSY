@@ -7,12 +7,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ssy.test.board.impl.BoardDTO;
 import com.ssy.test.util.Pager;
+
+import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequestMapping("/qna/*")
@@ -86,9 +89,13 @@ public class QnaController {
 		return "redirect:./list.ssy";
 	}
 	
+	@PostMapping("reply.ssy")
+	public void setReply() throws Exception{
+		
+	}
 	
 	//답변
-	@GetMapping("reply")
+	@GetMapping("reply.ssy")
 	public ModelAndView setReply(BoardDTO boardDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("boardDTO", boardDTO);

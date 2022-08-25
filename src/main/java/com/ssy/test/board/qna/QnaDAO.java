@@ -69,4 +69,5 @@ public class QnaDAO implements BoardDAO{
 	public int setStepUpdate(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NAMESPACE+"setStepUpdate", boardDTO);
+	}	
 }
