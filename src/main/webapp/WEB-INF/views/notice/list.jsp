@@ -13,14 +13,12 @@
 </style>
 </head>
 <body>
-	<c:import url="../template/header.jsp"></c:import>
-	<form action="./list.ssy" method="post">
-	
+<c:import url="../template/header.jsp"></c:import>
+							   <!-- con-lg-6 : 사이즈 조절 -->
+	<section class="container-fluid con-lg-6">
 	<br><br>
 	<h1 class="align-center">Notice List</h1>
 	<br>
-							   <!-- con-lg-6 : 사이즈 조절 -->
-	<section class="container-fluid con-lg-6">
 		<div class = "row">
 			<table class="table">
 				<thead class="table-dark">
@@ -43,10 +41,27 @@
 						</tr>
 					</c:forEach>
 					
-					<c:forEach begin="1" end="5" vat="i">
+					<nav aria  "./list.ssy?page=${pager.startNum-1}" aria-label="Previous">
+					</nav>
+					
+					<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" vat="i">
 						<li class="page-item"><a class="page-link" href="./list.ssy?page=${i}">${i}</a></li>
 					</c:forEach>
 							
+<%-- 					<c:choose>
+						<c:when test="${pager.next}">
+							<li class="page-item"></li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item disabled"></li>
+						</c:otherwise>
+					</c:choose> --%>
+					
+					<li class="page-item ${pager.next?'':'disabled'}">
+						<a class="page-link" href="./list.ssy?page=${pager.lastNum+1}">
+						<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>					
 				</tbody>	
 			</table>
 		</div>

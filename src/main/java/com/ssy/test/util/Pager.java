@@ -20,6 +20,11 @@ public class Pager {
 	private Long perPage;
 	private Long perBlock;
 	
+	//이전블럭의 유무
+	private boolean pre;
+	//다음블럭의 유무
+	private boolean next;
+	
 	public Pager() {
 		this.perPage=10L;
 		this.perBlock=5L;
@@ -39,6 +44,11 @@ public class Pager {
 			totalPage++;
 		}
 		
+	//2-1. totalPage보다 page가 더 클 경우
+		if(this.getPage()>totalPage) {
+			this.setPage(totalPage);
+		}
+		
 	//3. totalPage로 totalBlock 구하기
 		Long totalBlock = totalPage/this.getPerBlock();
 		if(totalPage%this.getPerBlock() !=0) {
@@ -54,15 +64,18 @@ public class Pager {
 	//5. cutBlock르호 startNum, lastNum 구하기
 		this.startNum = (curBlock-1)*this.getPerBlock()+1;
 		this.lastNnum = curBlock*this.getPerBlock();      
-		
+	
+	//6. curBlock이 마지막block (totalBlock)과 같을 때
+		if(curBlock==totalBlock) {
+			this.page = totalPage;
+		}
 	}
 	
-	
 	public Long getPage() {
-		if(this.perPage==null) {
-			this.perPage=10L;
+		if(this.page==null || this.page<1) {
+			this.page=1L;
 		}	
-		return perPage;
+		return page;
 	}
 	
 	public void setPage(Long page) {

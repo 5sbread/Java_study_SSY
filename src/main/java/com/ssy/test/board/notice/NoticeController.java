@@ -39,9 +39,8 @@ public class NoticeController {
 		
 		mv.addObject("list", ar);
 		mv.addObject("pager",pager);
-		mv.setViewName("board/list");
+		mv.setViewName("notice/list");
 		//mv.setViewName("board/list"); <- 이렇게 경로 전부 바꾸기 notice/qna
-		//header.jsp에서 공지사항 경로 바꾸기
 		
 		return mv;
 	}
@@ -57,7 +56,7 @@ public class NoticeController {
 	//글 작성
 	@RequestMapping(value = "add.ssy", method = RequestMethod.GET)
 	public String setAdd () throws Exception{
-		return "board/add";
+		return "notice/add";
 	}
 	
 	@RequestMapping(value = "add.ssy", method = RequestMethod.POST)
