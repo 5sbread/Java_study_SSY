@@ -14,16 +14,21 @@ public class Pager {
 
 	private Long page;
 	private Long startNum;
-	private Long lastNnum;
+	private Long lastNum;
 	private Long startRow;
 	private Long lastRow;
 	private Long perPage;
 	private Long perBlock;
 	
-	//이전블럭의 유무
+	//이전블럭의 유무 - 있으면 true / 없으면 false
 	private boolean pre;
 	//다음블럭의 유무
 	private boolean next;
+	
+	//검색 컬럼의 종류
+	private String select;
+	//검색어
+	private String search;
 	
 	public Pager() {
 		this.perPage=10L;
@@ -63,72 +68,117 @@ public class Pager {
 		
 	//5. cutBlock르호 startNum, lastNum 구하기
 		this.startNum = (curBlock-1)*this.getPerBlock()+1;
-		this.lastNnum = curBlock*this.getPerBlock();      
+		this.lastNum = curBlock*this.getPerBlock();      
 	
 	//6. curBlock이 마지막block (totalBlock)과 같을 때
 		if(curBlock==totalBlock) {
 			this.page = totalPage;
 		}
+		
+	//7. 이전, 다음 블럭의 유무
+		if(curBlock>1) {
+			pre = true;
+		}
+		
+		if(curBlock<totalBlock){
+			next = true;
+		}
 	}
 	
-	public Long getPage() {
-		if(this.page==null || this.page<1) {
-			this.page=1L;
-		}	
-		return page;
-	}
-	
-	public void setPage(Long page) {
-		this.page = page;
-	}
-	
-	public Long getStartNum() {
-		return startNum;
-	}
-	
-	public void setStartNum(Long startNum) {
-		this.startNum = startNum;
-	}
-	
-	public Long getLastNnum() {
-		return lastNnum;
-	}
-	
-	public void setLastNnum(Long lastNnum) {
-		this.lastNnum = lastNnum;
-	}
-	
+	//null이 들어올 때를 대비
 	public Long getPerPage() {
+		if(this.perPage==null) {
+			this.perPage=10L;
+		}
 		return perPage;
 	}
-	
+
 	public void setPerPage(Long perPage) {
 		this.perPage = perPage;
 	}
-	
-	public Long getStartRow() {
-		return startRow;
-	}
-	
-	public void setStartRow(Long startRow) {
-		this.startRow = startRow;
-	}
-	
-	public Long getLastRow() {
-		return lastRow;
-	}
-	
-	public void setLastRow(Long lastRow) {
-		this.lastRow = lastRow;
-	}
-	
+
 	public Long getPerBlock() {
+		if(this.perBlock==null) {
+			this.perBlock=5L;
+		}
 		return perBlock;
 	}
-	
+
 	public void setPerBlock(Long perBlock) {
 		this.perBlock = perBlock;
 	}
+
+	public Long getPage() {
+		if(this.page==null || this.page<1) {
+			this.page=1L;
+		}
+		
+		return page;
+	}
+	public void setPage(Long page) {
+		this.page = page;
+	}
+	public Long getStartRow() {
+		return startRow;
+	}
+	public void setStartRow(Long startRow) {
+		this.startRow = startRow;
+	}
+	public Long getLastRow() {
+		return lastRow;
+	}
+	public void setLastRow(Long lastRow) {
+		this.lastRow = lastRow;
+	}
+	public Long getStartNum() {
+		return startNum;
+	}
+	public void setStartNum(Long startNum) {
+		this.startNum = startNum;
+	}
+	public Long getLastNum() {
+		return lastNum;
+	}
+	
+	public void setLastNum(Long lastNum) {
+		this.lastNum = lastNum;
+	}
+	
+	public boolean isPre() {
+		return pre;
+	}
+
+	public void setPre(boolean pre) {
+		this.pre = pre;
+	}
+
+	public boolean isNext() {
+		return next;
+	}
+
+	public void setNext(boolean next) {
+		this.next = next;
+	}
+	
+	public String getSelect() {
+		return select;
+	}
+
+	public void setSelect(String select) {
+		this.select = select;
+	}
+
+	public String getSearch() {
+		if(this.search==null) {
+			this.search="";
+		}
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+	
 	
 	
 }

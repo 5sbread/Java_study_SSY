@@ -56,8 +56,17 @@ public class QnaDAO implements BoardDAO{
 	}
 
 	@Override
-	public Long getCount() throws Exception {
+	public Long getCount(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public int setReplyAdd(BoardDTO boardDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE+"setReplyAdd", boardDTO);
+	}
+	
+	public int setStepUpdate(BoardDTO boardDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE+"setStepUpdate", boardDTO);
 }

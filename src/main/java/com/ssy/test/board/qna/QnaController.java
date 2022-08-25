@@ -5,11 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ssy.test.board.impl.BoardDTO;
+import com.ssy.test.util.Pager;
 
 @Controller
 @RequestMapping("/qna/*")
@@ -18,14 +21,19 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
+	@ModelAttribute("qna")
+	public String getBoard() {
+		return "Qna";
+	}
+	
 	//글목록
 	@RequestMapping(value = "list.ssy", method = RequestMethod.GET)
-	public ModelAndView getList()throws Exception{
+	public ModelAndView getList(Pager pager)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<BoardDTO> ar = qnaService.getList();
+		List<BoardDTO> ar = qnaService.getList(pager);
 		
 		mv.addObject("list", ar);
-		mv.addObject("board", "Qna");
+		mv.addObject("board", pager);
 		mv.setViewName("board/list");
 		return mv; 
 	}
@@ -67,6 +75,7 @@ public class QnaController {
 	@RequestMapping(value = "update.ssy", method = RequestMethod.POST)
 	public String setUpdate(BoardDTO boardDTO)throws Exception{
 		int result = qnaService.setUpdate(boardDTO);
+		//return "redirect:./detail.ssy?num="+boardDTO.getNum();
 		return "redirect:./detail.ssy?num="+boardDTO.getNum();
 	}
 	
@@ -76,5 +85,20 @@ public class QnaController {
 		int result = qnaService.setDelete(boardDTO);
 		return "redirect:./list.ssy";
 	}
+	
+	
+	//답변
+	@GetMapping("reply")
+	public ModelAndView setReply(BoardDTO boardDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("boardDTO", boardDTO);
+		mv.setViewName("board/reply");
+		return mv;
+	}
+	
+	
+	
+	
+	
 
 }

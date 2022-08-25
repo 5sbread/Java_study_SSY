@@ -5,13 +5,32 @@
 		    
 <mapper namespace="com.ssy.test.board.notice.NoticeDAO">
 
+	<!-- 공통된 파트 따로 적어주고 아래에서는 import -->
+	<sql id="search">
+		WHERE
+			<choose>
+				<when test="select == 'title'">TITLE</when>
+				<when test="select == 'writer'">WRITER</when>
+				<otherwise>contents</otherwise>
+			</choose>
+		LIKE '%'||#{search}||'%'
+	</sql>
+
 	<select id="getList" resultType="NoticeDTO">
-		SELECT * FROM (SELECT ROWNUM R, N.* FROM (SELECT * FROM NOTICE ORDER BY NUM DESC) N)
-		WHERE R BETWEEN #{startRow} and #{lastRow}
+		<!-- SELECT * FROM (SELECT ROWNUM R, N.* FROM (SELECT * FROM NOTICE ORDER BY NUM DESC) N)
+		WHERE R BETWEEN #{startRow} and #{lastRow} -->
+		
+		SELECT * FROM
+		 (SELECT ROWNUM R, N.* FROM
+			(SELECT * FROM NOTICE
+				<include refid="search"></include>
+			ORDER BY NUM DESC) N)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
 	<select id="getCount" resultType="Long">
 		SELECT COUNT(num) FROM NOTICE
+		<include refid="search"></include>
 	</select>
 	
 	<select id="getDetail" parameterType="BoardDTO" resultType="NoticeDTO">

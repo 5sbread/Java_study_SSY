@@ -12,9 +12,20 @@
 		SELECT * FROM NOTICE WHERE NUM=#{num}
 	</select>
 	
-	<insert id="setAdd" parameterType="BoardDTO">
+	<insert id="setReplyAdd" parameterType="BoardDTO">
+		<selectKey keyProperty="num" order="BEFORE" resultType="Long">
+			SELECT BOARD_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
 		INSERT INTO NOTICE (NUM, TITLE, WRITER, CONTENTS, REFDATE, HIT)
-		VALUES(BOARD_SEQ.NEXTVAL, #{title}, #{contents}, #{writer}, SYSDATE, 0)
+		VALUES(#{num}, #{title}, #{contents}, #{writer}, SYSDATE, 0, #{num}, 0,0)
+	</insert>
+	
+	<insert id="setAdd" parameterType="BoardDTO">
+		<selectKey keyProperty="num" order="BEFORE" resultType="Long">
+			SELECT BOARD_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO NOTICE (NUM, TITLE, WRITER, CONTENTS, REFDATE, HIT)
+		VALUES(#{num}, #{title}, #{contents}, #{writer}, SYSDATE, 0, #{num}, 0,0)
 	</insert>
 	
 	<update id="setUpdate" parameterType="BoardDTO">
@@ -25,8 +36,6 @@
 		DELETE NOTICE WHERE NUM=#{num}
 	</delete>
 	
-	<insert id="setReply" parameterType="QnaDTO">
-		INSERT INTO QNA (NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, REF, STEP, DEPTH)
-		VALUES (BOARD_SEQ.NEXTVAL, #{title}, #{contents}, #{writer}, SYSDATE, 0, 0, 0, 0)
-	</insert>
+	
+	
 </mapper>

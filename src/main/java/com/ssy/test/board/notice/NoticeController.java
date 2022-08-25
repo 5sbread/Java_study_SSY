@@ -39,7 +39,7 @@ public class NoticeController {
 		
 		mv.addObject("list", ar);
 		mv.addObject("pager",pager);
-		mv.setViewName("notice/list");
+		mv.setViewName("board/list");
 		//mv.setViewName("board/list"); <- 이렇게 경로 전부 바꾸기 notice/qna
 		
 		return mv;
@@ -56,7 +56,7 @@ public class NoticeController {
 	//글 작성
 	@RequestMapping(value = "add.ssy", method = RequestMethod.GET)
 	public String setAdd () throws Exception{
-		return "notice/add";
+		return "board/add";
 	}
 	
 	@RequestMapping(value = "add.ssy", method = RequestMethod.POST)
@@ -68,11 +68,11 @@ public class NoticeController {
 	}
 	
 	//글 수정
-	@RequestMapping(value = "update.ssy")
+	@RequestMapping(value = "update.ssy", method = RequestMethod.GET)
 	public ModelAndView setUpdate(BoardDTO boardDTO, ModelAndView mv) throws Exception{
 		boardDTO = noticeService.getDetail(boardDTO);
 		
-		mv.addObject("boardDTO", boardDTO);
+		mv.addObject("boardDTO", mv);
 		mv.setViewName("board/update");
 		return mv;
 	}
@@ -80,10 +80,12 @@ public class NoticeController {
 	@RequestMapping(value = "update.ssy", method = RequestMethod.POST)
 	public String setUpdate(BoardDTO boardDTO)throws Exception{
 		int result = noticeService.setUpdate(boardDTO);
-		return "redirect:./detail.ssy?num="+boardDTO.getNum();
+		
+		return "redirect:./etail.ssy?num="+boardDTO.getNum();
 	}
 	
 	//글 삭제
+	@RequestMapping(value = "delete.ssy")
 	public String setDelete(BoardDTO boardDTO) throws Exception{
 		int result = noticeService.setDelete(boardDTO);
 		return "redirect:./list.ssy";

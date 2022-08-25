@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Notice Add</title>
+<title>QnA Detail</title>
 </head>
 <body>
+
+	<div class="row">
+		<a href="./reply.ssy" class"btn btn-danger">Reply/a>	
+	</div>
 
 </body>
 </html>

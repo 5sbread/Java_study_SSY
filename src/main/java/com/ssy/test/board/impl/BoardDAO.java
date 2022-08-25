@@ -10,7 +10,7 @@ public interface BoardDAO {
 	//글목록
 	public List<BoardDTO> getList(Pager pager)throws Exception;
 	
-	public Long getCount() throws Exception;
+	public Long getCount(Pager pager) throws Exception;
 	
 	//글상세보기
 	public BoardDTO getDetail(BoardDTO boardDTO)throws Exception;
