@@ -14,7 +14,9 @@
 		<typeAlias type="com.ssy.test.board.notice.NoticeDTO" alias="NoticeDTO"/>
 		<typeAlias type="com.ssy.test.board.qna.QnaDTO" alias="QnaDTO"/>
 		<typeAlias type="com.ssy.test.util.Pager" alias="Pager"/>
+		
 		<typeAlias type="java.lang.String" alias="String"/>
+		<typeAlias type="java.lang.Long" alias="Long"/>
 		<typeAlias type="java.util.List" alias="List"/>
 		
 	</typeAliases>

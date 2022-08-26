@@ -23,8 +23,8 @@
 		SELECT COUNT(num) FROM QNA
 			WHERE
 				<choose>
-					<when test="selecet == 'title'">TITLE</when>
-					<when test="selecet == 'writer'">WRITER</when>
+					<when test="select == 'title'">TITLE</when>
+					<when test="select == 'writer'">WRITER</when>
 					<otherwise>contents</otherwise>
 				</choose>
 			LIKE '%'||#{search}||'%'	

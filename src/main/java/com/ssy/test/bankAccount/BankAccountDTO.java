@@ -2,13 +2,25 @@ package com.ssy.test.bankAccount;
 
 import java.sql.Date;
 
+import com.ssy.test.bankBook.BankBookDTO;
+
 public class BankAccountDTO {
 	
 	private Long bankAccount;
 	private String userName;
 	private Long bookNum;
 	private Date accountDate;
+	private BankBookDTO bankBookDTO;
+	
 		
+	public BankBookDTO getBankBookDTO() {
+		return bankBookDTO;
+	}
+
+	public void setBankBookDTO(BankBookDTO bankBookDTO) {
+		this.bankBookDTO = bankBookDTO;
+	}
+
 	public Long getBankAccount() {
 		return bankAccount;
 	}
