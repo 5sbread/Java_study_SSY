@@ -17,7 +17,7 @@
 	<form action="./list.ssy" method="post">
 	
 	<br><br>
-	<h1 class="align-center">List Page</h1>
+	<h1 class="align-center">Book List</h1>
 	<br>
 	<section class="container-fluid col-lg-6">
 		<div class="row">

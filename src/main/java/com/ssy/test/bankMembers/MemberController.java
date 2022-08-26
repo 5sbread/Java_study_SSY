@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -75,15 +76,20 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "join.ssy", method = RequestMethod.POST)
-	public String join(BankMembersDTO bankMembersDTO)throws Exception {
+	public String join(BankMembersDTO bankMembersDTO, MultipartFile photo)throws Exception {
 		System.out.println("회원가입 접속 (POST)");
+		System.out.println(photo);
 		
-		int result = bankMembersService.setJoin(bankMembersDTO);
-		if(result>0) {
-			System.out.println("회원가입 성공!");
-		}else {
-			System.out.println("회원가입 실패..");
-		}
+		 System.out.println("upload 파일명 : "+photo.getOriginalFilename());
+		System.out.println("upload 파라미터명 : "+photo.getName());
+		System.out.println("file size : "+photo.getSize());
+		
+		//int result = bankMembersService.setJoin(bankMembersDTO);
+//		if(result>0) {
+//			System.out.println("회원가입 성공!");
+//		}else {
+//			System.out.println("회원가입 실패..");
+//		}
 		
 		return "redirect:./login.ssy";
 		

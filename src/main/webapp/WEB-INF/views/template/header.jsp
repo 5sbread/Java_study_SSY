@@ -13,7 +13,7 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
 <%--                <a class="nav-link active" aria-current="page" href="/">=◕.◕=</a>  --%>
-                    <a class="nav-link active" href="/board/list.ssy">공지사항</a>
+                    <a class="nav-link active" href="/notice/list.ssy">공지사항</a>
                     <a class="nav-link active" href="/member/search.ssy">회원검색</a>
                     <a class="nav-link active" href="/bankbook/list.ssy">상품리스트</a>
                     <a class="nav-link active" href="/qna/list.ssy">QnA</a> 

@@ -7,6 +7,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.ssy.test.bankMembers.BankMembersDTO" alias="BankMembersDTO"/>
+		<typeAlias type="com.ssy.test.bankMembers.BankMembersFileDTO" alias="BankMembersFileDTO"/>
 		<typeAlias type="com.ssy.test.bankBook.BankBookDTO" alias="BankBookDTO"/>
 		<typeAlias type="com.ssy.test.bankAccount.BankAccountDTO" alias="BankAccountDTO"/>
 		<typeAlias type="com.ssy.test.board.impl.BoardDTO" alias="BoardDTO"/>

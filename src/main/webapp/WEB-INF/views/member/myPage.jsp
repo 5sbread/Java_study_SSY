@@ -31,17 +31,12 @@
             
       </c:forEach>
    </div>
-   <br>
-   <br>   
-   <br>
-   <br>
-   <br>
-   <br>   
-   <br>
-   <br>
-   <img src="../resources/images/3.png">
-   </section>
    
+   <div>
+   	<imag alt="" src="../resources/upload/member/${dto.bankMembersFileDTO.fileName}">
+   </div>
+   
+   </section>
    <c:import url="../template/footer.jsp"></c:import>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"

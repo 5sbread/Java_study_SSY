@@ -7,19 +7,27 @@
 <!-- namespace의 값은 사용할 DAO의 풀패키지명 -->
 <!-- application 내에서 중복 X -->
 <mapper namespace="com.iu.start.bankMembers.BankMembersDAO">
-
+	<insert id="setAddFile" parameterType="BankMembersFileDTO">
+		INSERT INTO MEMBERFILE (FILENUM, USERNAME, FILENAME, ORINAME)
+		VALUES (FILE_SEQ.NEXTVAL, #{userName}, #{userName}, #{oriName})
+	
+	</insert>
 	<select id="getMyPage" parameterType="BankMembersDTO" resultMap="getMyPageResult">
 		SELECT 	USERNAME, NAME, EMAIL, PHONE, ACCOUNTNUM, BOOKNAME, ACCOUNTDATE
 		FROM 	BANKMEMBERS BM
 		     	
-		     	INNER JOIN 
-		     	BANKACCOUNT BA
-		     	USING (USERNAME)
+		     	LEFT JOIN 
+		     	BANKFILE MF
+		     	ON BM.USERNAME=MF.USERNAME
 		     	
-		     	INNER JOIN
-		     	BANKBOOK BB
-		     	USING (BOOKNUM)
-		WHERE 	USERNAME=#{userName} 
+		     	LEFT JOIN 
+		     	BANKACCOUNT BA
+		     	ON BM.USERNAME=MA.USERNAME
+		     	
+		     	LEFT JOIN
+		     	BANKBOOK BA
+		     	ON BA.BANKBUM = BB.BOOKNUM
+		WHERE 	BM.USERNAME=#{userName} 
 		
 		
 	</select>
@@ -35,8 +43,11 @@
 			<association property="bankBookDTO" javaType="BankBookDTO">
 				<result column="BOOKNAME" property="bookName"/>
 			</association>
+		<association property="bankMembersFileDTO" javaType="BankMembersFileDTO">
+			<id column="FILENUM" property="fileNum"/>
+			<result column="FILENAME" property="fileName"/>
+		</association>
 		</collection>
-	
 	</resultMap>
 
 <!-- id는 DAO의 메서드명과 동일하게 -->

@@ -22,6 +22,7 @@
 			<div class="mb-3">
 			  <label for="title" class="form-label">Title</label>
 			  <input type="text" name="title" value="${boardDTO.title}" class="form-control" id="title" placeholder="제목 입력">
+			  								<!-- 검색을 위해 속성 설정하기 -->
 			</div>
 			<div class="mb-3">
 			  <label for="writer" class="form-label">Writer</label>

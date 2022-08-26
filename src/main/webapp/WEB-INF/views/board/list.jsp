@@ -9,14 +9,16 @@
 <title>Notice List</title>
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <style>
-	.align-center {text-align: center;}
+    .align-center {text-align: center;}
 </style>
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-							   <!-- con-lg-6 : 사이즈 조절 -->
-	<section class="container-fluid con-lg-6">
+						   <!-- con-lg-6 : 사이즈 조절 -->
+<section class="container-fluid col-lg-6">
+	<br><br>
 	<h1 class="align-center">Notice List</h1>
+	<br>
 	<div class="row mb-3">
 	
 <!-- ============== 공지 검색 파트 =============================================================== -->	
@@ -48,6 +50,7 @@
 	
 <!-- ============== 공지 내용 출력 =============================================================== -->		
 <div class="row">
+<table class="table">
 	<thead class="table-dark">
 		<tr>
 			<th scope = "col">번호</th>
@@ -79,7 +82,7 @@
 	</div>
 <!-- ============== 페이지 이동 숫자버튼 =============================================================== -->						
 	<nav aria-label="Page navigagion example">
-		<ul class = "pagination">
+		<ul class = "pagination justify-content-center"">
 		
 			<c:if test="${pager.pre}">
 	    		<li class="page-item">
@@ -111,9 +114,8 @@
 	    	</li>
 			</ul>
 		</nav>
-						
-	<a href = "./add.ssy" class="btn btn-primary">작성하기</a>
-	
+</div>
+</section>	
 	<c:import url="../template/footer.jsp"></c:import>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
