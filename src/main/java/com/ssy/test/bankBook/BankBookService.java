@@ -32,6 +32,6 @@ public class BankBookService {
 	}
 	
 	public int setDelete(BankBookDTO bankBookDTO) throws Exception{
-		return bankBookDAO.setDelete(bankBookDTO);
+		return bankBookDAO.setDeleteBook(bankBookDTO);
 	}
 }

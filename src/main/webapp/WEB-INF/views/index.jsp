@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
 
-<title>Bank</title>
+<title>=◕.◕=</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
 </head>
@@ -38,10 +38,10 @@
 					</div>
 				</div>
 				<div class="carousel-item" data-bs-interval="2000">
-					<img src="./resources/images/7.jpg" class="d-block w-100"
+					<img src="./resources/images/3.png" class="d-block w-100"
 						alt="ìì´ë2">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>또미</h5>
+						<h5>꾸미</h5>
 						<p>😺😸😻😽</p>
 					</div>
 				</div>

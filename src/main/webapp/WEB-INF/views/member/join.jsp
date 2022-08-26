@@ -16,7 +16,9 @@
 	<c:import url="../template/header.jsp"></c:import>
 	<section class="container-fluid col-lg-8 mt-5 ml-5">
 		<div>
-			<form action="./join.ssy" method="post">
+								<!-- 파일 첨부하려면 무조건 post -->
+										    	<!-- enctype=multipart / 파일이 없으면 사용XXX -->
+			<form action="./join.ssy" method="post" enctype="multipart/form-data">
 				<div class="col-md-3">
 					<label for="inputEmail4" class="form-label">아이디</label>
 					<input type="text" name="userName" class="form-control" id="inputEmail4">
@@ -38,6 +40,13 @@
 					<input type="text" name="phone"class="form-control" id="inputCity"
 						placeholder="하이픈(-)없이 숫자만 입력">
 				</div>
+				<div class="row-md-3">
+					<label for="files" class="col-sm-2 col-form-label">사진</label>
+					<div class="col-sm-10">
+					<input type="file" name="photo"class="form-control" id="inputphoto">
+					</div>
+				</div>
+				
 				<div class="col-12">
 					<button type="submit" class="btn btn-primary">가입하기</button>
 					<br>
