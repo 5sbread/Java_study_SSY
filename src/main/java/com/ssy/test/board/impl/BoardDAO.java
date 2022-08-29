@@ -24,4 +24,6 @@ public interface BoardDAO {
 	//글삭제
 	public int setDelete(BoardDTO boardDTO)throws Exception;
 	
+	public int setAddFile(BoardFileDTO boardFileDTO) throws Exception;
+	
 }

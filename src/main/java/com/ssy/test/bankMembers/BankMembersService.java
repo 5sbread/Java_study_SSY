@@ -27,6 +27,8 @@ public class BankMembersService {
 	
 	//회원가입
 	public int setJoin (BankMembersDTO bankMembersDTO, MultipartFile photo) throws Exception{
+		int result = bankMembersDAO.setJoin(bankMembersDAO);
+		
 		//1. HDD에 파일 저장
 			//파일 저장시 파일의 경로 : Tomcat 기준이 아닌 OS기준
 			//1) 파일 저장 위치
@@ -41,7 +43,7 @@ public class BankMembersService {
 			System.out.println(file.isDirectory());
 			
 			//*** File 첨부가 없을 때 구분
-			if(photo.getSize()!=0);
+			//if(photo.getSize()!=0);
 			if(photo.isEmpty()) {
 			
 			//파일이 존재하지 않는다면
@@ -71,7 +73,7 @@ public class BankMembersService {
 		bankMembersfileDTO.setFileName(fileName);
 		bankMembersfileDTO.setOriName(photo.getOriginalFilename());
 		bankMembersfileDTO.setUserName(bankMembersfileDTO.getUserName());
-		int result = bankMembersDAO.setAddFile(bankMembersfileDTO);
+		bankMembersDAO.setAddFile(bankMembersfileDTO);
 		}//1-3)isEmpty 구분
 			
 		return result; //bankMembersDAO.setJoin(bankMembersDTO);

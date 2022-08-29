@@ -16,4 +16,10 @@ public class BoardFileDTO extends FileDTO{
 	public void setNum(Long num) {
 		this.num = num;
 	}
+
+	//파일 추가
+	public void setFileNum(String originalFilename) {
+		// TODO Auto-generated method stub
+		
+	}
 }

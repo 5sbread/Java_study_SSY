@@ -12,6 +12,7 @@ public class BoardDTO {
 	private String contents;
 	private Date regDate;
 	private Long hit;
+	private //
 	
 	
 	public Long getNum() {

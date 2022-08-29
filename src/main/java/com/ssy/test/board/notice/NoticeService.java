@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.ServletContext;
 
@@ -11,8 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.ssy.test.board.impl.BoardDAO;
 import com.ssy.test.board.impl.BoardDTO;
+import com.ssy.test.board.impl.BoardFileDTO;
 import com.ssy.test.board.impl.BoardService;
+import com.ssy.test.file.FileManager;
 import com.ssy.test.util.Pager;
 
 @Service
@@ -20,6 +25,9 @@ public class NoticeService implements BoardService{
 	
 	@Autowired
 	private NoticeDAO noticeDAO;
+	
+	@Autowired
+	private FileManager fileManager;
 	
 	@Autowired
 	private ServletContext servletContext;
@@ -93,7 +101,10 @@ public class NoticeService implements BoardService{
 	}
 
 	@Override
-	public int setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
+	public int setAdd(BoardDTO boardDTO, MultipartFile [] files, ServletContext servletContext) throws Exception {
+		int result = noticeDAO.setAdd(boardDTO);
+		String path = "resources/upload/notice";
+		
 		//1. 실제 경로
 		String realPath = servletContext.getRealPath("resources/upload/notice");
 		System.out.println(realPath);
@@ -105,17 +116,29 @@ public class NoticeService implements BoardService{
 		}
 		
 		//3. 저장할 파일명 만들기
-		//비어있으면 다음으로 넘어가게
+		//비어있으면 다음으로 넘어감
 		for(MultipartFile mf:files) {
 			if(mf.isEmpty()) {
 				continue;
 			}
 			
 			//안 비어있으면 저장하는 코드
+			String fileName = UUID.randomUUID().toString();
+			fileName = fileName+"_"+mf.getOriginalFilename();
+			
+			//폴더 파일명
+			file = new File(file, fileName);
+			mf.transferTo(file);
+			
+			BoardFileDTO boardFileDTO = new BoardFileDTO();
+			boardFileDTO.setFileName(fileName);
+			boardFileDTO.setFileNum(mf.getOriginalFilename());
+			boardFileDTO.setNum(boardDTO.getNum());
+			boardFileDTO.setFileName(fileName);
 			
 		}
 		
-		return 0;//noticeDAO.setAdd(boardDTO);
+		return result;//noticeDAO.setAdd(boardDTO);
 	}
 
 	@Override

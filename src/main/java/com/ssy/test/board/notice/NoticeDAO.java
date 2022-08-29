@@ -9,10 +9,17 @@ import org.springframework.stereotype.Repository;
 
 import com.ssy.test.board.impl.BoardDAO;
 import com.ssy.test.board.impl.BoardDTO;
+import com.ssy.test.board.impl.BoardFileDTO;
 import com.ssy.test.util.Pager;
 
 @Repository
 public class NoticeDAO implements BoardDAO {
+	
+	@Override
+	public int setAddFile(BoardFileDTO boardFileDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(NAMESPACE+"setAddFile", boardFileDTO);
+	}
 	
 	@Autowired
 	private SqlSession sqlSession;

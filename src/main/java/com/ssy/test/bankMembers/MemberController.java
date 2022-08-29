@@ -3,6 +3,7 @@ package com.ssy.test.bankMembers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -76,7 +77,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "join.ssy", method = RequestMethod.POST)
-	public String join(BankMembersDTO bankMembersDTO, MultipartFile photo)throws Exception {
+	public String join(BankMembersDTO bankMembersDTO, MultipartFile photo, ServletContext servletContext)throws Exception {
 		System.out.println("회원가입 접속 (POST)");
 		System.out.println(photo);
 		
