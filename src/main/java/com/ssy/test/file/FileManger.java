@@ -1,12 +1,15 @@
 package com.ssy.test.file;
 
 import java.io.File;
+import java.nio.file.Path;
 
 import javax.servlet.ServletContext;
+import javax.sound.midi.Patch;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.multipart.MultipartFile;
 
-public class FileManager {
+public class FileManger {
 	
 	@Autowired
 	//private ServletContext servletContext;
@@ -15,7 +18,7 @@ public class FileManager {
 	//**파일 매니저 객체가 필요할 때 
 	
 	//save
-	public void saveFile(ServletContext servletContext path, ###) throws Exception{
+	public void saveFile(ServletContext servletContext, Path path, MultipartFile [] files) throws Exception{
 		//1. 실제 경로
 		String realPath = servletContext.getRealPath(path);
 		

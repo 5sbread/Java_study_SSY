@@ -14,6 +14,11 @@ import com.ssy.test.util.Pager;
 
 @Repository
 public class NoticeDAO implements BoardDAO {
+
+	@Autowired
+	private SqlSession sqlSession;
+	private final String NAMESPACE="com.ssy.test.board.notice.NoticeDAO.";
+	
 	
 	@Override
 	public int setAddFile(BoardFileDTO boardFileDTO) throws Exception {
@@ -21,9 +26,6 @@ public class NoticeDAO implements BoardDAO {
 		return sqlSession.insert(NAMESPACE+"setAddFile", boardFileDTO);
 	}
 	
-	@Autowired
-	private SqlSession sqlSession;
-	private final String NAMESPACE="com.ssy.test.board.notice.NoticeDAO.";
 
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
@@ -31,11 +33,13 @@ public class NoticeDAO implements BoardDAO {
 		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
 	
+	
 	@Override
 	public Long getCount(Pager pager) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getCount", pager);
 	}
 
+	
 	@Override
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
@@ -48,12 +52,14 @@ public class NoticeDAO implements BoardDAO {
 		return sqlSession.insert(NAMESPACE+"setAdd", boardDTO);
 	}
 
+	
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.update(NAMESPACE+"setUpdate", boardDTO);
 	}
 
+	
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub

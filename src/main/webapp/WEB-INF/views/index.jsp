@@ -11,6 +11,11 @@
 <title>=◕.◕=</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
+<script>
+	/*Element 위치 (되도록이면 body 아래에)*/
+	alert("hello");
+</script>
+
 </head>
 <body>
 <!-- header import -->
@@ -75,6 +80,16 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
 		crossorigin="anonymous"></script>
+
+<!--	본 파일 내에서 script 태그 사용해서 작성	
+	<script> /*Element 위치"*/
+		alert("hello");
+	</script>
+-->
+
+<!-- 외부파일에서 작성 후 불러오기
+(가장 많이 사용하는 방법) -->
+	<script src="/resources/js/test.js"></script>
 
 </body>
 </html>

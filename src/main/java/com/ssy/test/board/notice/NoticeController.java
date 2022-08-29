@@ -2,6 +2,8 @@ package com.ssy.test.board.notice;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +27,7 @@ public class NoticeController {
 	//모든 멤버 메서드에 공통 Data를 model에 담기
 	@ModelAttribute("board")
 	public String getBoard() {
-		return "Notice";
+		return "notice";
 	}
 	
 	//글 목록
@@ -67,9 +69,9 @@ public class NoticeController {
 	
 	
 	@RequestMapping(value = "add.ssy", method = RequestMethod.POST)
-	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception{
+	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile [] files, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = noticeService.setAdd(boardDTO, files);
+		int result = noticeService.setAdd(boardDTO, files, session.getServletContext());
 		mv.setViewName("redirect:./list.ssy");
 		return mv;
 	}

@@ -48,7 +48,7 @@
 		FROM NOTICE N
 			LEFT JOIN
 			NOTICEFILE NF <!-- 테이블 단축이름 설정 -->
-			USING(NUM)
+			ON N.NUM=NF.NUM
 		WHERE NUM=#{num}
 	</select>
 	
@@ -59,19 +59,20 @@
 		<result column="contents" property="title"/>
 		<result column="regDate" property="title"/>
 		<result column="hit" property="title"/>
-		<collection property="boardFileDTOs" javaType="List" ofType="BoardFile"></collection>
+		<collection property="boardFileDTOs" javaType="List" ofType="BoardFile">
 			<id column="FILENUM" property="fileNum"/>
 			<id column="FILNAME" property="filename"/>
 			<id column="ORINAME" property="oriName"/>
+		</collection>
 	</resultMap>
 	
 	
 	<insert id="setAdd" parameterType="BoardDTO">
-		<selectKey order ="BEFORE" keyProperty="" resultType="">
-		
+		<selectKey order ="BEFORE" keyProperty="num" resultType="long">
+			SELECT BOARD_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO NOTICE (NUM, TITLE, WRITER, CONTENTS, REGDATE, HIT)
-		VALUES (BOARD_SEQ.NEXTVAL, #{title}, #{writer},#{contents}, SYSDATE,0)
+		VALUES (#{num}, #{title}, #{writer},#{contents}, SYSDATE,0)
 	</insert>
 	
 	

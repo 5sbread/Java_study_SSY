@@ -27,7 +27,7 @@ public class QnaController {
 	
 	@ModelAttribute("board")
 	public String getBoard() {
-		return "Qna";
+		return "qna";
 	}
 	
 	//글목록
@@ -93,7 +93,7 @@ public class QnaController {
 		return "redirect:./list.ssy";
 	}
 	
-	
+	//답글
 	@PostMapping("reply.ssy")
 	public String setReply(QnaDTO qnaDTO) throws Exception{
 		int result = qnaService.setReply(qnaDTO);
@@ -101,7 +101,7 @@ public class QnaController {
 	}
 	
 	
-	//답변
+	//답글
 	@GetMapping("reply.ssy")
 	public ModelAndView setReply(BoardDTO boardDTO, ModelAndView mv)throws Exception{
 		

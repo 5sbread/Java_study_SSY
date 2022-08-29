@@ -5,6 +5,7 @@
 <html>
 <head>
 	<title>Home</title>
+	<script> "Element 위치" </script>
 </head>
 <body>
 <h1>
@@ -27,5 +28,8 @@
 	</c:if>
 	<a href="./bankbook/list.ssy">상품리스트</a>
 
+	<script> "Element 위치"
+		alert("hello");
+	</script>
 </body>
 </html>
