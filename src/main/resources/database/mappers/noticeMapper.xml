@@ -8,7 +8,7 @@
 	<!-- 파일 추가 -->
 	<insert id="setAddFile" parameterType="BoardTypeDTO">
 		INSERT INTO NOTICEFILE
-		VALUES(FILE_SEQ.NEXTVAL, #{num}, #{filename}, #{oriName})
+		VALUES(FILE_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
 	</insert>
 
 

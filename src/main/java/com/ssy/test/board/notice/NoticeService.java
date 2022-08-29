@@ -18,7 +18,7 @@ import com.ssy.test.board.impl.BoardDAO;
 import com.ssy.test.board.impl.BoardDTO;
 import com.ssy.test.board.impl.BoardFileDTO;
 import com.ssy.test.board.impl.BoardService;
-import com.ssy.test.file.FileManger;
+import com.ssy.test.util.FileManger;
 import com.ssy.test.util.Pager;
 
 @Service
@@ -127,12 +127,10 @@ public class NoticeService implements BoardService{
 			//안 비어있으면 저장하는 코드
 //			String fileName = UUID.randomUUID().toString();
 //			fileName = fileName+"_"+mf.getOriginalFilename();
-			String fileName = fileManger.saveFile(servletContext, path, files);
+			String fileName = fileManger.saveFile(servletContext, path, mf);
 			BoardFileDTO boardFileDTO = new BoardFileDTO();
-		
-			//폴더 파일명
 			boardFileDTO.setFileName(fileName);
-			boardFileDTO.setFileNum(mf.getOriginalFilename());
+			boardFileDTO.setOriName(mf.getOriginalFilename());
 			boardFileDTO.setNum(boardDTO.getNum());
 			noticeDAO.setAddFile(boardFileDTO);
 		}

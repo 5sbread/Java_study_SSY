@@ -27,7 +27,7 @@ public class MemberController {
 
 	
 	@RequestMapping(value = "myPage.ssy", method = RequestMethod.GET)
-	public ModelAndView getMyPage(HttpSession session)throws Exception{
+	public ModelAndView myPage(HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		BankMembersDTO bankMembersDTO = (BankMembersDTO) session.getAttribute("member");
 		
@@ -40,7 +40,16 @@ public class MemberController {
 		return mv;
 	}
 	
-	//로그인
+	
+	//로그아웃
+	@RequestMapping(value = "logout.ssy", method = RequestMethod.GET)
+	public String logout(HttpSession session)throws Exception{
+		session.invalidate();
+		return "redirect:../";
+	}
+	
+	
+	//로그인 - 절대경로
 	@RequestMapping(value = "login.ssy", method = RequestMethod.GET)
 	public String login()throws Exception{
 		System.out.println("로그인 접속 (GET)");
@@ -48,25 +57,15 @@ public class MemberController {
 		return "member/login";
 	}
 	
+	
 	@RequestMapping(value = "login.ssy", method = RequestMethod.POST)
 	public String login(HttpSession session, BankMembersDTO bankMembersDTO)throws Exception{
 		System.out.println("DB로그인 접속 (POST)");
-		
 		bankMembersDTO = bankMembersService.getLogin(bankMembersDTO);
-		
 		session.setAttribute("member", bankMembersDTO);
-
 		return "redirect:../";
 	}
 	
-	//로그아웃
-	@RequestMapping(value = "logout.ssy", method = RequestMethod.GET)
-	public String logout(HttpSession session)throws Exception{
-		
-		session.invalidate();
-		
-		return "redirect:../";
-	}
 	
 	//회원가입
 	@RequestMapping(value = "join.ssy", method = RequestMethod.GET)
@@ -75,6 +74,7 @@ public class MemberController {
 		
 		return "member/join";
 	}
+	
 	
 	@RequestMapping(value = "join.ssy", method = RequestMethod.POST)
 	public String join(BankMembersDTO bankMembersDTO, MultipartFile photo, ServletContext servletContext)throws Exception {
@@ -98,29 +98,38 @@ public class MemberController {
 	
 	
 	@RequestMapping(value = "search.ssy", method = RequestMethod.GET)
-	public void search()throws Exception{
+	public void getSearchByID()throws Exception{
 		System.out.println("아이디 검색중 (GET)");
-		
 		//return "member/search";
 	}
 	
 	@RequestMapping(value = "search.ssy", method = RequestMethod.POST)
-	public ModelAndView search(String userName)throws Exception{
-		System.out.println("아이디 검색중 (POST)");
-		ModelAndView mv = new ModelAndView();
+	public String getSearchByID(String search, Model model)throws Exception{
+//		BankMembersDAO bankMembersDAO = new BankMembersDAO();
+		List<BankMembersDTO> ar= bankMembersService.getSearchByID(search);
 		
-		List<BankMembersDTO> ar = bankMembersService.getSearchByID(userName);
 		
-		//경로와 데이터를 함께 보낼때
-		mv.setViewName("member/list");
-		mv.addObject("list", ar);
-		
-		return mv;
+		model.addAttribute("list", ar);
+		return "member/list";
 	}
 	
-	@RequestMapping(value = "list.ssy", method = RequestMethod.GET)
-	public void list()throws Exception{
-		
-	}
+//	@RequestMapping(value = "search.ssy", method = RequestMethod.POST)
+//	public ModelAndView search(String userName)throws Exception{
+//		System.out.println("아이디 검색중 (POST)");
+//		ModelAndView mv = new ModelAndView();
+//		
+//		List<BankMembersDTO> ar = bankMembersService.getSearchByID(userName);
+//		
+//		//경로와 데이터를 함께 보낼때
+//		mv.setViewName("member/list");
+//		mv.addObject("list", ar);
+//		
+//		return mv;
+//	}
+//	
+//	@RequestMapping(value = "list.ssy", method = RequestMethod.GET)
+//	public void list()throws Exception{
+//		
+//	}
 	
 }

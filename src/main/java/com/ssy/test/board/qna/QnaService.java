@@ -14,7 +14,7 @@ import com.ssy.test.board.impl.BoardDTO;
 import com.ssy.test.board.impl.BoardFileDTO;
 import com.ssy.test.board.impl.BoardService;
 import com.ssy.test.board.notice.NoticeDAO;
-import com.ssy.test.file.FileManger;
+import com.ssy.test.util.FileManger;
 import com.ssy.test.util.Pager;
 
 @Service
