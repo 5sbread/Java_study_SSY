@@ -5,7 +5,7 @@
 		    
 <mapper namespace="com.ssy.test.board.qna.QnaDAO">
 
-	<insert id="setAddDile" parameterType="BoardDileDTO">
+	<insert id="setAddFile" parameterType="BoardFileDTO">
 		INSERT INTO QNAFILE
 		VALUES(FILE_SEQ.NEXTVAL, #{num}, #{filename}, #{oriName})
 	</insert>

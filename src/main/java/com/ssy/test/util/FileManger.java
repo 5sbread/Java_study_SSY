@@ -8,8 +8,10 @@ import javax.servlet.ServletContext;
 import javax.sound.midi.Patch;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+@Component
 public class FileManger {
 	
 	//다른 곳에서 파일 매니저 객체를 만들면 Annotion autowired 주입 불가능
