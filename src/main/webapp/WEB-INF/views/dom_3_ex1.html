@@ -9,13 +9,24 @@
 <body>
     <!-- 숫자 입력 받아서 버튼 누르면 계산 -->
     <input type="text" id="d1">
+    <select name="" id="select">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <!-- 선택된 값이 가장 먼저 보여짐 | 선택 없을 경우 제일 위의 것 -->
+        <option selected value="/">/</option>
+        <option value="%">%</option>
+    </select>
+
     <input type="text" id="d2">
     <input type="text" id="d3">
     <button type="button" id="btn">CLICK</button>
     <hr>
 
-    <button id="btn2">CLICK2</button>
-    <button id="btn3">CLICK3</button>
+    <button id="btn2">CLICK 2</button>
+    <button id="btn3">CLICK 3</button>
+    <button id="btn4">CLICK 4</button>
 
     <script src="/resources/js/dom_3_ex1.js"></script>
 </body>
