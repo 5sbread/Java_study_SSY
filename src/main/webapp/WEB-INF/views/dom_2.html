@@ -6,22 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
+<style>
+    .d1{
+        font-family: "Times New Roman", Times, serif;
+    }
+    .d2{
+        font-family: "Times New Roman", Times, serif;
+    }
+</style>
+
 <body>
     <br>
-    <input type="text" id="d1" value="test">
-    <input type="radio" id="d2" value="=0.0=">
+    <!-- text가 적힌 입력창 / radio 버튼 -->
+    <input type="text" id="d1" value="Go Young Heeee!!!!" class="d1">
+    <input type="radio" id="d2" value="=0.0=" class="d2">
     <br><br>
+
+    <!-- 입력한 숫자만큼 입력창 생성 -->
     <div id="d3"></div>
+
+<!-- 년, 월, 일 -->
     <div>
-        <select id="year"></select> <!--2022~1990-->
+        <select id="year"> <!--2022~1990-->
+            <!-- ↓ contents -->
+            <option>2022</option>
+            <option value="">2021</option>
+        </select>
+
         <select id="month"></select> <!--1~12-->
         <select id="date"></select> <!--1~31-->
     </div>
 
+<!-- 입력받은 수만큼 표 생성 -->
     <br><br>
     <table id="d4" border="1"></table>
 
 
+    <!-- [파일명] script를 여기서 적용 -->
     <script src="/resources/js/dom_2.js"></script>
 </body>
 </html>
