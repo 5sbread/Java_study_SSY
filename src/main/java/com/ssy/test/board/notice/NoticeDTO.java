@@ -1,6 +1,7 @@
 package com.ssy.test.board.notice;
 
 import com.ssy.test.board.impl.BoardDTO;
+import com.ssy.test.board.impl.BoardFileDTO;
 
 public class NoticeDTO extends BoardDTO{
 	

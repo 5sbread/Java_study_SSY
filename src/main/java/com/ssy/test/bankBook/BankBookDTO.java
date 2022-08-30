@@ -1,13 +1,24 @@
 package com.ssy.test.bankBook;
 
+import java.util.List;
+
+import com.ssy.test.bankAccount.BankAccountDTO;
+
 public class BankBookDTO {
 	
 	private Long bookNum;
 	private String bookName;
 	private Double bookRate;
 	private Integer bookSale;
+	private List<BankAccountDTO> bankAccountDTO;
 	
 	
+	public List<BankAccountDTO> getBankAccountDTOs() {
+		return bankAccountDTO;
+	}
+	public void setBankAccountDTOs(List<BankAccountDTO> bankAccountDTO) {
+		this.bankAccountDTO = bankAccountDTO;
+	}
 	public Long getBookNum() {
 		return bookNum;
 	}

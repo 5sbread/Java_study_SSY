@@ -15,15 +15,20 @@
 
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-
+<style>
+    .align-center {text-align: center;}
+</style>
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
+<br>
+<br>
 <h1 class="align-center">${board} Add Page</h1>
+<br>
 <section class="container-fluid col-lg-4">
 	
 	<div class="row">
-		<form action="./add.iu" method="post">
+		<form action="./add.iu" method="post" enctype="multipart/form-data">
 			<div class="mb-3">
 			  <label for="title" class="form-label">제목</label>
 			  <input type="text" name="title" class="form-control" id="title" placeholder="제목 입력">
@@ -36,6 +41,19 @@
 			  <label for="contents" class="form-label">내용</label>
 			  <textarea class="form-control" name="contents" id="contents" rows="3"></textarea>
 			</div>
+			<div class="mb-3">
+			  <label for="files" class="form-label">파일</label>
+			  <input type="file" name="files" class="form-control" id="">
+			</div>
+			<div class="mb-3">
+			  <label for="files" class="form-label">파일</label>
+			  <input type="file" name="files" class="form-control" id="">
+			</div>
+			<div class="mb-3">
+			  <label for="files" class="form-label">파일</label>
+			  <input type="file" name="files" class="form-control" id="">
+			</div>
+			
 			
 			<div class="mb-3">
 				<button class="btn btn-success">등록</button>

@@ -1,14 +1,24 @@
 package com.ssy.test.board.notice;
 
+import java.io.File;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
+
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.ssy.test.board.impl.BoardDAO;
 import com.ssy.test.board.impl.BoardDTO;
+import com.ssy.test.board.impl.BoardFileDTO;
 import com.ssy.test.board.impl.BoardService;
+import com.ssy.test.util.FileManger;
 import com.ssy.test.util.Pager;
 
 @Service
@@ -16,6 +26,12 @@ public class NoticeService implements BoardService{
 	
 	@Autowired
 	private NoticeDAO noticeDAO;
+	
+	@Autowired
+	private FileManger fileManger;
+	
+	@Autowired
+	private ServletContext servletContext;
 
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
@@ -79,24 +95,57 @@ public class NoticeService implements BoardService{
 		return noticeDAO.getList(pager);		
 	}
 
+	
 	@Override
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return noticeDAO.getDetail(boardDTO);
 	}
 
+	
 	@Override
-	public int setAdd(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return noticeDAO.setAdd(boardDTO);
+	public int setAdd(BoardDTO boardDTO, MultipartFile [] files, ServletContext servletContext) throws Exception {
+		int result = noticeDAO.setAdd(boardDTO);
+		String path = "resources/upload/notice";
+		
+//		//1. 실제 경로
+//		String realPath = servletContext.getRealPath("resources/upload/notice");
+//		System.out.println(realPath);
+//		
+//		//2. 폴더 확인
+//		File file = new File(realPath);
+//		if(!file.exists()) {
+//			file.mkdirs();
+//		}
+		
+		//3. 저장할 파일명 만들기
+		//비어있으면 다음으로 넘어감
+		for(MultipartFile mf:files) {
+			if(mf.isEmpty()) {
+				continue;
+			}
+			//안 비어있으면 저장하는 코드
+//			String fileName = UUID.randomUUID().toString();
+//			fileName = fileName+"_"+mf.getOriginalFilename();
+			String fileName = fileManger.saveFile(servletContext, path, mf);
+			BoardFileDTO boardFileDTO = new BoardFileDTO();
+			boardFileDTO.setFileName(fileName);
+			boardFileDTO.setOriName(mf.getOriginalFilename());
+			boardFileDTO.setNum(boardDTO.getNum());
+			noticeDAO.setAddFile(boardFileDTO);
+		}
+		
+		return result;//noticeDAO.setAdd(boardDTO);
 	}
 
+	
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return noticeDAO.setUpdate(boardDTO);
 	}
 
+	
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub

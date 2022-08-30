@@ -5,8 +5,14 @@
 		    
 <mapper namespace="com.ssy.test.board.qna.QnaDAO">
 
+	<insert id="setAddDile" parameterType="BoardDileDTO">
+		INSERT INTO QNAFILE
+		VALUES(FILE_SEQ.NEXTVAL, #{num}, #{filename}, #{oriName})
+	</insert>
+	
+
 	<insert id="setReplyAdd" parameterType="QnaDTO">
-		<selectKey keyProperty="num" order="BEFORE" resultType="Long">
+		<selectKey keyProperty="num" order="BEFORE" resultType="long">
 			SELECT BOARD_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO QNA (NUM, TITLE, WRITER, CONTENTS, REGDATE, HIT, REF, STEP, DEPTH)
@@ -15,7 +21,7 @@
 	
 	
 	<update id="setStepUpdate" parameterType="QnaDTO">
-		UPDATE QNA SET STEP=STEP+1 WHERE REF=#{ref} and STEP > #{step}
+		UPDATE QNA SET STEP = STEP+1 WHERE REF = #{ref} and STEP > #{step}
 	</update>
 	
 	
@@ -23,8 +29,8 @@
 		SELECT COUNT(num) FROM QNA
 			WHERE
 				<choose>
-					<when test="selecet == 'title'">TITLE</when>
-					<when test="selecet == 'writer'">WRITER</when>
+					<when test="select == 'title'">TITLE</when>
+					<when test="select == 'writer'">WRITER</when>
 					<otherwise>contents</otherwise>
 				</choose>
 			LIKE '%'||#{search}||'%'	

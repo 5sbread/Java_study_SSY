@@ -29,11 +29,22 @@
 					${boardDTO.hit}
 			</div>
 		</div>
+		
 		<div class="row border border-top-0 border-danger bg-light"  style="min-height: 60vh" >
 			<div class="col">
 				${boardDTO.contents}
 			</div>
 		</div>
+		
+		%{boardDTO.boardFileDTOs}
+		<div class="row border border-top-0 border-danger bg-light"  style="min-height: 60vh" >
+			<div class="col">
+				<c:forEach items="${boardDTO.boardFileDTOs}" var="fileDTO">
+					<p>
+					<a href="../resources/upload/${board}/${fileDTO.fileName}">${fileDTO.oriName}</a>
+					</p>
+				</c:forEach>
+			</div>
 		
 		<div class="row">
 			<a href="./reply.iu?num=${boardDTO.num}" class="btn btn-danger">Reply</a>

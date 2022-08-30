@@ -9,12 +9,13 @@ import org.springframework.stereotype.Repository;
 import com.ssy.test.bankBook.BankBookDTO;
 
 @Repository
-public class BankMembersDAO{
+public class BankMembersDAO implements MembersDAO{
 	
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.ssy.test.bankMembers.BankMembersDAO.";
 	
+
 	public int setAddFile(BankMembersFileDTO bankMembersFileDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setAddFile",bankMembersFileDTO);
 	}
@@ -32,13 +33,20 @@ public class BankMembersDAO{
 	}	
 	
 	//아이디 검색
-	public List<BankMembersDTO> getSearchByID(String userName) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getSearchByID", userName);
+	public List<BankMembersDTO> getSearchByID(String search) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getSearchByID", search);
 	}
 	
 	//마이페이지
 	public BankMembersDTO getMyPage(BankMembersDTO bankMembersDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getMyPage", bankMembersDTO);
+	}
+
+
+	@Override
+	public int setJoin(BankMembersDAO bankMembersDAO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }	
 
