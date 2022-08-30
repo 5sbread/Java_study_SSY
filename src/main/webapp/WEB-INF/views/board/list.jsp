@@ -29,16 +29,16 @@
 	    <label class="visually-hidden" for="select">Select</label>
 	    <select name="select" class="form-select" id="select">
 	      <option selected>골라잡기</option>
-	      <option value="contents">Contents</option>
-	      <option value="title">Title</option>
-	      <option value="writer">Writer</option>
+	      <option class="select" id="contents" value="contents">Contents</option>
+	      <option class="select" id="title" value="title">Title</option>
+	      <option class="select" id="writer" value="writer">Writer</option>
 	    </select>
 	  </div>
 	  
 	 <div class="col-12">
 	    <label class="visually-hidden" for="search">검색어를 입력하세요.</label>
 	    <div class="input-group">
-	      <input type="text" name="search" class="form-control" id="search">
+	      <input type="text" name="search" value="${param.search}" class="form-control" id="search">
 	    </div>
 	  </div>
 	
@@ -119,5 +119,21 @@
 	<c:import url="../template/footer.jsp"></c:import>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<script src="/resources/js/board.js"></script>
+<script>
+	let s = '${param.select}';
+	console.log(s);
+	//파라미터로 받은 값과 동일한 value 찾기 -> 해당 value에 selected
+	const select = document.getElementsByClassName("select");
+
+	for(let i=0; i<select.length; i++){
+		if(select[i].value==s){
+			select[i].selected = true;
+			
+		}
+	}
+
+</script>
+
 </body>
 </html>
