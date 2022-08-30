@@ -12,11 +12,9 @@
 <body>
 
 <c:import url="../template/header.jsp"></c:import>
-   
-   <section class="container-fluid col-lg-4 mt-5">
-   
-   <h1>🐱 My Page 🐱</h1>
-   <div>
+   <section class="container-fluid col-lg-4 mt-5"> 
+	   <h1>🐱 My Page 🐱</h1>
+   <div class="row mt-5">
       <p>ID : ${requestScope.dto.userName}</p>
       <p>NAME : ${dto.name}</p>
       <p>EMAIL : ${dto.email}</p>
