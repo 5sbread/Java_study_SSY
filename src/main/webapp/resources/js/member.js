@@ -42,7 +42,7 @@ function loginCheck(){
 //=======================================================
 //회원가입 시 약관 동의
 
-function joinCheck(){
+function argeeCheck(){
     const all = document.getElementById("all");
     const cb = document.getElementsByClassName("cb");
     const join = document.getElementById("join");
@@ -78,3 +78,92 @@ function joinCheck(){
         });
     }
 };
+
+//---------------------------------------------
+function idCheck(){
+    const userName = document.getElementById("userName");
+    const idError = document.getElementById("idError");
+    
+    userName.addEventListener("blur", function(){
+        let u = userName.value;
+        if(userName.length<2){
+            userName.addEventListener("focus");
+            alert("아이디는 2글자 미만으로 설정할 수 없습니다.")
+            //idError.type = 
+        }
+    });
+};
+
+
+function pwMsg(){
+    const pw = document.getElementById("pw");
+
+    pw.addEventListener("")
+}
+
+function pwCheck(){
+
+}
+
+//===================== 수업
+function joinCheck(){
+    //선택자
+    const joinForm = document.getElementById("joinForm");
+    const joinButton = document.getElementById("joinButton");
+    const inputUserName = document.getElementById("inpuUserName");
+    const inputUserNameResult = document.getElementById("inputUserNameResult");
+    const inputPassword = document.getElementById("inputPassword");
+    const inputPasswordResult = document.getElementById("inputPasswordResult");
+    const inputPasswordCheck = document.getElementById("inputPasswordCheck");
+    const inputPasswordCheckResult = document.getElementById("inputPasswordCheckResult");
+
+    //CHeck 결과
+    let idCheck = false;
+    let pwCheck = false;
+    let pwEqualCheck = false;
+    let nameCheck = false;
+    let emailCheck = false;
+    let phoneCheck = false;
+
+    //idCheck
+    inputUserName.addEventListener("blur", function(){
+        if(inputUserName.value.length>1){
+            inputUserNameResult.innerHTML="";
+            idCheck = true;
+        }else {
+            idCheck = false;
+            inputUserNameResult.innerHTML="  ID는 최소 2글자 이상이어야 합니다.";
+        }
+
+    //비밀번호                     blur / keyup 상황에 맞게 사용
+    inputPassword.addEventListener("keyup", function(){
+        if(inputPassword.value.length>5){
+            inputPasswordResult.innerHTML="";
+            pwCheck = true;
+        }else{
+            pwCheck = false;
+            inputPasswordResult.innerHTML="  PW는 최소 <strong>6글자 이상</strong>이어야 합니다."
+        }
+
+    //비번 확인
+    inputPasswordCheck.addEventListener("blur", function(){
+        if(inputPasswordCheck.value == inputPassword.value){
+            inputPasswordCheck.innerHTML="";
+            pwCheck = true;
+        }else{
+            pwCheck = false;
+            inputPasswordCheck.innerHTML="  PW가 일치하지 않습니다."
+        }
+
+    //
+    
+
+
+    });    
+
+    });    
+
+
+
+    });
+}
