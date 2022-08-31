@@ -18,9 +18,7 @@
                     <a class="nav-link active" href="/member/search.ssy">회원검색</a>
                     <a class="nav-link active" href="/bankbook/list.ssy">상품리스트</a>
                     <a class="nav-link active" href="/qna/list.ssy">QnA</a> 
-                </div>
-                
-                <div class=logmy>    
+      
                     <c:choose>
                     	<c:when test="${not empty member}">
 		                    <a class="nav-link active" href="/member/myPage.ssy">마이페이지</a>
@@ -29,7 +27,7 @@
                     	
                     	<c:otherwise>
 	                    	<a class="nav-link active" href="/member/login.ssy">로그인</a>
-	                    	<a class="nav-link active" href="/member/join.ssy">회원가입</a>
+	                    	<a class="nav-link active" href="/member/agree.ssy">회원가입</a>
                    		</c:otherwise>
                     </c:choose>
                 </div>

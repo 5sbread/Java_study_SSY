@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,6 +26,11 @@ public class MemberController {
 	@Autowired
 	private BankMembersService bankMembersService;
 
+	//약관 동의
+	@GetMapping("agree.ssy")
+	public String getAgree() throws Exception{
+		return "member/agree";
+	}
 	
 	@RequestMapping(value = "myPage.ssy", method = RequestMethod.GET)
 	public ModelAndView myPage(HttpSession session)throws Exception{
