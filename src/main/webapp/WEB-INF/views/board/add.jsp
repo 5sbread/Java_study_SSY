@@ -28,7 +28,7 @@
 <section class="container-fluid col-lg-4">
 	
 	<div class="row">
-		<form action="./add.iu" method="post" enctype="multipart/form-data">
+		<form action="./add.ssy" method="post" enctype="multipart/form-data">
 			<div class="mb-3">
 			  <label for="title" class="form-label">제목</label>
 			  <input type="text" name="title" class="form-control" id="title" placeholder="제목 입력">
