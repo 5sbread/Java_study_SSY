@@ -14,12 +14,14 @@ fileAdd.addEventListener("click", function(){
         alert("파일은 최대 5개까지 첨부 가능합니다.");
         return;
     }
-    count++;
+    
 //--------------
     let div = document.createElement("div"); //div
     let c = document.createAttribute("class"); //class=""
     c.value = "mb-3" //class="mb-3"
     div.setAttributeNode(c); //<div clas="mb-3"></div>
+    //c = document.createAttribute("");
+
 //------
     let label = document.createElement("label"); //<label><label>
     let labelText = document.createTextNode("파일");
@@ -52,5 +54,33 @@ fileAdd.addEventListener("click", function(){
     inputAttr.value = "files";
     input.setAttributeNode(inputAttr); //id="files"
     addFiles.append(div);
+
+//------ 삭제 버튼 element 생성
+    let button = document.createElement("input");
+    let buttonAttr = document.createAttribute("type");
+    buttonAttr.value="button";
+    button.setAttributeNode(buttonAttr);
+    
+    let buttonContents = document.createTextNode("삭제");
+    button.appendChild(buttonContents);
+
+    buttonAttr = document.createAttribute("class");
+    buttonAttr.value="btn btn-danger del";
+    button.setAttributeNode(buttonAttr);
+
+    buttonAttr = document.createAttribute("title");
+    buttonAttr.value=idx;
+    button.setAttributeNode(buttonAttr);
+
+    div.appendChild(button);
+    addFiles.append(div);
+
+    count++;
+    idx++;
 });
-   
+
+addFiles.addEventListener("click", function(event){
+    if(event.target.className=='del'){
+        alert("del")
+    }
+});

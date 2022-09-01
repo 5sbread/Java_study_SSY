@@ -61,8 +61,5 @@
 	</script>
 	
 	<script src="/resources/js/board_files.js"></script>
-	<script>
-		pic();
-	</script>
 </body>
 </html>

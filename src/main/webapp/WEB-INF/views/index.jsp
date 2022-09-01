@@ -15,13 +15,6 @@
 		/*Element 위치 (되도록이면 body 아래에)*/
 		alert("hello");
 	</script>
-	
-	<style type="text/css">
-		.logmy {
-			text-align: center;
-		}
-	</style>
-
 </head>
 <body>
 <!-- header import -->
