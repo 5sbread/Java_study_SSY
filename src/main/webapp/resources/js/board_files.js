@@ -6,7 +6,16 @@
 const addFiles = document.getElementById("addFiles"); //div
 const fileAdd = document.getElementById("fileAdd"); //button
 
+let count = 0;
+
 fileAdd.addEventListener("click", function(){
+    //파일 추가 횟수 제한 (5번)
+    if(count>5){
+        alert("파일은 최대 5개까지 첨부 가능합니다.");
+        return;
+    }
+    count++;
+//--------------
     let div = document.createElement("div"); //div
     let c = document.createAttribute("class"); //class=""
     c.value = "mb-3" //class="mb-3"

@@ -19,20 +19,22 @@
 	<c:import url="../template/header.jsp"></c:import>
 	<section class="container-fluid col-lg-8 mt-5 ml-5">
 	
-	<h1>Argree Page</h1>
+	<h1 class="align-center">Argree Page</h1>
 	<div>
-		<!-- 동의 버튼 넣기 -->
+		전체동의 <input type="checkbox" name="box" id="all">
+		동의1 [필수] <input type="checkbox" name="box" class="ch req">
+		동의2 [필수] <input type="checkbox" name="box" class="ch req">
+		동의3 [필수] <input type="checkbox" name="box" class="ch req">
+		동의4 [선택] <input type="checkbox" name="box" class="ch">
+	</div>	
 	
-	</div>
-	
-		<form action="./join.ssy" id="form">
-			<button type="button" id="join">회원가입</button>
-		</form>
+	<form action="./join.ssy" method="get" id="form">
+		<button id="join">동의</button>
+	</form>
 
 	<c:import url="../template/footer.jsp"></c:import>
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-	<script src="/resources/js/board.js"></script>
 	<script src="/resources/js/member.js"></script>
 	<script>
 		agreeCheck();
