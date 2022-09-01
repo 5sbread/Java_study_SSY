@@ -6,7 +6,7 @@ function loginCheck(){
     const form = document.getElementById("form");
     const userName = document.getElementById("userName");
     const password = document.getElementById("password");
-
+ 
     login.addEventListener("click", function(){
         let u = userName.value;
         let p = password.value;
@@ -156,14 +156,10 @@ function joinCheck(){
         }
 
     //
-    
-
 
     });    
-
     });    
+    }); //joinCheck
 
-
-
-    });
+ 
 }
