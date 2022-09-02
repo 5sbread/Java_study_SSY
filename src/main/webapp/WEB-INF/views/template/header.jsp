@@ -22,13 +22,13 @@
 				<div class="navbar-nav">
                     <c:choose>
                     	<c:when test="${not empty member}">
-		                    <a class="nav-right" href="/member/myPage.ssy">마이페이지</a>
-		                    <a class="nav-right" href="/member/logout.ssy">로그아웃</a>
+		                    <a class="nav-link active" href="/member/myPage.ssy">마이페이지</a>
+		                    <a class="nav-link active" href="/member/logout.ssy">로그아웃</a>
                     	</c:when>
                     	
                     	<c:otherwise>
-	                    	<a class="nav-right" href="/member/login.ssy">로그인</a>
-	                    	<a class="nav-right" href="/member/agree.ssy">회원가입</a>
+	                    	<a class="nav-link active" href="/member/login.ssy">로그인</a>
+	                    	<a class="nav-link active" href="/member/agree.ssy">회원가입</a>
                    		</c:otherwise>
                     </c:choose>
                 </div>

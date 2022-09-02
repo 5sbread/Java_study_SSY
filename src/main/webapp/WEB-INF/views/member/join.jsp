@@ -69,7 +69,8 @@
 		crossorigin="anonymous"></scriptsrc>
 	<script src="/resources/js/member.js"></script>
 	<script>
-		/* joinCheck(); */
+		idMsg();
+		pwMsg();
 	</script>	
 </body>
 </html>
