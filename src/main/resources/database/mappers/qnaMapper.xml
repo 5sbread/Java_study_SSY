@@ -5,7 +5,7 @@
 		    
 <mapper namespace="com.ssy.test.board.qna.QnaDAO">
 
-	<insert id="setAddDile" parameterType="BoardDileDTO">
+	<insert id="setAddFile" parameterType="BoardFileDTO">
 		INSERT INTO QNAFILE
 		VALUES(FILE_SEQ.NEXTVAL, #{num}, #{filename}, #{oriName})
 	</insert>
@@ -38,13 +38,14 @@
 	
 	
 	<select id="getList" resultType="QnaDTO" parameterType="Pager">
+<!-- 		테이블명 부정확 오류 뜸 수정 필요 -->
 		SELECT * FROM
 			(SELECT ROWNUM R, N.* FROM
 				SELECT * FROM QNA
 					WHERE
 						<choose>
 							<when test="select == 'title'">TITLE</when>
-							<when test="selecet == 'writer'">WRITER</when>
+							<when test="select == 'writer'">WRITER</when>
 							<otherwise>contents</otherwise>
 						</choose>
 						LIKE '%'||#{search}||'%'

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
+
    <header>
         <nav class="navbar  navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
@@ -17,7 +18,7 @@
                     <a class="nav-link active" href="/member/search.ssy">회원검색</a>
                     <a class="nav-link active" href="/bankbook/list.ssy">상품리스트</a>
                     <a class="nav-link active" href="/qna/list.ssy">QnA</a> 
-                    
+
                     <c:choose>
                     	<c:when test="${not empty member}">
 		                    <a class="nav-link active" href="/member/myPage.ssy">마이페이지</a>
@@ -26,11 +27,11 @@
                     	
                     	<c:otherwise>
 	                    	<a class="nav-link active" href="/member/login.ssy">로그인</a>
-	                    	<a class="nav-link active" href="/member/join.ssy">회원가입</a>
+	                    	<a class="nav-link active" href="/member/agree.ssy">회원가입</a>
                    		</c:otherwise>
-                   		
                     </c:choose>
                 </div>
+                
                 </div>
             </div>
         </nav>

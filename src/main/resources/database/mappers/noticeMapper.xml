@@ -6,7 +6,7 @@
 <mapper namespace="com.ssy.test.board.notice.NoticeDAO">
 
 	<!-- 파일 추가 -->
-	<insert id="setAddFile" parameterType="BoardTypeDTO">
+	<insert id="setAddFile" parameterType="BoardFileDTO">
 		INSERT INTO NOTICEFILE
 		VALUES(FILE_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
 	</insert>
@@ -59,7 +59,7 @@
 		<result column="contents" property="title"/>
 		<result column="regDate" property="title"/>
 		<result column="hit" property="title"/>
-		<collection property="boardFileDTOs" javaType="List" ofType="BoardFile">
+		<collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
 			<id column="FILENUM" property="fileNum"/>
 			<id column="FILNAME" property="filename"/>
 			<id column="ORINAME" property="oriName"/>
