@@ -13,19 +13,38 @@
 		crossorigin="anonymous">
 	<style>
 	    .align-center {text-align: center;}
+	    .check-all {
+		    display: block;
+		    margin-block-start: 1em;
+		    margin-block-end: 1em;
+		    margin-inline-start: 0px;
+		    margin-inline-end: 0px;
+			}
 	</style>	
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<section class="container-fluid col-lg-8 mt-5 ml-5">
 	
-	<h1 class="align-center">Argree Page</h1>
-	<div>
-		전체동의 <input type="checkbox" name="box" id="all">
-		동의1 [필수] <input type="checkbox" name="box" class="ch req">
-		동의2 [필수] <input type="checkbox" name="box" class="ch req">
-		동의3 [필수] <input type="checkbox" name="box" class="ch req">
-		동의4 [선택] <input type="checkbox" name="box" class="ch">
+	<h1 class="align-center">Agree Page</h1>
+	<br><br>
+	
+	
+	<div class="agree">
+		<p class=check-all>
+			<input type="checkbox" name="all" id="all">
+			<label for="all">
+				<span class="all_text">
+					"이용약관, 개인정보 수집 및 이용, 꾸또미 귀여워, 꿈치 보고싶다(필수)에 모두 동의합니다."
+				</span>
+			</label>
+		</p>
+		
+		
+		동의1 [필수] <input type="checkbox" name="box" class="ch req"> <br>
+		동의2 [필수] <input type="checkbox" name="box" class="ch req"> <br>
+		동의3 [필수] <input type="checkbox" name="box" class="ch req"> <br>
+		동의4 [선택] <input type="checkbox" name="box" class="ch"> <br><br>
 	</div>	
 	
 	<form action="./join.ssy" method="get" id="form">
