@@ -10,10 +10,7 @@
 	<title>Notice List</title>
 	 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 	<style>
-		.row{
-			justify-content: center;
-		}
-	    /* .align-center {text-align: center;} */
+	    .align-center {text-align: center;}
 	</style>
 </head>
 
@@ -54,7 +51,7 @@
 </div>
 	
 <!-- ============== 공지 내용 출력 =============================================================== -->		
-<div class="row">
+<div class="align-center">
 <table class="table">
 	<thead class="table-dark">
 		<tr>

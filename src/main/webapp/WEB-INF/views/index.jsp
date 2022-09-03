@@ -13,8 +13,12 @@
 	
 	<script>
 		/*Element 위치 (되도록이면 body 아래에)*/
-		alert("hello");
+		alert("👽😺👽");
 	</script>
+	<style>
+	    .nav-right {text-align: right;}
+	</style>
+	
 </head>
 <body>
 <!-- header import -->
