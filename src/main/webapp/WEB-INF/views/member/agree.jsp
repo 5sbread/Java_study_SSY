@@ -13,6 +13,7 @@
 		crossorigin="anonymous">
 	<style>
 	    .align-center {text-align: center;}
+	    
 	    .check-all {
 		    display: block;
 		    margin-block-start: 1em;
@@ -20,6 +21,12 @@
 		    margin-inline-start: 0px;
 		    margin-inline-end: 0px;
 			}
+			
+		.all_text{
+			text_decoration : underline;
+			word-break : break-all;
+		}	
+		
 	</style>	
 </head>
 <body>
