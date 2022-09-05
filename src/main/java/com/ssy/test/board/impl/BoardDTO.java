@@ -3,17 +3,17 @@ package com.ssy.test.board.impl;
 import java.sql.Date;
 import java.util.List;
 
-public class BoardDTO {
+public class BoardDTO extends CommentDTO{
 	
 	//notice / qna 공통 dto
 	
 	private Long num;
-	private String title;
+	private String title; //
 	private String writer;
 	private String contents;
 	private Date regDate;
-	private Long hit;
-	private List<BoardFileDTO> boardFileDTOs;
+	private Long hit; //
+	private List<BoardFileDTO> boardFileDTOs; //
 	
 	
 	public List<BoardFileDTO> getBoardFileDTOs() {

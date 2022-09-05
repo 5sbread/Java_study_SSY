@@ -69,7 +69,13 @@ public class MemberController {
 		System.out.println("DB로그인 접속 (POST)");
 		bankMembersDTO = bankMembersService.getLogin(bankMembersDTO);
 		session.setAttribute("member", bankMembersDTO);
-		return "redirect:../";
+	
+		int result = 0;
+		String message = "로그인 실패";
+		if(bankMembersDTO.)
+		
+		//return "redirect:../";
+		url = "../";
 	}
 	
 	
