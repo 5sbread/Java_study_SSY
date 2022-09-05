@@ -41,19 +41,10 @@
 			  <label for="contents" class="form-label">내용</label>
 			  <textarea class="form-control" name="contents" id="contents" rows="3"></textarea>
 			</div>
-			<div class="mb-3">
-			  <label for="files" class="form-label">파일</label>
-			  <input type="file" name="files" class="form-control" id="">
-			</div>
-			<div class="mb-3">
-			  <label for="files" class="form-label">파일</label>
-			  <input type="file" name="files" class="form-control" id="">
-			</div>
-			<div class="mb-3">
-			  <label for="files" class="form-label">파일</label>
-			  <input type="file" name="files" class="form-control" id="">
-			</div>
 			
+			<div id="addFiles">
+				<button type="button" class="btn btn-add" id="fileAdd">파일 추가</button>
+			</div>
 			
 			<div class="mb-3">
 				<button class="btn btn-success">등록</button>
@@ -62,10 +53,13 @@
 		</form>
 	</div>
 </section>
-<c:import url="../template/footer.jsp"></c:import>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-<script type="text/javascript">
-	$("#contents").summernote();
-</script>
+
+	<c:import url="../template/footer.jsp"></c:import>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$("#contents").summernote();
+	</script>
+	
+	<script src="/resources/js/board_files.js"></script>
 </body>
 </html>

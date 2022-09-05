@@ -4,14 +4,16 @@
     
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Notice List</title>
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-<style>
-    .align-center {text-align: center;}
-</style>
+	<meta charset="UTF-8">
+	<title>Notice List</title>
+	 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+	<style>
+	    .align-center {text-align: center;}
+	</style>
 </head>
+
 <body>
 <c:import url="../template/header.jsp"></c:import>
 						   <!-- con-lg-6 : 사이즈 조절 -->
@@ -49,7 +51,7 @@
 </div>
 	
 <!-- ============== 공지 내용 출력 =============================================================== -->		
-<div class="row">
+<div class="align-center">
 <table class="table">
 	<thead class="table-dark">
 		<tr>
@@ -57,7 +59,7 @@
 			<th scope = "col">제목</th>
 			<th scope = "col">작성자</th>
 			<th scope = "col">작성날짜</th>
-			<th scope = "col"> 조회수</th>
+			<th scope = "col">조회수</th>
 		</tr>
 	</thead>
 	

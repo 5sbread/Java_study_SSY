@@ -15,6 +15,9 @@ public class BankMembersDAO implements MembersDAO{
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.ssy.test.bankMembers.BankMembersDAO.";
 	
+//	public String getAgree () throws Exception{
+//		
+//	}
 
 	public int setAddFile(BankMembersFileDTO bankMembersFileDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setAddFile",bankMembersFileDTO);

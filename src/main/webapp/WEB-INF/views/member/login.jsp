@@ -49,6 +49,9 @@
 		crossorigin="anonymous">
 	</script>
 	<script src="/resources/js/member.js"></script>
-		
+	<script>
+		joinCheck();
+		loginCheck();
+	</script>	
 </body>
 </html>
