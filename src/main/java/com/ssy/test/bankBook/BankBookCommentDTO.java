@@ -2,16 +2,15 @@ package com.ssy.test.bankBook;
 
 import com.ssy.test.board.impl.CommentDTO;
 
-public class BankBookCommentDTO extends CommentDTO{
-	
-	private Long BookNum;
+public class BankBookCommentDTO extends CommentDTO {
 
+	private Long bookNum;
 	public Long getBookNum() {
-		return BookNum;
+		return bookNum;
 	}
-
+	
 	public void setBookNum(Long bookNum) {
-		BookNum = bookNum;
+		this.bookNum = bookNum;
 	}
-
+	
 }

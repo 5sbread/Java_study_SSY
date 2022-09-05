@@ -55,7 +55,7 @@
 	</div>	
 	
 	<form action="./join.ssy" method="get" id="form">
-		<button id="join">동의</button>
+		<button type="button" id="join">동의</button>
 	</form>
 
 	<c:import url="../template/footer.jsp"></c:import>
