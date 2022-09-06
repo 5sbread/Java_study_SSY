@@ -9,12 +9,14 @@
 		<typeAlias type="com.ssy.test.bankMembers.BankMembersDTO" alias="BankMembersDTO"/>
 		<typeAlias type="com.ssy.test.bankMembers.BankMembersFileDTO" alias="BankMembersFileDTO"/>
 		<typeAlias type="com.ssy.test.bankBook.BankBookDTO" alias="BankBookDTO"/>
+		<typeAlias type="com.ssy.test.bankBook.BankBookCommentDTO" alias="BankBookCommentDTO"/>
 		<typeAlias type="com.ssy.test.bankAccount.BankAccountDTO" alias="BankAccountDTO"/>
 		<typeAlias type="com.ssy.test.board.impl.BoardDTO" alias="BoardDTO"/>
 		<typeAlias type="com.ssy.test.board.impl.BoardFileDTO" alias="BoardFileDTO"/>
 		<typeAlias type="com.ssy.test.board.notice.NoticeDTO" alias="NoticeDTO"/>
 		<typeAlias type="com.ssy.test.board.qna.QnaDTO" alias="QnaDTO"/>
 		<typeAlias type="com.ssy.test.util.Pager" alias="Pager"/>
+		<typeAlias type="com.ssy.test.util.CommentPager" alias="CommentPager"/>
 		
 		<typeAlias type="java.lang.String" alias="String"/>
 		<typeAlias type="java.lang.Long" alias="Long"/>

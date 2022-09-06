@@ -6,10 +6,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.ssy.test.util.CommentPager;
 
 @Controller
 @RequestMapping(value="/bankbook/*")
@@ -19,10 +23,57 @@ public class BankBookController {
 	private BankBookService bankBookService;
 	
 //--- Comment -------------------------------------------------------------------------	
-	@PostMapping("commentAdd")
-	public void setCommentAdd (BankBookCommentDTO bankBookCommentDTO) throws Exception{
-		int result = bankBookService.setCommentAdd(bankBookCommentDTO);
+	// 1. JSP에 출력하고 결과물을 응답으로 전송
+//	@GetMapping("commentList")
+//	public ModelAndView getCommentList (CommentPager commentPager) throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		List<BankBookCommentDTO> ar = bankBookService.getCommentList(commentPager);
+//		System.out.println("CommentLsit");
+//		System.out.println(ar.size());
+//		
+//		mv.addObject("commentList", ar);
+//		mv.setViewName("common/commentLsit");
+//		
+//		return mv;
+//	}
+
+	@GetMapping("commentList")
+	@ResponseBody
+	public List<BankBookCommentDTO> getcommentList(CommentPager commentPager) throws Exception{
+		List<BankBookCommentDTO> ar = bankBookService.getCommentList(commentPager);
+		System.out.println("Comment List");
+		System.out.println(ar.size());
+		
+		//json
+		// DTO == {}
+		// num=1 == {"num":1, "bookNum":123, "writer":"name"}
+		//[{"num":1, "bookNum":123, "writer":"name"}, {"num":1, "bookNum":123, "writer":"name"}] 		
+		
+		return ar;
 	}
+	
+	
+	
+//	@PostMapping("commentAdd")
+//	public ModelAndView setCommentAdd (BankBookCommentDTO bankBookCommentDTO) throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		int result = bankBookService.setCommentAdd(bankBookCommentDTO);
+//		mv.addObjext("result", result);
+//		mv.setViewName("common/ajaxResult");
+//		return mv;
+//	}
+	
+	@PostMapping("commentAdd")
+	@ResponseBody
+	public String setCommentAdd(BankBookCommentDTO bankBookCommentDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = bankBookService.setCommentAdd(bankBookCommentDTO);
+		
+		String jsonResult = "{\"result\":\""+result+"\"}";
+		return jsonResult;
+	}
+	
+	
 	
 //--- 기본 -------------------------------------------------------------------------	
 	@RequestMapping(value="delete.ssy", method = RequestMethod.GET)

@@ -20,6 +20,7 @@ public class Pager {
 	private Long perPage;
 	private Long perBlock;
 	
+	
 	//이전블럭의 유무 - 있으면 true / 없으면 false
 	private boolean pre;
 	//다음블럭의 유무
