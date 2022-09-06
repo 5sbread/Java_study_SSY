@@ -73,6 +73,9 @@
 			<version>${org.aspectj-version}</version>
 		</dependency>	
 		
+		<!-- 넣기~~~~~~~~~~~~~~!!!!!!!!! -->
+		
+		
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
