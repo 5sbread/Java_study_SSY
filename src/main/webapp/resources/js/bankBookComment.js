@@ -4,6 +4,7 @@
 const commentBtn = document.querySelector("#commentBtn");
 const writer = document.querySelector("#writer");
 const contents = document.querySelector("#contents");
+const commentList = document.querySelector("#commentList");
 
 commentBtn.addEventListener("click", function(){
     //ConSole TEST
@@ -35,12 +36,15 @@ commentBtn.addEventListener("click", function(){
         if(this.readyState == 4 && this.status==200){
             let result = xhttp.responseText.trim;
             console.log(result);
-            
             result = JSON.result;
+            console.log(result.result);
+            writer.value="";
+            contents.value="";
 
                 if(result.result == 1){                    
                     console.log(result)
-                    alert("댓글이 등록되었습니다.")
+                    alert("댓글이 등록되었습니다.");
+                    getCommentList();
                 }else{
                     //
                 }
@@ -73,18 +77,37 @@ function getCommentList(){
             let resultArr = document.createAttribute("class");
 
             resultArr.value = " table table-dark table-hover";
-            result.setAttributeNode(resultArr);
+            result.setAttributeNode(resultAttr);  //<table class="table table-dark table-hover"></table>
+            resultAttr.value="table-dark table-hover";
+            result.setAttributeNode(resultAttr);  //<table class="table table-dark table-hover"></table>
+            resultAttr.value="table-hover";
+            result.setAttributeNode(resultAttr);  //<table class="table table-dark table-hover"></table>
 
             for(let i=0; i<ar.length; i++){
                 let tr = document.createAttribute("tr");
 
                 let td = document.createElement("td");
-                let teText = document.createTextNode(ar[i] //)
+                let teText = document.createTextNode(ar[i].contents);
 
+                td.appendChild(tdText);           
+                tr.appendChild(td);
 
-            }// 3. head 정보
-            // 4. 요청 발생
-            //.
+                td = document.createElement("td");
+                tdText = document.createTextNode(ar[i].writer)
+                td.appendChild(tdText);
+                tr.appendChild(td);
+
+                td = document.createElement("td");
+                tdText = document.createTextNode(ar[i].regDate)
+                td.appendChild(tdText);
+                tr.appendChild(td);
+
+                result.appendChild(tr);
+
+            }
+            console.log(result);
+            commentList.append(result);
+            }
         }
 
     })

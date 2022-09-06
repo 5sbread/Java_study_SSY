@@ -21,15 +21,16 @@
 	<br>
 
 	<section class="container-fluid col-lg-6">
-	<form action="./detail.ssy" method="post">
-		<div class="row">
+	
+<!--	<form action="./detail.ssy" method="post">  -->
+	<div class="row">
 		<table class="table talbe-dark">
 			<thead>
 				<tr>
-					<td scope="col">상품번호</td>
-					<td scope="col">상품명</td>
-					<td scope="col">이자율</td>
-					<td scope="col">판매여부</td>
+					<th scope="col">상품번호</th>
+					<th scope="col">상품명</th>
+					<th scope="col">이자율</th>
+					<th scope="col">판매여부</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -53,25 +54,26 @@
 				<a href="../bankAccount/add.ssy?bookNum=${dto.bookNum}" class="btn btn-success">가입하기</a>
 			</c:if>
 		</div>
-		</div>
+	</div>
 
 		<!------------- Comment ------------>
-		<div class="row2">
-			<div class="mb-3">
-				<label for="writer" class="form-label">작성자</label>
-				<input type="text" class="form-control" id="writer" placeholder="작성자를 입력하세요.">
-			  </div>
-			  <div class="mb-3">
-				<label for="contents" class="form-label">내용을 작성하세요.</label>
-				<textarea class="form-control" id="contents" rows="3"></textarea>
-			  </div>
-			  <div class="mb-3">
-				<button type="button" id="commentBtn">댓글 작성</button>
-			  </div>
+	<div class="row2">
+		<div class="mb-3">
+			<label for="writer" class="form-label">작성자</label>
+			<input type="text" class="form-control" id="writer" placeholder="작성자를 입력하세요.">
+		  </div>
+	  	<div class="mb-3">
+			<label for="contents" class="form-label">내용을 작성하세요.</label>
+			<textarea class="form-control" id="contents" rows="3"></textarea>
 		</div>
+		<div class="mb-3">
+			<button type="button" id="commentBtn" data-book-num="${dto.bookNum}">댓글 작성</button>
+		</div>
+	</div>
 
 		<!-- Comment List 출력-->
 		<div id="commentList">
+		
 
 		</div>
 

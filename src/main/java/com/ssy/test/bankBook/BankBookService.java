@@ -17,14 +17,15 @@ public class BankBookService {
 	@Autowired
 	private BankBookService bankBookService;
 	
+	
 	public int setCommentAdd(BankBookCommentDTO bankBookCommentDTO) throws Exception{
 		return bankBookCommentDAO.setCommentAdd(bankBookCommentDTO);
 	}
 	
-	@GetMapping("commentList")
-	public List<BankBookCommentDTO> getCommentList(CommentPager commentPager) throws Exception{
-		return null;
 	
+	public List<BankBookCommentDTO> getCommentList(CommentPager commentPager) throws Exception{
+		commentPager.getRowNum();
+		return bankBookCommentDAO.getCommentList(commentPager);
 	}
 	
 	
