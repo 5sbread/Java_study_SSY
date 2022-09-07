@@ -33,7 +33,6 @@
 	<select id="getList" resultType="NoticeDTO" parameterType="Pager">
 		<!-- SELECT * FROM (SELECT ROWNUM R, N.* FROM (SELECT * FROM NOTICE ORDER BY NUM DESC) N)
 		WHERE R BETWEEN #{startRow} and #{lastRow} -->
-		
 		SELECT * FROM
 		 (SELECT ROWNUM R, N.* FROM
 			(SELECT * FROM NOTICE

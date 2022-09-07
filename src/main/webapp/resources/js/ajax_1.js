@@ -14,7 +14,7 @@ d1.addEventListener("click", function(){
     xhttp.open("GET", "http://jsonplaceholder.typicode.com/posts/"+v);
 
     // 3. 요청발생
-    xhttp.send():
+    xhttp.send();
 
     // 4. 응답결과 처리
     xhttp.onreadystatechange = function(){

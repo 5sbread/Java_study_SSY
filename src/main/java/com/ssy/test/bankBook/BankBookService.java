@@ -25,6 +25,9 @@ public class BankBookService {
 	
 	public List<BankBookCommentDTO> getCommentList(CommentPager commentPager) throws Exception{
 		commentPager.getRowNum();
+		//댓글의 전체 페이지 수
+		Long totalCount = bankBookCommentDAO.getCommentListTotalCount(commentPager);
+		commentPager.makePage(totalCount);
 		return bankBookCommentDAO.getCommentList(commentPager);
 	}
 	

@@ -1,7 +1,9 @@
 package com.ssy.test.bankBook;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,6 +50,9 @@ public class BankBookController {
 		// DTO == {}
 		// num=1 == {"num":1, "bookNum":123, "writer":"name"}
 		//[{"num":1, "bookNum":123, "writer":"name"}, {"num":1, "bookNum":123, "writer":"name"}] 		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", ar);
+		map.put("pager", commentPager);
 		
 		return ar;
 	}
@@ -106,6 +111,7 @@ public class BankBookController {
 		ModelAndView mv = new ModelAndView();
 		Calendar ca = Calendar.getInstance();
 		bankBookDTO.setBookNum(ca.getTimeInMillis());
+		System.out.println("addddddddd");
 		int result = bankBookService.setBankBook(bankBookDTO);
 		
 		//상품 등록 후 리스트페이지로 이동
@@ -114,6 +120,7 @@ public class BankBookController {
 	}
 
 	//  /bankbook/add GET /WEB-INF/views/bankbook/add.jsp
+	//add 페이지 접속 시
 	@RequestMapping(value="add.ssy", method = RequestMethod.GET)
 	public void add()throws Exception{
 		System.out.println("ADD");
