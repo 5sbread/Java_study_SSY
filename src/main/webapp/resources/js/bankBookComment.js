@@ -188,12 +188,13 @@ more.addEventListener("click", function(){
 commentList.addEventListener("click", function(event){
     //----------- UPDATE
     if(event.target.calssName="update"){
-        let contents = event.target.previousSibling.previousSibling;
-        let v = contents.innerHTML;
-        contents.innerHTML="<textarea>"+v+"</textarea>";
+        //let contents = event.target.previousSibling.previousSibling;
+        //let v = contents.innerHTML;
+        //contents.innerHTML="<textarea>"+v+"</textarea>";
                                     //이벤트 강제발생
         document.querySelector("#up").click();
     }
+
 
     //------------ DELETE
     if(event.target.calssName="delete"){
@@ -202,30 +203,36 @@ commentList.addEventListener("click", function(event){
         if(check){
             let num = event.target.getAttribute("data-comment-num");
             console.log("Num : ", num);
-        }
-    }
+        
+        // 1. XMLHTTPRequest
+        const xhttp = new XMLHttpRequest();
+        
+        // 2. 요청 정보 (URL, Method)
+        xhttp.open("POST", "commentDelete");
 
-//멀라
-// 4. 요청
-xhttp.send("num"+num);
+        // 3. Header (enctype)
+        xhttp.setRequestHeader("Conten-type", "application/x-www-form-urlencoded");
 
-// 5. 응답 처리
-xhttp.onreadystatechange=function(){
-    if(xhttp.readyState==4&&xhttp.status==200){
-        let result = xhttp.responseText.trim();
-        if(result==1){
-            alert("삭제되었습니다.");
-            page=1;
-            for(let i=0; i<commentList.children.length;){
-                commentList.children[0].remove();
+        // 4. 요청 (파라미터와 함께)
+        xhttp.send("num"+num);
+
+        // 5. 응답 처리
+        xhttp.onreadystatechange=function(){
+            if(xhttp.readyState==4 && xhttp.status==200){
+                let result = xhttp.responseText.trim();
+                if(result==1){
+                    alert("삭제되었습니다.");
+                    page=1;
+
+                    for(let i=0; i<commentList.children.length;){
+                        commentList.children[0].remove();
+                    }
+
+                    getCommentList(page, bookNum);
+                }else {
+                    alert("삭제 실패~~!");
+                }
             }
-            getCommentList(page, bookNum);
-        }else {
-            alert("삭제 실패~~!");
         }
-    }
-}
-
-
-
-});
+    }    
+}});

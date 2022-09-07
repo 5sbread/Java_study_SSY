@@ -5,6 +5,10 @@
 
 <mapper namespace="com.ssy.test.bankBook.BankBookCommentDAO">
 	
+	<delete id="setCommentDelete" parameterType="BankBookCommentDTO">
+		DELETE BB_COMMENT WHERE num=#{num}
+	</delete>
+	
 	<!-- 댓글 전체 갯수 -->
 	<select id="getCommentLsitTotalCount" parameterType="CommentPager">
 		SELECT COUNT(NUM) FROM BB_COMMENT WHERE BOOKNUM=#{bookNum}

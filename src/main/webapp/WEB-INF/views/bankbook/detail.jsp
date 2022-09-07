@@ -80,7 +80,8 @@
 		<button id="more" class="btn btn-danger disabled" >더보기</button>
 		<!-- Comment 끗-->
 
-		<!-- Modal -->
+
+		<!------------- Modal ------------>
 		<div>
 			<button type="button" style="display: none;" class="btn btn-primary" id="up" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
 
