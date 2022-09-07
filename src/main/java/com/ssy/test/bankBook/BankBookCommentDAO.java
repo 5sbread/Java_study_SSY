@@ -15,6 +15,15 @@ public class BankBookCommentDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.ssy.test.bankBook.BankBookCommentDAO.";
 	
+	
+	public int setCommentDelete(BankBookCommentDTO bankBookCommentDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setCommentDelete", bankBookCommentDTO);
+	}
+	
+	public Long getCommentListTotalCount (CommentPager commentPager) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getCommentListTotalCount", commentPager);
+	}
+	
 	public int setCommentAdd(BankBookCommentDTO bankBookCommentDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"setCommentAdd",bankBookCommentDTO);
 	}
