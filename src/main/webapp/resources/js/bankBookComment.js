@@ -37,7 +37,7 @@ commentBtn.addEventListener("click", function(){
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
     // 4. 요청 발생, 전송 (POST일 경우 파라미터 추가)
-    xhttp.send("bookNum = "+bookNum+"&Writer = "+wv+"$Contents = "+cv);
+    xhttp.send("bookNum = "+bookNum+ "&writer = "+wv+ "&contents = "+cv);
 
     // 5. 응답 처리
     xhttp.onreadystatechange=function(){
@@ -187,10 +187,21 @@ more.addEventListener("click", function(){
 //---------------------- DELETE, UPDATE -------------------------------
 commentList.addEventListener("click", function(event){
     //----------- UPDATE
-    if(event.target.calssName="update"){
+    if(event.target.calssName=="update"){
         //let contents = event.target.previousSibling.previousSibling;
         //let v = contents.innerHTML;
         //contents.innerHTML="<textarea>"+v+"</textarea>";
+
+        let writer = event.target.prevoiousSibling.prevoiousSibling.innerHTML;
+        let contents = event.target.prevoiousSibling.prevoiousSibling.prevoiousSibling.innerHTML;
+        let num = event.target.getAttribute("data-coment-num");
+
+        console.log(contents);
+            // 수정할 내용 팝업칸에 불러오기
+        document.querySelector("#updateContents").innerHTML = contents;
+        document.querySelector("updateWriter").innerHTML = writer;
+        document.querySelector("#num").value=num;
+
                                     //이벤트 강제발생
         document.querySelector("#up").click();
     }
@@ -235,4 +246,88 @@ commentList.addEventListener("click", function(event){
             }
         }
     }    
-}});
+}
+});
+
+//---------------------------- Modal Update button Click ---------------------------------
+const update = document.querySelector("#update");
+
+update.addEventListener("click", function(){
+    // modal에서 num, contents 가져오기
+    let num = document.getElementById("num").value;
+    let contents = document.getElementById("updateContents").value;
+
+    //---------- Ajax ---------
+    // 1. XHTTPRequest 생성
+    const xhttp = new XMLHttpRequest();
+
+    // 2. request 정보
+    xhttp.open("POST", "commentUpdate");
+
+    // 3. Header 정보 (Enctype / POST)
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    // 4. 요청 실행
+    xhttp.send("num = "+num+ "&Contents = "+contents);
+
+    // 5. 응답 처리
+    xhttp.onreadystatechange = function (){
+        if(xhttp.readyState==4 && xhttp.status==200){
+            let result = xhttp.responseText.trim();
+
+            if(result>0){
+                alert("댓글 수정 완료")
+                for(let i=0; i<commentList.children.length;){
+                    commentList.children[0].remove();
+                    let tr = document.createAttribute("tr");
+                    let td = document.createElement("td");
+                    let teText = document.createTextNode(ar[i].contents);
+                    td.appendChild(tdText);           
+                    tr.appendChild(td);
+
+                    td = document.createElement("td");
+                    tdText = document.createTextNode(ar[i].writer);
+                    td.appendChild(tdText);
+                    tr.appendChild(td);
+
+                    td = document.createElement("td");
+                    //날짜 format 변경
+                    // let date = new Date();
+                    // console.log(date);
+
+                    // let year = date.getFullYear();
+                    // let month = date.getMonth()+1;
+                    // let d = date.getDate();
+                    // console.log(year+"-"+month+"-"+d);
+
+                    tdText = document.createTextNode(ar[i].regDate);
+                    td.appendChild(tdText);
+                    tr.appendChild(td);
+
+                    td = document.createElement("td");
+                    tdText = document.createTextNode("수정");
+                    let tdAttr = document.createAttribute("class");
+                    tdAttr.value = "update";
+                    td.setAttributeNode(tdAttr);
+                    td.appendChild(tdText);
+                    tr.appendChild(td);
+
+                    td = document.createElement("td");
+                    tdText = document.createTextNode("삭제");
+                    tdAttr = document.createAttribute("class");
+                    tdAttr.value = "delete";
+                    td.setAttributeNode(tdAttr);
+                    tdAttr = document.createAttribute("data-comment-num");
+                    tdAttr.value = ar[i].num;
+                    td.setAttributeNode(tdAttr);
+
+                }   
+                page=1;
+
+            }else{
+                alert("댓글 수정 실패")
+            }
+        }
+    }
+
+});

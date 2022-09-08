@@ -18,6 +18,11 @@ public class BankBookService {
 	private BankBookService bankBookService;
 	
 	
+	public int setCommentUpdate(BankBookCommentDTO bankBookCommenrDTO) throws Exception{
+		return bankBookCommentDAO.setCommentUpdate(bankBookCommenrDTO) ;
+	}
+	
+	
 	public int setCommentDelete(BankBookCommentDTO bankBookCommentDTO) throws Exception{
 		return bankBookCommentDAO.setCommentDelete(bankBookCommentDTO);
 	}
