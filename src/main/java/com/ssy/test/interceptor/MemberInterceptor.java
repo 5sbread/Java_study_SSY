@@ -11,7 +11,7 @@ public class MemberInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		// TODO Auto-generated method stub
+		// 로그인 유무
 		HttpSession session = request.getSession();
 		Object obj = session.getAttribute("member");
 		

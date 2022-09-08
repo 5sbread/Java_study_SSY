@@ -1,6 +1,5 @@
 
 //detail.jsp 에서 댓글작성 버튼을 클릭하면 이벤트
-
 const commentBtn = document.querySelector("#commentBtn");
 const writer = document.querySelector("#writer");
 const contents = document.querySelector("#contents");
@@ -198,8 +197,8 @@ commentList.addEventListener("click", function(event){
 
         console.log(contents);
             // 수정할 내용 팝업칸에 불러오기
-        document.querySelector("#updateContents").innerHTML = contents;
-        document.querySelector("updateWriter").innerHTML = writer;
+        document.querySelector("#updateContents").value = contents;
+        document.querySelector("updateWriter").value = writer;
         document.querySelector("#num").value=num;
 
                                     //이벤트 강제발생
@@ -261,7 +260,7 @@ update.addEventListener("click", function(){
     // 1. XHTTPRequest 생성
     const xhttp = new XMLHttpRequest();
 
-    // 2. request 정보
+    // 2. request 정보 (Method, URL)
     xhttp.open("POST", "commentUpdate");
 
     // 3. Header 정보 (Enctype / POST)
