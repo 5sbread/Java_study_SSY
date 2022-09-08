@@ -17,17 +17,17 @@ public class BankBookService {
 	@Autowired
 	private BankBookService bankBookService;
 	
-	
+	//댓글 수정
 	public int setCommentUpdate(BankBookCommentDTO bankBookCommenrDTO) throws Exception{
 		return bankBookCommentDAO.setCommentUpdate(bankBookCommenrDTO) ;
 	}
 	
-	
+	//댓글 삭제
 	public int setCommentDelete(BankBookCommentDTO bankBookCommentDTO) throws Exception{
 		return bankBookCommentDAO.setCommentDelete(bankBookCommentDTO);
 	}
 	
-	
+	//댓글 추가
 	public int setCommentAdd(BankBookCommentDTO bankBookCommentDTO) throws Exception{
 		return bankBookCommentDAO.setCommentAdd(bankBookCommentDTO);
 	}

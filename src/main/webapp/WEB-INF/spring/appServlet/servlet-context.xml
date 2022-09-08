@@ -13,23 +13,28 @@
 	<annotation-driven />
 	
 	<!-- Interceptor 설정 -->
+	<!-- Interceptor 객체 생성 -->
 	<beans:bean class="com.ssy.test.interceptor.TestInterceptor" id="testInterceptor"></beans:bean>
 	
+	<!-- URL - Interceptor 맵핑 -->
 	<interceptors>
 		<interceptor>
 			<!-- URL 경로 -->
 			<mapping path="/**"/>
 			<beans:ref bean="testInterceptor"/>
 		</interceptor>
-		<interceptor>
+		
+<!-- 	<interceptor>
 			<mapping path="/qna/*"/>
 			<mapping path="/member/myPage.ssy"/>
-			<exclude-mapping path="/qua/list/ssy"/>
+			<exclude-mapping path="/qua/list.ssy"/>
 			<beans:bean class="com.ssy.test.interceptor.MemberInterceptor"></beans:bean>
-		</interceptor>
+		</interceptor> -->
+		
 		<interceptor>
-			<mapping path="/notice3/*"/>
-			
+			<mapping path="/qna/update.ssy"/>
+			<mapping path="/notice/update.ssy"/>
+			<beans:bean class="com.ssy.test.interceptor.WriterCheckInterceptor"></beans:bean>
 		</interceptor>
 	</interceptors>
 	

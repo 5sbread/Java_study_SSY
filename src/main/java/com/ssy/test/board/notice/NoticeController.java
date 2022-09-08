@@ -66,11 +66,11 @@ public class NoticeController {
 	//글 작성
 	@RequestMapping(value = "add.ssy", method = RequestMethod.GET)
 	public String setAdd (HttpSession session) throws Exception{
+		
 		BankMembersDTO bankMemberDTO = (BankMembersDTO)session.getAttribute("member");
 		
 		if(bankMemberDTO != null) {
 			return "board/add";
-			
 		}else {
 			return "redirect:../member/login.ssy";
 		}

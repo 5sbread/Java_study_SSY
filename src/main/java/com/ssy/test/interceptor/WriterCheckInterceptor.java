@@ -29,9 +29,16 @@ public class WriterCheckInterceptor extends HandlerInterceptorAdapter{
 		
 		// DTO
 		Map<String, Object> map = modelAndView.getModel();
+		
 		BoardDTO boardDTO = (BoardDTO)map.get("boardDTO");
 		
-		if(!=bankMembersDTO.getUserName().equals(boardDTO.getWriter()))
+		if(!bankMembersDTO.getUserName().equals(boardDTO.getWriter())) {
+			modelAndView.setViewName("common/result");
+			modelAndView.addObject(null, boardDTO);
+			modelAndView.addObject("message", "작성자만 수정 가능");
+			modelAndView.addObject("url", "./list.ssy");
+		}
+		super.postHandle(request, response, handler, modelAndView);
 		
 	}
 
