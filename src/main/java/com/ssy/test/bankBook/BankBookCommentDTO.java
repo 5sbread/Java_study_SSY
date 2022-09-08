@@ -5,6 +5,8 @@ import com.ssy.test.board.impl.CommentDTO;
 public class BankBookCommentDTO extends CommentDTO {
 
 	private Long bookNum;
+	
+	
 	public Long getBookNum() {
 		return bookNum;
 	}
