@@ -8,7 +8,7 @@ public class BoardDTO extends CommentDTO {
 	//notice / qna 공통 dto
 	
 	private String title;
-	private Long het;
+	private Long hit;
 	private List<BoardFileDTO> boardFileDTO;
 	
 	public String getTitle() {
@@ -17,11 +17,11 @@ public class BoardDTO extends CommentDTO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Long getHet() {
-		return het;
+	public Long getHit() {
+		return hit;
 	}
-	public void setHet(Long het) {
-		this.het = het;
+	public void setHet(Long hit) {
+		this.hit = hit;
 	}
 	public List<BoardFileDTO> getBoardFileDTO() {
 		return boardFileDTO;

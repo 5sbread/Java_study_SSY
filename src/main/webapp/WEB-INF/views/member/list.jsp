@@ -5,14 +5,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Member List</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-	crossorigin="anonymous">
+	<meta charset="UTF-8">
+	<title>Member List</title>
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+		crossorigin="anonymous">
+	<style>
+		#search {text-align: center;}
+	</style>		
 </head>
+
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<section class="container-fluid col-lg-8 mt-5">
@@ -21,7 +25,7 @@
 			<h2>회원 검색 결과</h2>
 			<br>
 		</div>
-			<table class="table table-striped">
+			<table class="table table-striped" id="search">
 				<thead>
 					<th>ID</th>
 					<th>Name</th>

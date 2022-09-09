@@ -38,19 +38,20 @@
 	
 	
 	<select id="getList" resultType="QnaDTO" parameterType="Pager">
-<!-- 		테이블명 부정확 오류 뜸 수정 필요 -->
 		SELECT * FROM
-			(SELECT ROWNUM R, N.* FROM
-				SELECT * FROM QNA
-					WHERE
-						<choose>
-							<when test="select == 'title'">TITLE</when>
-							<when test="select == 'writer'">WRITER</when>
-							<otherwise>contents</otherwise>
-						</choose>
-						LIKE '%'||#{search}||'%'
-					ORDER BY REF DESC, STEP ASC) N
-			)WHERE R BETWEEN #{startRow} and #{lastRow}		
+		    (
+		        SELECT ROWNUM R, N.* FROM
+		            (SELECT * FROM QNA 		          
+		            	WHERE
+		            		<choose>
+		            			<when test="select == 'title'">TITLE</when>
+		            			<when test="select == 'writer'">WRITER</when>
+		            			<otherwise>contents</otherwise>
+		            		</choose> 
+		            		LIKE '%'||#{search}||'%'
+		             ORDER BY REF DESC, STEP ASC) N
+		    )
+		WHERE R BETWEEN #{startRow} and #{lastRow}
 	</select>
 
 	
