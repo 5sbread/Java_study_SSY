@@ -164,7 +164,7 @@ public class Pager {
 		return select;
 	}
 
-	public void setSelect(String select) {
+	public void setSelect(String selecet) {
 		this.select = select;
 	}
 

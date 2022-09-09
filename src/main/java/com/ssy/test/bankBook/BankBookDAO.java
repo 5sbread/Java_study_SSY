@@ -38,8 +38,8 @@ public class BankBookDAO implements BookDAO {
 		return sqlSession.selectOne(NAMESPACE+"getDetail", bankBookDTO);
 	}
 	
-	public int setDeleteBook(BankBookDTO bankBookDTO) throws Exception{
-		return sqlSession.delete(NAMESPACE+"setDeleteBook", bankBookDTO);
+	public int setDelete(BankBookDTO bankBookDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setDelete", bankBookDTO);
 	}
 
 }

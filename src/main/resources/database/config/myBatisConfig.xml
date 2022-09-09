@@ -21,6 +21,5 @@
 		<typeAlias type="java.lang.String" alias="String"/>
 		<typeAlias type="java.lang.Long" alias="Long"/>
 		<typeAlias type="java.util.List" alias="List"/>
-		
 	</typeAliases>
 </configuration>				  

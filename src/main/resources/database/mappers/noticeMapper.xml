@@ -5,13 +5,6 @@
 		    
 <mapper namespace="com.ssy.test.board.notice.NoticeDAO">
 
-	<!-- 파일 추가 -->
-	<insert id="setAddFile" parameterType="BoardFileDTO">
-		INSERT INTO NOTICEFILE
-		VALUES(FILE_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
-	</insert>
-
-
 	<!-- 공통된 파트 따로 적어주고 아래에서는 import -->
 	<sql id="search">
 		WHERE
@@ -22,12 +15,21 @@
 			</choose>
 		LIKE '%'||#{search}||'%'
 	</sql>
-	
+
+
+	<!-- 파일 추가 -->
+	<insert id="setAddFile" parameterType="BoardFileDTO">
+		INSERT INTO NOTICEFILE
+		VALUES(FILE_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
+	</insert>
+
+
 	
 	<select id="getCount" resultType="Long" parameterType="Pager">
 		SELECT COUNT(num) FROM NOTICE
 		<include refid="search"></include>
 	</select>
+
 
 
 	<select id="getList" resultType="NoticeDTO" parameterType="Pager">
@@ -41,6 +43,7 @@
 		WHERE R BETWEEN #{startRow} and #{lastRow}
 	</select>
 
+
 	
 	<select id="getDetail" parameterType="BoardDTO" resultMap="getDetailResult">
 		SELECT N.*, NF.* <!-- N의 모든 것, NF의 모든 것 출력 -->
@@ -50,6 +53,7 @@
 			ON N.NUM=NF.NUM
 		WHERE NUM=#{num}
 	</select>
+	
 	
 	<resultMap type="NoticeDTO" id="getDetailResult">
 		<id column="num" property="num"/>

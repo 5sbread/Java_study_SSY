@@ -59,8 +59,7 @@
 		
 		<br><br>
 		<div class="align-center">
-			<a href = "./list.ssy" calss="btn btn-info">상품 목록 보기</a>
-			<br><br>
+			<a href = "./list.ssy" class="btn btn-info">상품 목록 보기</a>
 			<a href= "./update.ssy?bookNum=${dto.bookNum}" class="btn btn-primary">수정하기</a>
 			<a href="./delete.ssy?bookNum=${dto.bookNum}" class="btn btn-danger">삭제하기</a>
 			
