@@ -10,7 +10,6 @@ const more = document.querySelector("more");
 let page=1;
 //bookNum 담을 변수
 const bookNum = commentBtn.getAttribute("data-book-num");
-
 getCommentList(page, bookNum);
 
 commentBtn.addEventListener("click", function(){
@@ -20,7 +19,6 @@ commentBtn.addEventListener("click", function(){
     // console.log(contents.value);
     // console.log(commentBtn.getAttribute("data-book-num"));
 
-    let bookNum = commentBtn.getAttribute("data-book-num");
     let wv = writer.value;
     let cv = contents.value;
 
@@ -29,7 +27,7 @@ commentBtn.addEventListener("click", function(){
     const xhttp = new XMLHttpRequest();
 
     // 2. Method, URL 준비
-    xhttp.open("POST", "./commentAdd");
+    xhttp.open("POST", "./commentBtn");
 
     // 3. Enctype - POST일때
     // 요청 header 정보
@@ -102,9 +100,12 @@ function getCommentList(p, bn){
             // resultAttr.value="table-hover";
             // result.setAttributeNode(resultAttr);  //<table class="table table-dark table-hover"></table>
 
+            let pager = result.pager; //commetPager
+            let ar = result.list; //댓글리스트
+            let tb = document.createElement("tbody");
+
             for(let i=0; i<ar.length; i++){
                 let tr = document.createAttribute("tr");
-
                 let td = document.createElement("td");
                 let teText = document.createTextNode(ar[i].contents);
                 td.appendChild(tdText);           
@@ -116,6 +117,15 @@ function getCommentList(p, bn){
                 tr.appendChild(td);
 
                 td = document.createElement("td");
+
+                // 날짜 format 변경
+                // let date = new Date(ar[i].regDate);
+                // console.log(date);
+                // let year = date.getFullYear();
+                // let month = date.getMonth();
+                // let d = date.getDate();
+                // tdText = document.createTextNode(year+"-"+month+"-"+d);
+
                 tdText = document.createTextNode(ar[i].regDate);
                 td.appendChild(tdText);
                 tr.appendChild(td);
@@ -128,33 +138,43 @@ function getCommentList(p, bn){
                 td.appendChild(tdText);
                 tr.appendChild(td);
 
+                tdAttr = document.createAttribute("data-comment-num");
+                tdAttr.value = ar[i].num;
+                td.setAttributeNode(tdAttr);
+                tr.appendChild(td);
+
+
                 td = document.createElement("td");
                 tdText = document.createTextNode("삭제");
                 tdAttr = document.createAttribute("class");
                 tdAttr.value = "delete";
                 td.setAttributeNode(tdAttr);
+                td.setAttributeNode(tdAttr);
+
                 tdAttr = document.createAttribute("data-comment-num");
                 tdAttr.value = ar[i].num;
                 td.setAttributeNode(tdAttr);
+                tr.appendChild(td);
+
+                
+                //commentList.append(tr);
+                tb.appendChild(tr);
 
 
-                //result.appendChild(tr);
-                commentList.append(tr);
-
-                if(page >= PageTransitionEvent.totalPage){
+                if(page >= pager.totalPage){
                     more.classList.add("disabled")
                 }else{
                     more.classList.remove("disabled");
                 }
-            }
+            }commentList.append(tb);
 
-            console.log(result);
-            commentList.children.remove();
+            // console.log(result);
+            // commentList.children.remove();
 
-            let t = commentList.children;
-            if(t.length != 0){
-                commentList.children[0].remove();
-            }
+            // let t = commentList.children;
+            // if(t.length != 0){
+            //     commentList.children[0].remove();
+            // }
 
             // //예외 발생 해결 try catch
             // try {
@@ -163,11 +183,14 @@ function getCommentList(p, bn){
             // } catch (exeception) {
             // }finally{
             // }
-            commentList.append(result);
+
+           // commentList.append(result);
             }
         }
     )
 };
+
+
 
 //---------------------- 더보기 -------------------------------
 //처음 페이지에 들어왔을 때 1
@@ -180,11 +203,13 @@ more.addEventListener("click", function(){
     console.log(bookNum);
 
     getCommentList(page, bookNum);
-
 });
+
+
 
 //---------------------- DELETE, UPDATE -------------------------------
 commentList.addEventListener("click", function(event){
+
     //----------- UPDATE
     if(event.target.calssName=="update"){
         //let contents = event.target.previousSibling.previousSibling;
@@ -248,6 +273,8 @@ commentList.addEventListener("click", function(event){
 }
 });
 
+
+
 //---------------------------- Modal Update button Click ---------------------------------
 const update = document.querySelector("#update");
 
@@ -278,50 +305,9 @@ update.addEventListener("click", function(){
                 alert("댓글 수정 완료")
                 for(let i=0; i<commentList.children.length;){
                     commentList.children[0].remove();
-                    let tr = document.createAttribute("tr");
-                    let td = document.createElement("td");
-                    let teText = document.createTextNode(ar[i].contents);
-                    td.appendChild(tdText);           
-                    tr.appendChild(td);
-
-                    td = document.createElement("td");
-                    tdText = document.createTextNode(ar[i].writer);
-                    td.appendChild(tdText);
-                    tr.appendChild(td);
-
-                    td = document.createElement("td");
-                    //날짜 format 변경
-                    // let date = new Date();
-                    // console.log(date);
-
-                    // let year = date.getFullYear();
-                    // let month = date.getMonth()+1;
-                    // let d = date.getDate();
-                    // console.log(year+"-"+month+"-"+d);
-
-                    tdText = document.createTextNode(ar[i].regDate);
-                    td.appendChild(tdText);
-                    tr.appendChild(td);
-
-                    td = document.createElement("td");
-                    tdText = document.createTextNode("수정");
-                    let tdAttr = document.createAttribute("class");
-                    tdAttr.value = "update";
-                    td.setAttributeNode(tdAttr);
-                    td.appendChild(tdText);
-                    tr.appendChild(td);
-
-                    td = document.createElement("td");
-                    tdText = document.createTextNode("삭제");
-                    tdAttr = document.createAttribute("class");
-                    tdAttr.value = "delete";
-                    td.setAttributeNode(tdAttr);
-                    tdAttr = document.createAttribute("data-comment-num");
-                    tdAttr.value = ar[i].num;
-                    td.setAttributeNode(tdAttr);
-
                 }   
                 page=1;
+                getCommentList(page,bookNum);
 
             }else{
                 alert("댓글 수정 실패")
