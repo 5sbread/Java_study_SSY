@@ -20,12 +20,10 @@
 		    margin-block-end: 1em;
 		    margin-inline-start: 0px;
 		    margin-inline-end: 0px;
-			}
-			
-		.all_text{
-			text_decoration : underline;
+		    text_decoration : underline;
 			word-break : break-all;
-		}	
+			}
+
 		
 	</style>	
 </head>
