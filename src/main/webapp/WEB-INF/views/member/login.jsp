@@ -35,7 +35,7 @@
 					<input type="checkbox" class="form-check-input" id="exampleCheck1">
 					<label class="form-check-label" for="exampleCheck1">로그인 상태 유지</label>
 				</div>
-				<button type="button" class="btn btn-primary" id="login">로그인</button>
+				<button type="button" class="btn btn-primary" id="btn">로그인</button>
 			</form>
 		</div>
 	</section>

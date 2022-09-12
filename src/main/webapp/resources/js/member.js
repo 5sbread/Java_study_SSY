@@ -2,7 +2,7 @@
 // 아무 입력 없이 버튼 누를 시 리턴
 
 
-//===================== 수업
+//========== joinCheck ===========
 function joinCheck(){
     //선택자
     const joinForm = document.getElementById("joinForm");
@@ -24,6 +24,7 @@ function joinCheck(){
 
     //idCheck
     inputUserName.addEventListener("blur", function(){
+        idCheck = false;
         if(inputUserName.value.length>1){
             inputUserNameResult.innerHTML="";
             idCheck = true;
@@ -46,6 +47,7 @@ function joinCheck(){
         }
     });
 
+
     //비번 확인                         blur / keyup 상황에 맞게 사용
     inputPasswordCheck.addEventListener("blur", function(){
         console.log("pwEqual");
@@ -58,31 +60,30 @@ function joinCheck(){
             inputPasswordCheck.innerHTML="  PW가 일치하지 않습니다."
         }    
     });
+
+
+    //joinButton Click
+    joinButton.addEventListener("click", function(){
+        if(idCheck && pwCheck & pwEqualCheck){
+            console.log("서버에 전송");
+            //joinForm.submit();
+        }else{
+            alert("필수 입력 사항은 모두 입력해야 합니다.");
+        }
+    })    
 }
 
 //=====================================================================
-//joinButton Click
-joinButton.addEventListener("click", function(){
-    if(idCheck && pwCheck & pwEqualCheck){
-        console.log("서버에 전송");
-        //joinForm.submit();
-    }else{
-        alert("필수 입력 사항은 모두 입력해야 합니다.");
-    }
-});    
-
-
-//=====================================================================
+//========== loginCheck ===========
 function loginCheck(){
-    const login = document.getElementById("login");
+    const btn = document.getElementById("btn");
     const form = document.getElementById("form");
     const userName = document.getElementById("userName");
     const password = document.getElementById("password");
  
-    login.addEventListener("click", function(){
+    btn.addEventListener("click", function(){
         let u = userName.value;
         let p = password.value;
-
         console.log(u == "");
             // 아무것도 입력 안했을 때 =/= null
             // ㄴ 빈 문자열 ""로 작성
@@ -94,7 +95,6 @@ function loginCheck(){
             alert("아이디를 입력해 주세요.");
             return; //메서드 내에서 return시 그 즉시 종료
         }
-
         if(p==""){
             alert("비밀번호를 입력해 주세요.");
             return;    
@@ -109,22 +109,26 @@ function loginCheck(){
         //     alert("아이디와 비밀번호를 입력해 주세요.")
         // }   
     });
-};
+}
 
 //=======================================================
 //회원가입 시 약관 동의
 
 function argeeCheck(){
     const all = document.getElementById("all");
-    const cb = document.getElementsByClassName("cb");
+    const cb = document.querySelectorAll(".cb");
     const join = document.getElementById("join");
     const form = document.getElementById("form");
     const req = doc.getElementsByClassName("req");
 
+    console.log("foreach");
+    cb.forEach(function(v, i, ar){
+        console.log(v);
+    });
+
 //-------------- 약관에 동의 했는지    
     join.addEventListener("click", function(){
         let result = true;
-
         for(let i=0; i<req.length; i++){
             if(!req[i].checked){
                 result = false;
@@ -151,14 +155,14 @@ function argeeCheck(){
             let result = true;
             for(let j=0; j<cb.length; j++){
                 if(!cb[j].checked){
-                    result=false;
+                    result = false;
                     break;
                 }
             }
-            all.checked;
+            all.checked=result;
         });
     }
-};
+}
 
 //---------------------------------------------
 function idMsg(){
