@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,6 +33,12 @@ public class NoticeController {
 		return "notice";
 	}
 	
+	// 파라미터의 이름과 매개변수명이 일치하지 않는 경우
+	// @RequestParam(value="파라미터명") 매개변수데이터타입 매개변수명
+	
+	// 파라미터 값이 안넘어갈 때 자동세팅값 설정
+	// public ModelAndView gerList(@RequestParam(defaultValue="1")Long page) throws Exception{
+	
 	//글 목록
 	@RequestMapping(value="list.ssy", method=RequestMethod.GET)
 	public ModelAndView getList(Pager pager) throws Exception{
@@ -48,6 +55,10 @@ public class NoticeController {
 		mv.addObject("pager",pager);
 		mv.setViewName("board/list");
 		//mv.setViewName("board/list"); <- 이렇게 경로 전부 바꾸기 notice/qna
+		
+//		if(ar.size() !=0 ) {
+//			throw new Exception();
+//		}
 		
 		return mv;
 	}
@@ -110,6 +121,26 @@ public class NoticeController {
 		int result = noticeService.setDelete(boardDTO);
 		return "redirect:./list.ssy";
 	}
+	
+	
+	
+//--------------------------------------------------------------------
+	// exception 처리 전문 메서드
+	@ExceptionHandler(NullPointerException.class)
+	public ModelAndView exceptionTest() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("error/error_404");
+		return mv;
+	}
+	
+	@ExceptionHandler(Exception.class)
+	public ModelAndView exceptionTest2 (Exception e) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("error/error_404");
+		return mv;
+	}
+	
+	
 	
 
 }
