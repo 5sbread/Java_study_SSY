@@ -12,41 +12,42 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 	
-	<!-- Interceptor 설정 -->
-	<!-- Interceptor 객체 생성 -->
-	<beans:bean class="com.ssy.test.interceptor.TestInterceptor" id="testInterceptor"></beans:bean>
-	
-	<!-- URL - Interceptor 맵핑 -->
-	<interceptors>
-		<interceptor>
-			<!-- URL 경로 -->
-			<mapping path="/**"/>
-			<beans:ref bean="testInterceptor"/>
-		</interceptor>
-		
-<!-- 	<interceptor>
-			<mapping path="/qna/*"/>
-			<mapping path="/member/myPage.ssy"/>
-			<exclude-mapping path="/qua/list.ssy"/>
-			<beans:bean class="com.ssy.test.interceptor.MemberInterceptor"></beans:bean>
-		</interceptor> -->
-		
-		<interceptor>
-			<mapping path="/qna/update.ssy"/>
-			<mapping path="/notice/update.ssy"/>
-			<beans:bean class="com.ssy.test.interceptor.WriterCheckInterceptor"></beans:bean>
-		</interceptor>
-	</interceptors>
-	
-
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-
+	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+	
+	
+	<!-- Interceptor 객체 생성 -->
+	<beans:bean class="com.ssy.test.interceptor.AdminCheckInterceptor" id="adminCheckInterceptor"></beans:bean>
+	<beans:bean class="com.ssy.test.interceptor.MemberInterceptor" id="memberInterceptor"></beans:bean>
+
+	<!-- URL - Interceptor 맵핑 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/notice/**"/>
+			<mapping path="/qna/**"/>
+				<!-- 등급 상관없이 전체공개할 페이지 제외 -->
+			<exclude-mapping path="/notice/list.ssy"/>
+			<exclude-mapping path="/notice/detail.ssy"/>
+			<exclude-mapping path="/qna/list.ssy"/>
+			<beans:ref bean="adminCheckInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/notice/**"/>
+			<exclude-mapping path="/notice/list.ssy"/>
+			<exclude-mapping path="/notice/detail.ssy"/>
+			<beans:ref bean="adminCheckInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+
+
 	
 	<context:component-scan base-package="com.ssy.test" />
 	
