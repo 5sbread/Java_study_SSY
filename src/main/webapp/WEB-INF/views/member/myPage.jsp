@@ -25,12 +25,20 @@
       <c:forEach items="${dto.bankAccountDTOs}" var="dto">
          <p>통장번호 : ${pageScope.dto.accountNum}</p>
          <p>통장이름 : ${dto.bankBookDTO.bookName}</p>
-         <P>개설일자 : ${dto.accountDate}</P>
-            
+         <P>개설일자 : ${dto.accountDate}</P>      
       </c:forEach>
    </div>
    
    <div>
+   	  <c:forEach items="${member.roleDTOs}" var="roleDTO">
+   	  	<div>${RoleDTO.roleNum}, ${RoleDTO.roleName}</div>
+   	  </c:forEach>
+   	  
+   	  <h1>당신은 ${member.rolDTOs.get(0).roleName}</h1>
+   	  <h1>당신은 ${member.roleDTOD["0"].roleName}</h1>
+   </div>
+   
+   <div class="row">
    	<imag alt="" src="../resources/upload/member/${dto.bankMembersFileDTO.fileName}">
    </div>
    

@@ -102,14 +102,15 @@ function loginCheck(){
 
         //아이디, 비번 둘 다 입력했을 시 submit
         form.submit();
+        console.log("로그인");
 
         // if(u.length>0 && p.length>0){
         //     form.submit();
         // }else{
         //     alert("아이디와 비밀번호를 입력해 주세요.")
         // }   
-    });
-}
+    })
+};
 
 //=======================================================
 //회원가입 시 약관 동의
