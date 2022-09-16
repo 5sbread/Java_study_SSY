@@ -1,7 +1,3 @@
-{/* <div class="mb-3">
-	    <label for="files" class="form-label">파일</label>
-	    <input type="file" name="files" class="form-control" id="">
-	</div> */}
 
 const addFiles = document.getElementById("addFiles"); //div #addFiles
 const fileAdd = document.getElementById("fileAdd"); //add button
@@ -19,7 +15,7 @@ try{
                 return
             }
 
-
+            
             let fileNum = f.getAttribute("date-file-num");
 
             //ajax
@@ -33,6 +29,8 @@ try{
                     let result = xhttp.responseText.trim();
                     if(result==1){
                         console.log(result +"성공")
+                        f.parentNode.remove();
+                        count--;
                     }else {
                         console.log(result +"실패")
                     }
@@ -42,7 +40,7 @@ try{
         });
     });
 }catch(e){
-
+    console.log(fi);
 }
 
 
@@ -65,15 +63,22 @@ fileAdd.addEventListener("click", function(){
         alert("파일은 최대 5개까지 첨부 가능합니다.");
         return;
     }
+
+    /* <div class="mb-3">
+            <label for="files" class="form-label">파일</label>
+            <input type="file" name="files" class="form-control" id="">
+        </div> */
     
-//--------------
+//------ 부모 Element div 생성 ------
     let div = document.createElement("div"); //div
     let c = document.createAttribute("class"); //class=""
     c.value = "mb-3" //class="mb-3"
     div.setAttributeNode(c); //<div clas="mb-3"></div>
-    //c = document.createAttribute("");
+    c = document.createAttribute("id");
+    c.value="file"+idx;
+    div.setAttributeNode(c);
 
-//------
+//------ 자식 Element Label 생성 ------
     let label = document.createElement("label"); //<label><label>
     let labelText = document.createTextNode("파일");
     label.appendChild(labelText) //<label>파일</label>
@@ -87,36 +92,36 @@ fileAdd.addEventListener("click", function(){
     label.setAttributeNode(labelClass); //<label class="form-label" for="files">파일</label>
     addFiles.append(div); 
 
-//------
-    let input = document.createElement("input"); //<input></input> 
-    let inputAttr = document.createAttribute("type"); //type=""
-    inputAttr.value = "file";
-    input.setAttributeNode(inputAttr);
+//------ 자식 Element Input 생성
+    let input = document.createElement("input");        //<input>
+    let inputAttr = document.createAttribute("type");   //type=""
+    inputAttr.value="file";                             //type="file";
+    input.setAttributeNode(inputAttr);                  //<input type="file">
 
-    inputAttr = document.createAttribute("name");
-    inputAttr.value = "files";
-    input.setAttributeNode(inputAttr); //name="files"
+    inputAttr = document.createAttribute("name");       //name="";
+    inputAttr.value="files";                            //name="files"
+    input.setAttributeNode(inputAttr);                  //<input type="file" name="files">
 
-    inputAttr = document.createAttribute("class");
-    inputAttr.value = "form-control";
-    input.setAttributeNode(inputAttr); //class="form-control"
+    inputAttr = document.createAttribute("class");      //class="";
+    inputAttr.value="form-control";                     //class="form-control"
+    input.setAttributeNode(inputAttr);                  //<input type="file" name="files" class="form-control">
 
-    inputAttr = document.createAttribute("id");
-    inputAttr.value = "files";
-    input.setAttributeNode(inputAttr); //id="files"
-    addFiles.append(div);
+    inputAttr = document.createAttribute("id");         //id="";
+    inputAttr.value="files";                            //id="files"
+    input.setAttributeNode(inputAttr);                  //<input type="file" name="files" class="form-control" id="files">
+    div.appendChild(input);
 
-//------ 삭제 버튼 element 생성
-    let button = document.createElement("input");
-    let buttonAttr = document.createAttribute("type");
-    buttonAttr.value="button";
-    button.setAttributeNode(buttonAttr);
-    
+
+//------ 삭제 버튼 element 생성 ------
+    let button = document.createElement("button");
     let buttonContents = document.createTextNode("삭제");
     button.appendChild(buttonContents);
+    let buttonAttr = document.createAttribute("type")
+    buttonAttr.value="button";
+    button.setAttributeNode(buttonAttr);
 
     buttonAttr = document.createAttribute("class");
-    buttonAttr.value="btn btn-danger del";
+    buttonAttr.value="del btn btn-danger";
     button.setAttributeNode(buttonAttr);
 
     buttonAttr = document.createAttribute("title");
@@ -124,6 +129,8 @@ fileAdd.addEventListener("click", function(){
     button.setAttributeNode(buttonAttr);
 
     div.appendChild(button);
+
+
     addFiles.append(div);
 
     count++;
@@ -132,8 +139,11 @@ fileAdd.addEventListener("click", function(){
 
 
 addFiles.addEventListener("click", function(event){
-    if(event.target.className=='del'){
-        alert("del")
+    let button = event.target;
+
+    if(button.classList[0]=='del'){
+        document.getElementById("file"+button.title).remove();
+        count--;
     }
 });
 

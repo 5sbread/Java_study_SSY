@@ -30,19 +30,23 @@ public class NoticeService implements BoardService{
 	@Autowired
 	private FileManger fileManger;
 	
-	@Autowired
-	private ServletContext servletContext;
+//	@Autowired
+//	private ServletContext servletContext;
 	
 	
 	@Override
 	public int setFileDelete(BoardFileDTO boardFileDTO, ServletContext servletContext) throws Exception {
 		//디테일 불러온 후 파일을 DB에서 먼저 지우고 ? 삭제
 		boardFileDTO = noticeDAO.getFileDetail(boardFileDTO);
+		System.out.println("FileNum : "+boardFileDTO.getFileNum());
+		
 		int result = noticeDAO.setFileDelete(boardFileDTO);
 		String path = "resources/upload/notice";
+		System.out.println("DB DELETE : "+result);
 		
 		if(result>0) {
-			fileManger.delteFile(servletContext, path, boardFileDTO);
+			boolean check = fileManger.delteFile(servletContext, path, boardFileDTO);
+			System.out.println("fileDelete : "+check);
 		}
 		return result;
 	}
@@ -153,20 +157,26 @@ public class NoticeService implements BoardService{
 	}
 
 	
+	// 글 수정
 	@Override
 	public int setUpdate(BoardDTO boardDTO, MultipartFile[] files, ServletContext servletContext) throws Exception {
 		
 		String path = "resources/upload/notice";
+		int result = noticeDAO.setUpdate(boardDTO);
 		
-		for(MultipartFile mf:files) {
-			if(mf.isEmpty()) {
+		if(result<1) {
+			return result;
+		}
+		
+		for(MultipartFile multipartFile: files) {
+			if(multipartFile.isEmpty()) {
 				continue;
 			}
-			s
-			String fileName = fileManger.saveFile(servletContext, path, mf);
+			
+			String fileName = fileManger.saveFile(servletContext, path, multipartFile);
 			BoardFileDTO boardFileDTO = new BoardFileDTO();
 			boardFileDTO.setFileName(fileName);
-			boardFileDTO.setOriName(mf.getOriginalFilename());
+			boardFileDTO.setOriName(multipartFile.getOriginalFilename());
 			boardFileDTO.setNum(boardDTO.getNum());
 			noticeDAO.setAddFile(boardFileDTO);
 		}

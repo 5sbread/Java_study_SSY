@@ -15,12 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ssy.test.bankMembers.BankMembersDAO;
 import com.ssy.test.bankMembers.BankMembersDTO;
 import com.ssy.test.board.impl.BoardDTO;
+import com.ssy.test.board.impl.BoardFileDTO;
 import com.ssy.test.util.Pager;
 
 @Controller
@@ -49,8 +51,8 @@ public class NoticeController {
 		
 		System.out.println(pager);
 		//System.out.println("page : "+page);
-		System.out.println("pager.getKind"+pager.getKind());
-		System.out.println("pager.getSearch"+pager.getSearch());
+		System.out.println("pager.getSelect : "+pager.getSelect());
+		System.out.println("pager.getSearch : "+pager.getSearch());
 		
 		List<BoardDTO> ar = noticeService.getList(pager);
 		
@@ -95,7 +97,15 @@ public class NoticeController {
 	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile [] files, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = noticeService.setAdd(boardDTO, files, session.getServletContext());
-		mv.setViewName("redirect:./list.ssy");
+		String message = "등록 실패";
+		if(result > 0) {
+			message = "등록 성공";
+		}
+		mv.addObject("result", result);
+		mv.addObject("message", message);
+		mv.addObject("url", "list.ssy");
+		
+		mv.setViewName("common/result");
 		return mv;
 	}
 	
@@ -129,30 +139,31 @@ public class NoticeController {
 	//파일 삭제
 	@PostMapping("fileDelete")
 	@ResponseBody
-	public void setFileDelete(BoardDTO boardDTO) throws Exception{
-		int result = noticeService.setFileDelete(boardFileDTO, )
+	public int setFileDelete(BoardFileDTO boardFileDTO, HttpSession seeion) throws Exception{
+		System.out.println("File Delete");
+		System.out.println("Context : " +seeion.getServletContext());
 		
+		int result = noticeService.setFileDelete(boardFileDTO, seeion.getServletContext());
+		return result;
 	}
 	
 	
 	
 //--------------------------------------------------------------------
 	// exception 처리 전문 메서드
-//	@ExceptionHandler(NullPointerException.class)
-//	public ModelAndView exceptionTest() {
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("error/error_404");
-//		return mv;
-//	}
-//	
-//	@ExceptionHandler(Exception.class)
-//	public ModelAndView exceptionTest2 (Exception e) {
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("error/error_404");
-//		return mv;
-//	}
-//	
-//	
+	@ExceptionHandler(NullPointerException.class)
+	public ModelAndView exceptionTest() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("error/error_404");
+		return mv;
+	}
+	
+	@ExceptionHandler(Exception.class)
+	public ModelAndView exceptionTest2 (Exception e) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("error/error_404");
+		return mv;
+	}
 	
 
 }

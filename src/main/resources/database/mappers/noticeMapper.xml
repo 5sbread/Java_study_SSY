@@ -21,8 +21,8 @@
 		DELETE NOTICEFILE WHERE FILENUM=#{fileNume}
 	</delete>
 	
-	<select id="getFileDetail" parameterType="BoardFileDTO">
-		
+	<select id="getFileDetail" resultType="BoardFileDTO" parameterType="BoardFileDTO">
+		SELECT * FROM NOTICEFILE WHERE FILENUM=#{fileNum}
 	</select>
 
 
@@ -60,7 +60,7 @@
 			LEFT JOIN
 			NOTICEFILE NF <!-- 테이블 단축이름 설정 -->
 			ON N.NUM=NF.NUM
-		WHERE NUM=#{num}
+		WHERE N.NUM=#{num}
 	</select>
 	
 	

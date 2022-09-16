@@ -25,6 +25,7 @@ public class QnaService implements BoardService{
 	@Autowired
 	private FileManger fileManger;
 
+	
 	public int setReply(QnaDTO qnaDTO)throws Exception{
 		
 		BoardDTO boardDTO = qnaDAO.getDetail(qnaDTO);
@@ -76,6 +77,7 @@ public class QnaService implements BoardService{
 		}
 		return result;
 	}
+	
 
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
@@ -86,6 +88,14 @@ public class QnaService implements BoardService{
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		return qnaDAO.setDelete(boardDTO);
 	}
+
+
+	@Override
+	public int setFileDelete(BoardFileDTO boardFileDTO, ServletContext servletContext) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
 
 }
