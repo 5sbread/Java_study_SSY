@@ -10,6 +10,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.ssy.test.util.Pager;
 
 public interface BoardService {
+	
+	//파일 삭제
+	public int setFileDelete(BoardFileDTO boardFileDTO, ServletContext servletContext)throws Exception;
 
 	//글 목록
 	public List<BoardDTO> getList(Pager pager)throws Exception;

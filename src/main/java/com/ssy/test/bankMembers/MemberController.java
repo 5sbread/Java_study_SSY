@@ -47,7 +47,7 @@ public class MemberController {
 		
 //		List<BankAccountDTO> ar = bankAccountService.getListByUserName(bankMembersDTO);
 		
-		mv.setViewName("member/myPage.ssy");
+		mv.setViewName("member/myPage");
 		mv.addObject("dto", bankMembersDTO);
 		
 		return mv;

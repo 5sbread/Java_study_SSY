@@ -15,6 +15,7 @@ public class BackErrorController {
 	public ModelAndView exceptionTest() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("error/error_404");
+		System.out.println("exception 1");
 		return mv;
 	}
 	
@@ -22,6 +23,7 @@ public class BackErrorController {
 	public ModelAndView exceptionTest2 (Exception e) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("error/error_404");
+		System.out.println("exception 2");
 		return mv;
 	}
 }

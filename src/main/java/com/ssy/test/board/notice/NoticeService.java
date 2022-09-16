@@ -32,6 +32,20 @@ public class NoticeService implements BoardService{
 	
 	@Autowired
 	private ServletContext servletContext;
+	
+	
+	@Override
+	public int setFileDelete(BoardFileDTO boardFileDTO, ServletContext servletContext) throws Exception {
+		//디테일 불러온 후 파일을 DB에서 먼저 지우고 ? 삭제
+		boardFileDTO = noticeDAO.getFileDetail(boardFileDTO);
+		int result = noticeDAO.setFileDelete(boardFileDTO);
+		String path = "resources/upload/notice";
+		
+		if(result>0) {
+			fileManger.delteFile(servletContext, path, boardFileDTO);
+		}
+		return result;
+	}
 
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
@@ -140,8 +154,23 @@ public class NoticeService implements BoardService{
 
 	
 	@Override
-	public int setUpdate(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
+	public int setUpdate(BoardDTO boardDTO, MultipartFile[] files, ServletContext servletContext) throws Exception {
+		
+		String path = "resources/upload/notice";
+		
+		for(MultipartFile mf:files) {
+			if(mf.isEmpty()) {
+				continue;
+			}
+			s
+			String fileName = fileManger.saveFile(servletContext, path, mf);
+			BoardFileDTO boardFileDTO = new BoardFileDTO();
+			boardFileDTO.setFileName(fileName);
+			boardFileDTO.setOriName(mf.getOriginalFilename());
+			boardFileDTO.setNum(boardDTO.getNum());
+			noticeDAO.setAddFile(boardFileDTO);
+		}
+		
 		return noticeDAO.setUpdate(boardDTO);
 	}
 

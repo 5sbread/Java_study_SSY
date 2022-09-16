@@ -19,13 +19,14 @@
     .align-center {text-align: center;}
 </style>
 </head>
+
 <body>
-<c:import url="../template/header.jsp"></c:import>
-<br>
-<br>
-<h1 class="align-center">${board} Add Page</h1>
-<br>
-<section class="container-fluid col-lg-4">
+	<c:import url="../template/header.jsp"></c:import>
+	<br>
+	<br>
+	<h1 class="align-center">${board} Add Page</h1>
+	<br>
+	<section class="container-fluid col-lg-4">
 	
 	<div class="row">
 		<form action="./add.ssy" method="post" enctype="multipart/form-data">

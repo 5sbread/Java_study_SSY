@@ -16,6 +16,15 @@
 		LIKE '%'||#{search}||'%'
 	</sql>
 
+	<!-- 파일 삭제 -->
+	<delete id="setFileDelete" parameterType="BoardFileDTO">
+		DELETE NOTICEFILE WHERE FILENUM=#{fileNume}
+	</delete>
+	
+	<select id="getFileDetail" parameterType="BoardFileDTO">
+		
+	</select>
+
 
 	<!-- 파일 추가 -->
 	<insert id="setAddFile" parameterType="BoardFileDTO">

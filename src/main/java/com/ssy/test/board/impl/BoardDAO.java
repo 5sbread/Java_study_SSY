@@ -7,6 +7,12 @@ import com.ssy.test.util.Pager;
 
 public interface BoardDAO {
 	
+	//파일 디테일
+	public BoardFileDTO getFileDetail(BoardFileDTO boardFileDTO) throws Exception;
+	
+	//파일 삭제
+	public int setFileDelete(BoardFileDTO boardFileDTO)throws Exception;
+	
 	//글목록
 	public List<BoardDTO> getList(Pager pager)throws Exception;
 	

@@ -2,6 +2,7 @@ package com.ssy.test.board.notice;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -46,8 +49,8 @@ public class NoticeController {
 		
 		System.out.println(pager);
 		//System.out.println("page : "+page);
-		System.out.println(pager.getSelect());
-		System.out.println(pager.getSearch());
+		System.out.println("pager.getKind"+pager.getKind());
+		System.out.println("pager.getSearch"+pager.getSearch());
 		
 		List<BoardDTO> ar = noticeService.getList(pager);
 		
@@ -109,8 +112,8 @@ public class NoticeController {
 	
 	
 	@RequestMapping(value = "update.ssy", method = RequestMethod.POST)
-	public String setUpdate(BoardDTO boardDTO)throws Exception{
-		int result = noticeService.setUpdate(boardDTO);
+	public String setUpdate(BoardDTO boardDTO, MultipartFile[] files, ServletContext servletContext)throws Exception{
+		int result = noticeService.setUpdate(boardDTO, files, servletContext);
 		
 		return "redirect:./detail.ssy?num="+boardDTO.getNum();
 	}
@@ -123,24 +126,33 @@ public class NoticeController {
 	}
 	
 	
+	//파일 삭제
+	@PostMapping("fileDelete")
+	@ResponseBody
+	public void setFileDelete(BoardDTO boardDTO) throws Exception{
+		int result = noticeService.setFileDelete(boardFileDTO, )
+		
+	}
+	
+	
 	
 //--------------------------------------------------------------------
 	// exception 처리 전문 메서드
-	@ExceptionHandler(NullPointerException.class)
-	public ModelAndView exceptionTest() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("error/error_404");
-		return mv;
-	}
-	
-	@ExceptionHandler(Exception.class)
-	public ModelAndView exceptionTest2 (Exception e) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("error/error_404");
-		return mv;
-	}
-	
-	
+//	@ExceptionHandler(NullPointerException.class)
+//	public ModelAndView exceptionTest() {
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("error/error_404");
+//		return mv;
+//	}
+//	
+//	@ExceptionHandler(Exception.class)
+//	public ModelAndView exceptionTest2 (Exception e) {
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("error/error_404");
+//		return mv;
+//	}
+//	
+//	
 	
 
 }

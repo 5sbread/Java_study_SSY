@@ -3,14 +3,65 @@
 	    <input type="file" name="files" class="form-control" id="">
 	</div> */}
 
-const addFiles = document.getElementById("addFiles"); //div
-const fileAdd = document.getElementById("fileAdd"); //button
+const addFiles = document.getElementById("addFiles"); //div #addFiles
+const fileAdd = document.getElementById("fileAdd"); //add button
+const fileDelete = document.querySelectorAll(".fileDelete"); //forEach 가능
+// const fileDelte = document.getElementsByClassName("fileDelete"); //forEach 불가능
+
+//-------------------------- ↓ Update시 file Delete -------------------------------------------
+try{
+    fileDelete.forEach(function(f){
+        f.addEventListener("click", function(){
+            console.log(f + "file Delete");
+
+            let check = window.confirm("삭제시 되돌릴 수 없음");
+            if(!check){
+                return
+            }
+
+
+            let fileNum = f.getAttribute("date-file-num");
+
+            //ajax
+            const xhttp = new XMLDocument();
+            xhttp.open("POST", "./fileDelete");
+            xhttp.setRequestHeader("Conten-type", "application/x-www-form-urlencoded");
+            xhttp.send("fileNum = "+fileNum);
+
+            xhttp.onreadystatechange = function(){
+                if(xhttp.readyState==4 && xhttp.status==200){
+                    let result = xhttp.responseText.trim();
+                    if(result==1){
+                        console.log(result +"성공")
+                    }else {
+                        console.log(result +"실패")
+                    }
+                }
+            }
+
+        });
+    });
+}catch(e){
+
+}
+
+
+//-------------------------- ↓ Add시 file Add -------------------------------------------
 
 let count = 0;
+let idx = 0;
+
+function setCount(c){
+    if(c>=0)
+    count=c;
+}
+
+//에러 try - catch
+try{
 
 fileAdd.addEventListener("click", function(){
     //파일 추가 횟수 제한 (5번)
-    if(count>5){
+    if(count>4){
         alert("파일은 최대 5개까지 첨부 가능합니다.");
         return;
     }
@@ -79,8 +130,14 @@ fileAdd.addEventListener("click", function(){
     idx++;
 });
 
+
 addFiles.addEventListener("click", function(event){
     if(event.target.className=='del'){
         alert("del")
     }
 });
+
+//에러 발생 시 catch 로 잡아서 계속 실행
+}catch(e){
+
+}
