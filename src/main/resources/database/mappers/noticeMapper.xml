@@ -16,6 +16,15 @@
 		LIKE '%'||#{search}||'%'
 	</sql>
 
+	<!-- 파일 삭제 -->
+	<delete id="setFileDelete" parameterType="BoardFileDTO">
+		DELETE NOTICEFILE WHERE FILENUM=#{fileNume}
+	</delete>
+	
+	<select id="getFileDetail" resultType="BoardFileDTO" parameterType="BoardFileDTO">
+		SELECT * FROM NOTICEFILE WHERE FILENUM=#{fileNum}
+	</select>
+
 
 	<!-- 파일 추가 -->
 	<insert id="setAddFile" parameterType="BoardFileDTO">
@@ -51,7 +60,7 @@
 			LEFT JOIN
 			NOTICEFILE NF <!-- 테이블 단축이름 설정 -->
 			ON N.NUM=NF.NUM
-		WHERE NUM=#{num}
+		WHERE N.NUM=#{num}
 	</select>
 	
 	

@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ssy.test.file.FileDTO;
+
 @Component
 public class FileManger {
 	
@@ -20,6 +22,18 @@ public class FileManger {
 	//private ServletContext servletContext;
 	
 	//**파일 매니저 객체가 필요할 때 
+	
+	//delete
+	public boolean delteFile (ServletContext servletContext, String path, FileDTO fileDTO) throws Exception{
+		String realPath = servletContext.getRealPath(path);
+		System.out.println(realPath);
+		
+		File file = new File(realPath, fileDTO.getFileName());
+		
+		return file.delete();
+	}
+	
+	
 	
 	//save
 	//public void saveFile(ServletContext servletContext, String path)throws Exception{
