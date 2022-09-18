@@ -23,6 +23,16 @@
 		    text_decoration : underline;
 			word-break : break-all;
 			}
+		.terms_box{
+			position: relative;
+			overflow: auto;
+			height: 88px;
+			margin-top: 8px;
+			padding: 12px;
+			border: 1px solid #dadada;
+			background: #fff;
+			box-sizing: border-box;
+		}	
 
 		
 	</style>	
@@ -46,7 +56,14 @@
 		</p>
 		
 		
-		동의1 [필수] <input type="checkbox" name="box" class="ch req"> <br>
+		동의1 [필수] <input type="checkbox" name="box" class="ch req">
+		<div class="terms_box" tabindex="0" id="divService">
+			<div class="article">
+				<h3 class="article__title">여러분을 환영합니다.</h3>
+				<p class="article__text">블라블라</p>
+			</div>
+		</div>
+		<br>
 		동의2 [필수] <input type="checkbox" name="box" class="ch req"> <br>
 		동의3 [필수] <input type="checkbox" name="box" class="ch req"> <br>
 		동의4 [선택] <input type="checkbox" name="box" class="ch"> <br><br>
