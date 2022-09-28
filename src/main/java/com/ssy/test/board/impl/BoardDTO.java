@@ -20,7 +20,7 @@ public class BoardDTO extends CommentDTO {
 	public Long getHit() {
 		return hit;
 	}
-	public void setHet(Long hit) {
+	public void setHit(Long hit) {
 		this.hit = hit;
 	}
 	public List<BoardFileDTO> getBoardFileDTO() {
